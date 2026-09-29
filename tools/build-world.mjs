@@ -20,7 +20,7 @@
  */
 
 import { access, mkdir, writeFile } from 'node:fs/promises';
-import { boundsOf, isoOf, labelPoint, naturalEarth, prepareRings } from './lib/geojson.mjs';
+import { boundsOf, coreBounds, isoOf, labelPoint, naturalEarth, prepareRings } from './lib/geojson.mjs';
 
 const COUNTRIES =
   'https://raw.githubusercontent.com/mledoze/countries/master/countries.json';
@@ -29,8 +29,6 @@ const COUNTRIES =
 const TOLERANCE = 0.02;
 
 /** Rings below this area in square degrees are dropped — but never the largest. */
-const MIN_RING_AREA = 0.0008;
-const MIN_LAND_RING_AREA = 0.004;
 
 /** The source marks the Holy See as a UN member; it is a permanent observer. */
 const NOT_UN_MEMBERS = new Set(['VA']);
@@ -111,14 +109,13 @@ const shapes = {};
 for (const entry of entries) {
   const rings = prepareRings(features.get(entry.code).geometry, {
     tolerance: TOLERANCE,
-    minArea: MIN_RING_AREA,
   });
   if (!rings.length) throw new Error(`${entry.name} simplified away to nothing.`);
-  shapes[entry.code] = { rings, bounds: boundsOf(rings), point: labelPoint(rings) };
+  shapes[entry.code] = { rings, bounds: boundsOf(rings), core: coreBounds(rings), point: labelPoint(rings) };
 }
 
 const land = landLayer.features.flatMap((f) =>
-  prepareRings(f.geometry, { tolerance: TOLERANCE, minArea: MIN_LAND_RING_AREA }),
+  prepareRings(f.geometry, { tolerance: TOLERANCE}),
 );
 
 /**

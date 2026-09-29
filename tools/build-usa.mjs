@@ -15,10 +15,9 @@
  */
 
 import { mkdir, writeFile } from 'node:fs/promises';
-import { boundsOf, isoOf, labelPoint, naturalEarth, prepareRings } from './lib/geojson.mjs';
+import { boundsOf, coreBounds, isoOf, labelPoint, naturalEarth, prepareRings } from './lib/geojson.mjs';
 
 const TOLERANCE = 0.01;
-const MIN_RING_AREA = 0.0004;
 
 /**
  * State capitals. Reference data, kept here in the builder rather than in the
@@ -63,12 +62,11 @@ const entries = features
 
     const rings = prepareRings(feature.geometry, {
       tolerance: TOLERANCE,
-      minArea: MIN_RING_AREA,
-    });
+      });
     if (!rings.length) throw new Error(`${name} simplified away to nothing.`);
 
     const code = postal.toLowerCase();
-    shapes[code] = { rings, bounds: boundsOf(rings), point: labelPoint(rings) };
+    shapes[code] = { rings, bounds: boundsOf(rings), core: coreBounds(rings), point: labelPoint(rings) };
 
     return {
       code,
@@ -157,7 +155,6 @@ const usFeature = countryLayer.features.find((f) => isoOf(f.properties) === 'us'
 if (!usFeature) throw new Error('No United States outline in the admin-0 layer.');
 const land = prepareRings(usFeature.geometry, {
   tolerance: TOLERANCE,
-  minArea: MIN_RING_AREA,
 });
 
 const dir = new URL('../data/sets/usa/', import.meta.url);

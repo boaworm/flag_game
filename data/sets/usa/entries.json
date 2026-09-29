@@ -5,8 +5,8 @@
     "group": "South",
     "capital": "Montgomery",
     "coordinates": [
-      33.31469375,
-      -87.21534375
+      33.3147164375,
+      -87.21532733333333
     ],
     "acceptedNames": [
       "Alabama"
@@ -18,8 +18,8 @@
     "group": "West",
     "capital": "Juneau",
     "coordinates": [
-      65.1687875,
-      -141.9105125
+      65.16880412500001,
+      218.089442375
     ],
     "acceptedNames": [
       "Alaska"
@@ -31,8 +31,8 @@
     "group": "West",
     "capital": "Phoenix",
     "coordinates": [
-      34.28339791666667,
-      -110.490475
+      34.28340583333333,
+      -110.49049575000001
     ],
     "acceptedNames": [
       "Arizona"
@@ -44,8 +44,8 @@
     "group": "South",
     "capital": "Little Rock",
     "coordinates": [
-      36.427114583333335,
-      -92.4522375
+      36.427147770833336,
+      -92.4522555625
     ],
     "acceptedNames": [
       "Arkansas"
@@ -57,8 +57,8 @@
     "group": "West",
     "capital": "Sacramento",
     "coordinates": [
-      40.61877916666666,
-      -121.62229791666667
+      40.618808812500006,
+      -121.62228881249999
     ],
     "acceptedNames": [
       "California"
@@ -70,8 +70,8 @@
     "group": "West",
     "capital": "Denver",
     "coordinates": [
-      38.9998,
-      -105.5431
+      38.999821,
+      -105.543097
     ],
     "acceptedNames": [
       "Colorado"
@@ -83,8 +83,8 @@
     "group": "Northeast",
     "capital": "Hartford",
     "coordinates": [
-      41.6597375,
-      -73.241175
+      41.659755874999995,
+      -73.2411625
     ],
     "acceptedNames": [
       "Connecticut"
@@ -96,8 +96,8 @@
     "group": "South",
     "capital": "Dover",
     "coordinates": [
-      38.799724999999995,
-      -75.7110375
+      38.7994185,
+      -75.7110743125
     ],
     "acceptedNames": [
       "Delaware"
@@ -109,8 +109,8 @@
     "group": "South",
     "capital": "Tallahassee",
     "coordinates": [
-      27.6951875,
-      -81.45606875
+      27.695212,
+      -81.45605375000001
     ],
     "acceptedNames": [
       "Florida"
@@ -122,8 +122,8 @@
     "group": "South",
     "capital": "Atlanta",
     "coordinates": [
-      32.00941666666667,
-      -83.121325
+      32.009428375,
+      -83.12130752083334
     ],
     "acceptedNames": [
       "Georgia"
@@ -135,8 +135,8 @@
     "group": "West",
     "capital": "Honolulu",
     "coordinates": [
-      19.641304166666668,
-      -155.54099166666668
+      19.641327666666665,
+      -155.51499525
     ],
     "acceptedNames": [
       "Hawaii"
@@ -148,8 +148,8 @@
     "group": "West",
     "capital": "Boise",
     "coordinates": [
-      42.4365625,
-      -114.00435833333334
+      42.4366009375,
+      -114.00435416666666
     ],
     "acceptedNames": [
       "Idaho"
@@ -161,8 +161,8 @@
     "group": "Midwest",
     "capital": "Springfield",
     "coordinates": [
-      40.437225,
-      -88.98759375
+      40.437223625,
+      -88.9876209375
     ],
     "acceptedNames": [
       "Illinois"
@@ -174,8 +174,8 @@
     "group": "Midwest",
     "capital": "Indianapolis",
     "coordinates": [
-      40.43376666666667,
-      -86.0319625
+      40.5166638125,
+      -86.37857514583332
     ],
     "acceptedNames": [
       "Indiana"
@@ -187,8 +187,8 @@
     "group": "Midwest",
     "capital": "Des Moines",
     "coordinates": [
-      42.915718749999996,
-      -93.79525625
+      42.9156869375,
+      -93.7952225625
     ],
     "acceptedNames": [
       "Iowa"
@@ -200,8 +200,8 @@
     "group": "Midwest",
     "capital": "Topeka",
     "coordinates": [
-      37.8748875,
-      -98.33189999999999
+      37.87489445833333,
+      -98.33190300000001
     ],
     "acceptedNames": [
       "Kansas"
@@ -213,8 +213,8 @@
     "group": "South",
     "capital": "Frankfort",
     "coordinates": [
-      37.656925,
-      -84.45163333333333
+      37.656954562500005,
+      -84.45163766666667
     ],
     "acceptedNames": [
       "Kentucky"
@@ -226,8 +226,8 @@
     "group": "South",
     "capital": "Baton Rouge",
     "coordinates": [
-      32.588685416666664,
-      -92.68009583333333
+      32.588713750000004,
+      -92.68010814583333
     ],
     "acceptedNames": [
       "Louisiana"
@@ -239,8 +239,8 @@
     "group": "Northeast",
     "capital": "Augusta",
     "coordinates": [
-      45.454079166666666,
-      -69.11672708333333
+      45.45407633333333,
+      -69.1167140625
     ],
     "acceptedNames": [
       "Maine"
@@ -252,8 +252,8 @@
     "group": "South",
     "capital": "Annapolis",
     "coordinates": [
-      39.68449375,
-      -77.10089583333333
+      39.6844524375,
+      -77.100897625
     ],
     "acceptedNames": [
       "Maryland"
@@ -265,8 +265,8 @@
     "group": "Northeast",
     "capital": "Boston",
     "coordinates": [
-      42.68559375,
-      -72.31303333333334
+      42.685597333333334,
+      -72.313054
     ],
     "acceptedNames": [
       "Massachusetts"
@@ -278,8 +278,8 @@
     "group": "Midwest",
     "capital": "Lansing",
     "coordinates": [
-      43.899233333333335,
-      -84.5566375
+      43.899222333333334,
+      -84.55668262500001
     ],
     "acceptedNames": [
       "Michigan"
@@ -291,8 +291,8 @@
     "group": "Midwest",
     "capital": "Saint Paul",
     "coordinates": [
-      47.046195833333336,
-      -94.49142083333334
+      47.0462025,
+      -94.49141900000001
     ],
     "acceptedNames": [
       "Minnesota"
@@ -304,8 +304,8 @@
     "group": "South",
     "capital": "Jackson",
     "coordinates": [
-      33.4942875,
-      -88.980475
+      33.494285749999996,
+      -88.9804505
     ],
     "acceptedNames": [
       "Mississippi"
@@ -317,8 +317,8 @@
     "group": "Midwest",
     "capital": "Jefferson City",
     "coordinates": [
-      37.723425,
-      -92.72280416666666
+      37.723417375,
+      -92.72282095833333
     ],
     "acceptedNames": [
       "Missouri"
@@ -330,8 +330,8 @@
     "group": "West",
     "capital": "Helena",
     "coordinates": [
-      48.89644166666667,
-      -109.79390000000001
+      48.89645891666667,
+      -109.79392160416667
     ],
     "acceptedNames": [
       "Montana"
@@ -343,8 +343,8 @@
     "group": "Midwest",
     "capital": "Lincoln",
     "coordinates": [
-      40.3751375,
-      -98.95746666666668
+      40.3751355,
+      -98.9574525
     ],
     "acceptedNames": [
       "Nebraska"
@@ -356,8 +356,8 @@
     "group": "West",
     "capital": "Carson City",
     "coordinates": [
-      39.08489166666667,
-      -114.66270833333334
+      39.08486533333333,
+      -114.66271308333333
     ],
     "acceptedNames": [
       "Nevada"
@@ -369,8 +369,8 @@
     "group": "Northeast",
     "capital": "Concord",
     "coordinates": [
-      44.111625,
-      -71.0548125
+      44.111600583333335,
+      -71.054793375
     ],
     "acceptedNames": [
       "New Hampshire"
@@ -382,8 +382,8 @@
     "group": "Northeast",
     "capital": "Trenton",
     "coordinates": [
-      41.00193958333333,
-      -74.4572
+      41.00189110416667,
+      -74.457238
     ],
     "acceptedNames": [
       "New Jersey"
@@ -395,8 +395,8 @@
     "group": "West",
     "capital": "Santa Fe",
     "coordinates": [
-      34.990825,
-      -106.27576666666667
+      34.990827625,
+      -106.27580033333334
     ],
     "acceptedNames": [
       "New Mexico"
@@ -408,8 +408,8 @@
     "group": "Northeast",
     "capital": "Albany",
     "coordinates": [
-      42.03114166666667,
-      -77.3195
+      42.03113825,
+      -77.319519375
     ],
     "acceptedNames": [
       "New York"
@@ -421,8 +421,8 @@
     "group": "South",
     "capital": "Raleigh",
     "coordinates": [
-      36.4953125,
-      -78.40955625000001
+      36.495362291666666,
+      -78.4095340625
     ],
     "acceptedNames": [
       "North Carolina"
@@ -434,8 +434,8 @@
     "group": "Midwest",
     "capital": "Bismarck",
     "coordinates": [
-      47.46725,
-      -100.926225
+      47.467211,
+      -100.92622733333333
     ],
     "acceptedNames": [
       "North Dakota"
@@ -447,8 +447,8 @@
     "group": "Midwest",
     "capital": "Columbus",
     "coordinates": [
-      40.283018750000004,
-      -83.29941458333333
+      40.28302158333333,
+      -83.29944499999999
     ],
     "acceptedNames": [
       "Ohio"
@@ -460,8 +460,8 @@
     "group": "South",
     "capital": "Oklahoma City",
     "coordinates": [
-      36.72043333333333,
-      -97.29299999999999
+      36.72044291666666,
+      -97.29298733333333
     ],
     "acceptedNames": [
       "Oklahoma"
@@ -473,8 +473,8 @@
     "group": "West",
     "capital": "Salem",
     "coordinates": [
-      42.88197916666667,
-      -120.51135
+      42.882017708333336,
+      -120.511332
     ],
     "acceptedNames": [
       "Oregon"
@@ -486,8 +486,8 @@
     "group": "Northeast",
     "capital": "Harrisburg",
     "coordinates": [
-      40.542537499999995,
-      -78.09453333333333
+      40.54257366666667,
+      -78.09453341666666
     ],
     "acceptedNames": [
       "Pennsylvania"
@@ -499,8 +499,8 @@
     "group": "Northeast",
     "capital": "Providence",
     "coordinates": [
-      41.733491666666666,
-      -71.797775
+      41.76321497916667,
+      -71.757716
     ],
     "acceptedNames": [
       "Rhode Island"
@@ -512,8 +512,8 @@
     "group": "South",
     "capital": "Columbia",
     "coordinates": [
-      33.75823333333333,
-      -80.565825
+      33.758223125,
+      -80.56579508333334
     ],
     "acceptedNames": [
       "South Carolina"
@@ -525,8 +525,8 @@
     "group": "Midwest",
     "capital": "Pierre",
     "coordinates": [
-      45.22872916666667,
-      -100.41354791666667
+      45.22875391666666,
+      -100.4135064375
     ],
     "acceptedNames": [
       "South Dakota"
@@ -538,8 +538,8 @@
     "group": "South",
     "capital": "Nashville",
     "coordinates": [
-      35.55453333333333,
-      -85.62132916666667
+      35.554504666666666,
+      -85.62131358333333
     ],
     "acceptedNames": [
       "Tennessee"
@@ -551,8 +551,8 @@
     "group": "South",
     "capital": "Austin",
     "coordinates": [
-      31.1719,
-      -98.445075
+      31.17188,
+      -98.445043875
     ],
     "acceptedNames": [
       "Texas"
@@ -564,8 +564,8 @@
     "group": "West",
     "capital": "Salt Lake City",
     "coordinates": [
-      39.49995,
-      -113.7302375
+      39.499943,
+      -113.7302845
     ],
     "acceptedNames": [
       "Utah"
@@ -577,8 +577,8 @@
     "group": "Northeast",
     "capital": "Montpelier",
     "coordinates": [
-      44.96610833333333,
-      -72.47210000000001
+      44.966138208333334,
+      -72.4721255
     ],
     "acceptedNames": [
       "Vermont"
@@ -590,8 +590,8 @@
     "group": "South",
     "capital": "Richmond",
     "coordinates": [
-      37.146258333333336,
-      -78.7835
+      37.146245625,
+      -78.783490875
     ],
     "acceptedNames": [
       "Virginia"
@@ -603,8 +603,8 @@
     "group": "West",
     "capital": "Olympia",
     "coordinates": [
-      47.9218125,
-      -119.3337375
+      47.921826875,
+      -119.33375825
     ],
     "acceptedNames": [
       "Washington"
@@ -616,8 +616,8 @@
     "group": "South",
     "capital": "Charleston",
     "coordinates": [
-      38.280425,
-      -81.10503125
+      38.280395,
+      -81.1050138125
     ],
     "acceptedNames": [
       "West Virginia"
@@ -629,8 +629,8 @@
     "group": "Midwest",
     "capital": "Madison",
     "coordinates": [
-      44.10016666666667,
-      -89.16045625000001
+      44.10017766666667,
+      -89.160481
     ],
     "acceptedNames": [
       "Wisconsin"
@@ -642,8 +642,8 @@
     "group": "West",
     "capital": "Cheyenne",
     "coordinates": [
-      42.99995,
-      -107.55225
+      42.9999675,
+      -107.5522645
     ],
     "acceptedNames": [
       "Wyoming"

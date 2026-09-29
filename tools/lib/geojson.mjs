@@ -82,24 +82,25 @@ export function simplify(points, tolerance) {
  * Turn a feature's geometry into the game's ring format: flat [lon, lat, …]
  * arrays, simplified and rounded.
  *
- * A place always keeps its largest ring no matter how small it is. Monaco and
- * Nauru are a couple of kilometres across, and simplifying them out of existence
- * leaves a place the game can ask about but cannot draw or score.
+ * Both thresholds here are relative to the shape's own size, and that is the
+ * whole point. A fixed simplification tolerance of 2 km is sensible for France
+ * and annihilates Monaco, which is 2 km across — it came out as a quadrilateral.
+ * A fixed minimum ring area is worse: every island in the Maldives is smaller
+ * than 10 km², so an absolute floor deleted the entire country bar one atoll.
+ *
+ * So each ring is simplified in proportion to itself, and rings are kept in
+ * proportion to the largest one. Every place ends up with an outline that is
+ * recognisably its own, whatever its size.
  */
-export function prepareRings(geometry, { tolerance, precision = 4, minArea = 0 }) {
+export function prepareRings(geometry, { tolerance, precision = 6, maxRings = 400 }) {
   /**
    * Keep a ring in one piece across the antimeridian.
    *
-   * Alaska's Aleutians, Fiji and Kiribati each have rings holding points at both
-   * +179 and -179. Drawn as they come, such a ring sweeps a straight line right
-   * across the map. Shifting the western half past 180 makes the ring contiguous
-   * — its longitudes then run past 180, which the projection understands.
+   * A ring crosses it when consecutive points jump most of the way around the
+   * globe — never merely because it is wide. Eurasia spans over 200° without
+   * crossing anything, and shifting it would be the very bug this guards against.
    */
   const unwrap = (ring) => {
-    // A ring crosses the antimeridian when consecutive points jump most of the
-    // way around the globe — never merely because it is wide. Eurasia spans over
-    // 200° without crossing anything, and shifting it would be the very bug this
-    // guards against.
     let crosses = false;
     for (let i = 1; i < ring.length && !crosses; i++) {
       if (Math.abs(ring[i][0] - ring[i - 1][0]) > 180) crosses = true;
@@ -108,16 +109,87 @@ export function prepareRings(geometry, { tolerance, precision = 4, minArea = 0 }
     return ring.map(([lon, lat]) => [lon < 0 ? lon + 360 : lon, lat]);
   };
 
+  /** How far across a ring is, in degrees. */
+  const extentOf = (ring) => {
+    let lonMin = Infinity, lonMax = -Infinity, latMin = Infinity, latMax = -Infinity;
+    for (const [lon, lat] of ring) {
+      lonMin = Math.min(lonMin, lon); lonMax = Math.max(lonMax, lon);
+      latMin = Math.min(latMin, lat); latMax = Math.max(latMax, lat);
+    }
+    return Math.max(lonMax - lonMin, latMax - latMin);
+  };
+
+  /**
+   * A ring is simplified by a fraction of its own width, never coarser than the
+   * set's tolerance and never finer than a few metres.
+   */
+  const toleranceFor = (ring) =>
+    Math.min(tolerance, Math.max(0.00002, extentOf(ring) * 0.002));
+
   const rings = ringsOf(geometry)
-    .map((ring) => simplify(unwrap(ring), tolerance))
+    .map(unwrap)
+    .map((ring) => simplify(ring, toleranceFor(ring)))
     .filter((ring) => ring.length >= 4)
     .sort((a, b) => ringArea(b) - ringArea(a));
 
   if (!rings.length) return [];
 
-  const kept = rings.filter((ring, i) => i === 0 || ringArea(ring) >= minArea);
+  // Keep anything within a wide factor of the biggest ring, so an archipelago
+  // keeps its islands while a continent still sheds its specks.
+  const largest = ringArea(rings[0]);
+  const kept = rings
+    .filter((ring, i) => i === 0 || ringArea(ring) >= largest * 1e-4)
+    .slice(0, maxRings);
+
   const round = (n) => Number(n.toFixed(precision));
-  return kept.map((ring) => ring.flatMap(([lon, lat]) => [round(lon), round(lat)]));
+  const flat = kept.map((ring) => ring.flatMap(([lon, lat]) => [round(lon), round(lat)]));
+
+  /**
+   * Keep the whole shape in one piece, not merely each ring.
+   *
+   * Fiji, Kiribati and the Aleutians have islands either side of the
+   * antimeridian with no single ring crossing it, so per-ring unwrapping leaves
+   * them alone and the shape's bounds come out spanning the entire globe. That
+   * makes a shape card unreadable and robs a place of its hit tolerance. The
+   * renderer places each longitude nearest the view anyway, so shifting the
+   * western half past 180 costs nothing and makes the bounds mean something.
+   */
+  let lonMin = Infinity, lonMax = -Infinity;
+  for (const ring of flat) {
+    for (let i = 0; i < ring.length; i += 2) {
+      lonMin = Math.min(lonMin, ring[i]); lonMax = Math.max(lonMax, ring[i]);
+    }
+  }
+  if (lonMax - lonMin <= 180) return flat;
+
+  return flat.map((ring) =>
+    ring.map((value, i) => (i % 2 === 0 && value < 0 ? round(value + 360) : value)),
+  );
+}
+
+/**
+ * The box to frame a shape in when drawing it on its own, as opposed to on a map.
+ *
+ * Not the full bounding box. Norway owns Bouvet Island near Antarctica and France
+ * owns Réunion, so a card framed to everything shows a speck of mainland adrift
+ * in empty sea. Rings far smaller than the largest are left out of the framing —
+ * they are still drawn, they just no longer decide the zoom.
+ *
+ * An archipelago keeps its whole chain, because its islands are all of a size:
+ * no atoll in the Maldives is a rounding error next to the others.
+ */
+export function coreBounds(rings) {
+  const areas = rings.map((ring) => {
+    let sum = 0;
+    for (let i = 0, j = ring.length - 2; i < ring.length; j = i, i += 2) {
+      sum += (ring[j] - ring[i]) * (ring[j + 1] + ring[i + 1]);
+    }
+    return Math.abs(sum / 2);
+  });
+
+  const largest = Math.max(...areas);
+  const core = rings.filter((_, i) => areas[i] >= largest * 0.01);
+  return boundsOf(core.length ? core : rings);
 }
 
 /** Bounding box [lonMin, latMin, lonMax, latMax] over flat rings. */
