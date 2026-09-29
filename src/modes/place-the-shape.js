@@ -1,0 +1,165 @@
+/**
+ * Mode 3 — Place the shape, in two flavours.
+ *
+ * A place's outline is shown with no name, and the player clicks where on the
+ * map it belongs. Correct answers stay on the board, so the map fills in as the
+ * round goes on and each one makes the next a little easier to reason about.
+ *
+ * The streak flavour is the same activity with a different stopping rule: it
+ * runs until the player misses. Both come from this one factory, so the two
+ * cannot drift apart.
+ */
+
+import { createBag, createRound } from '../lib/quiz.js';
+import { describeDistance, isHit, missDistanceKm } from '../lib/geo.js';
+import { read, write } from '../lib/storage.js';
+import { createMap } from '../ui/map.js';
+import { shapeSvg } from '../ui/shape.js';
+import { el, render } from '../ui/dom.js';
+
+const BEST_KEY = 'flag-game.best-streak';
+
+export function createPlaceMode({ id, title, describe, streak = false }) {
+  return {
+    id,
+    title,
+    describe,
+    needsMap: true,
+
+    start({ root, set, settings, pool, map, view, onFinish }) {
+      const askable = pool.filter((entry) => map.shapes[entry.code]);
+
+      // A fixed round, or an endless bag that only a miss brings to an end.
+      const round = streak ? null : createRound({ pool: askable, length: settings.questionsPerRound });
+      const bag = streak ? createBag(askable) : null;
+
+      const bests = read(BEST_KEY, {});
+      const bestKey = `${set.id}:${settings.group}`;
+      let best = bests[bestKey] ?? 0;
+      let run = 0;
+      let current = null;
+
+      const progress = el('p.progress');
+      const shapeHolder = el('div.shape-frame');
+      const feedback = el('div.feedback', { role: 'status', 'aria-live': 'polite' });
+
+      const world = createMap({
+        map,
+        view,
+        onPick: guess,
+        label: `Map. Click where you think this ${set.noun} belongs, or move the crosshair with the arrow keys and press Enter.`,
+      });
+
+      render(
+        root,
+        el('div.question.map-question', [
+          progress,
+          el('h2.prompt', `Where does this ${set.noun} go?`),
+          el('div.place-layout', [shapeHolder, el('div.map-frame', world.element)]),
+          feedback,
+        ]),
+      );
+
+      const showProgress = () => {
+        progress.textContent = streak
+          ? best
+            ? `Streak: ${run} · your best is ${best}`
+            : `Streak: ${run}`
+          : `Question ${Math.min(round.number, round.total)} of ${round.total} · ${round.score} right so far`;
+      };
+
+      function ask() {
+        current = streak ? bag.next() : round.current;
+        showProgress();
+        render(shapeHolder, shapeSvg(map.shapes[current.code], { size: 240 }));
+        render(feedback);
+        world.clear();
+        world.setAccepting(true);
+      }
+
+      function guess({ point, coordinate }) {
+        const shape = map.shapes[current.code];
+        const correct = isHit(coordinate, shape, world.projection, world.renderedWidth());
+
+        world.setAccepting(false);
+
+        if (correct) {
+          // It goes on the board and stays there.
+          world.place(shape);
+          run += 1;
+        } else {
+          world.reveal(shape, { correct: false });
+          world.markMiss(point, shape.point);
+        }
+
+        if (streak) {
+          if (correct) {
+            if (run > best) {
+              best = run;
+              write(BEST_KEY, { ...bests, [bestKey]: best });
+            }
+          }
+        } else {
+          round.answer(correct);
+        }
+        showProgress();
+
+        const message = correct
+          ? `Yes — that's ${current.name}.`
+          : `That's ${current.name} — about ${describeDistance(missDistanceKm(coordinate, shape))} from where you clicked.`;
+
+        // In streak play a miss ends the run, so there is nothing to click on to.
+        const done = streak ? !correct : round.finished;
+
+        render(
+          feedback,
+          el(correct ? 'p.result.correct' : 'p.result.wrong', [
+            el('span.mark', { 'aria-hidden': 'true' }, correct ? '✓' : '→'),
+            el('span', message),
+          ]),
+          el(
+            'button.next',
+            { type: 'button', onclick: () => (done ? finish() : ask()) },
+            done ? 'See how you did' : `Next ${set.noun}`,
+          ),
+        );
+        feedback.querySelector('.next').focus();
+      }
+
+      function finish() {
+        if (streak) {
+          onFinish({
+            headline: run === best && run > 0 ? 'A new best' : 'Streak over',
+            tagline:
+              run === 0
+                ? `Not this time — ${current.name} was the first one. Your best is ${best}.`
+                : `You placed ${run} in a row. Your best is ${best}.`,
+            misses: [current],
+          });
+          return;
+        }
+        onFinish({
+          headline: 'Round finished',
+          tagline: `You got ${round.score} of ${round.total} right.`,
+          misses: round.misses,
+        });
+      }
+
+      ask();
+      return { destroy: () => render(root) };
+    },
+  };
+}
+
+export const placeTheShape = createPlaceMode({
+  id: 'place-the-shape',
+  title: 'Place the shape',
+  describe: (set) => `See a ${set.noun}'s outline, put it on the map.`,
+});
+
+export const shapeStreak = createPlaceMode({
+  id: 'shape-streak',
+  title: 'Streak',
+  describe: (set) => `Place ${set.plural} one after another. How far can you get?`,
+  streak: true,
+});

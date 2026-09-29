@@ -123,7 +123,11 @@ export default {
 
     function next() {
       if (round.finished) {
-        onFinish({ score: round.score, total: round.total, misses: round.misses });
+        onFinish({
+          headline: 'Round finished',
+          tagline: `You got ${round.score} of ${round.total} right.`,
+          misses: round.misses,
+        });
         return;
       }
       ask();

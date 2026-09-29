@@ -92,7 +92,10 @@ export function simplify(points, tolerance) {
  * proportion to the largest one. Every place ends up with an outline that is
  * recognisably its own, whatever its size.
  */
-export function prepareRings(geometry, { tolerance, precision = 6, maxRings = 400 }) {
+export function prepareRings(
+  geometry,
+  { tolerance, precision = 6, maxRings = 400, minAreaRatio = 1e-4, unwrapShape = false },
+) {
   /**
    * Keep a ring in one piece across the antimeridian.
    *
@@ -136,9 +139,11 @@ export function prepareRings(geometry, { tolerance, precision = 6, maxRings = 40
 
   // Keep anything within a wide factor of the biggest ring, so an archipelago
   // keeps its islands while a continent still sheds its specks.
+  // A place drops its specks; a base map keeps its islands, because they are the
+  // only thing telling a player an ocean is not empty.
   const largest = ringArea(rings[0]);
   const kept = rings
-    .filter((ring, i) => i === 0 || ringArea(ring) >= largest * 1e-4)
+    .filter((ring, i) => i === 0 || ringArea(ring) >= largest * minAreaRatio)
     .slice(0, maxRings);
 
   const round = (n) => Number(n.toFixed(precision));
@@ -154,13 +159,30 @@ export function prepareRings(geometry, { tolerance, precision = 6, maxRings = 40
    * renderer places each longitude nearest the view anyway, so shifting the
    * western half past 180 costs nothing and makes the bounds mean something.
    */
-  let lonMin = Infinity, lonMax = -Infinity;
-  for (const ring of flat) {
-    for (let i = 0; i < ring.length; i += 2) {
-      lonMin = Math.min(lonMin, ring[i]); lonMax = Math.max(lonMax, ring[i]);
+  // Only a single place's shape is worth keeping in one piece: its bounds decide
+  // hit tolerance and how a shape card is framed. The land layer has no such
+  // meaning — its features are scattered collections of rings spanning the whole
+  // globe, where "is this narrower once shifted" compares noise and answers
+  // wrongly. That is what tore the base map open at the Greenwich meridian.
+  if (!unwrapShape) return flat;
+
+  const spanOf = (shift) => {
+    let lonMin = Infinity, lonMax = -Infinity;
+    for (const ring of flat) {
+      for (let i = 0; i < ring.length; i += 2) {
+        const value = shift && ring[i] < 0 ? ring[i] + 360 : ring[i];
+        lonMin = Math.min(lonMin, value); lonMax = Math.max(lonMax, value);
+      }
     }
-  }
-  if (lonMax - lonMin <= 180) return flat;
+    return lonMax - lonMin;
+  };
+
+  // Shift only when it actually makes the shape narrower. A shape being wide is
+  // not evidence that it straddles anything: the Europe-Asia-Africa landmass
+  // spans 198° in one piece, and shifting its western half tears it open at the
+  // Greenwich meridian — which draws the same line across the map that this is
+  // meant to prevent.
+  if (spanOf(true) >= spanOf(false)) return flat;
 
   return flat.map((ring) =>
     ring.map((value, i) => (i % 2 === 0 && value < 0 ? round(value + 360) : value)),

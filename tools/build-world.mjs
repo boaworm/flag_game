@@ -109,6 +109,7 @@ const shapes = {};
 for (const entry of entries) {
   const rings = prepareRings(features.get(entry.code).geometry, {
     tolerance: TOLERANCE,
+    unwrapShape: true,
   });
   if (!rings.length) throw new Error(`${entry.name} simplified away to nothing.`);
   shapes[entry.code] = { rings, bounds: boundsOf(rings), core: coreBounds(rings), point: labelPoint(rings) };

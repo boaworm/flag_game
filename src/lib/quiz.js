@@ -85,3 +85,21 @@ export function createRound({ pool, length }) {
     },
   };
 }
+
+/**
+ * An endless supply of places, for modes that run until the player stops or
+ * slips rather than for a fixed number of questions.
+ *
+ * Draws from a shuffled bag and refills it when empty, so play keeps moving
+ * without asking about Peru three times in a row.
+ */
+export function createBag(pool) {
+  let remaining = shuffled(pool);
+
+  return {
+    next() {
+      if (!remaining.length) remaining = shuffled(pool);
+      return remaining.pop();
+    },
+  };
+}

@@ -15,7 +15,7 @@ import {
   setById,
 } from './data/sets.js';
 import { modes } from './modes/index.js';
-import { CHOICE_COUNTS, getSettings, updateSettings } from './settings.js';
+import { CHOICE_COUNTS, PAIR_COUNTS, getSettings, updateSettings } from './settings.js';
 import { el, render } from './ui/dom.js';
 
 const app = document.querySelector('#app');
@@ -118,6 +118,10 @@ function settingsPanel(settings, set, entries) {
     chooser('Questions per round', [5, 10, 20], settings.questionsPerRound, (n) =>
       updateSettings({ questionsPerRound: n }),
     ),
+
+    chooser('Pairs to match', PAIR_COUNTS, settings.pairCount, (pairCount) =>
+      updateSettings({ pairCount }),
+    ),
   ]);
 }
 
@@ -157,12 +161,13 @@ async function play(mode) {
   });
 }
 
-function summary(mode, set, { score, total, misses }) {
+/**
+ * The end of a round. Modes supply their own wording, because they do not all
+ * end the same way — a streak ends on a miss, not after ten questions.
+ */
+function summary(mode, set, { headline, tagline, misses }) {
   show([
-    el('header.masthead', [
-      el('h1', 'Round finished'),
-      el('p.tagline', `You got ${score} of ${total} right.`),
-    ]),
+    el('header.masthead', [el('h1', headline), el('p.tagline', tagline)]),
 
     misses.length
       ? el('section.review', [

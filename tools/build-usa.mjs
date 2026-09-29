@@ -62,7 +62,8 @@ const entries = features
 
     const rings = prepareRings(feature.geometry, {
       tolerance: TOLERANCE,
-      });
+      unwrapShape: true,
+    });
     if (!rings.length) throw new Error(`${name} simplified away to nothing.`);
 
     const code = postal.toLowerCase();
@@ -153,9 +154,7 @@ for (const entry of entries) {
  */
 const usFeature = countryLayer.features.find((f) => isoOf(f.properties) === 'us');
 if (!usFeature) throw new Error('No United States outline in the admin-0 layer.');
-const land = prepareRings(usFeature.geometry, {
-  tolerance: TOLERANCE,
-});
+const land = prepareRings(usFeature.geometry, { tolerance: TOLERANCE, maxRings: 20000, minAreaRatio: 1e-8 });
 
 const dir = new URL('../data/sets/usa/', import.meta.url);
 await mkdir(dir, { recursive: true });

@@ -48,8 +48,12 @@ export function createMap({ map, view, onPick, label }) {
     svgEl('path', { d: shapePath(map.land), class: 'land' }),
   );
 
+  // Two layers: answers that stay on the board, and the working-out for the
+  // question in hand. Modes that build up a map keep the first and clear the
+  // second between questions.
+  const placed = svgEl('g', { class: 'placed' });
   const overlay = svgEl('g', { class: 'overlay' });
-  svg.append(overlay);
+  svg.append(placed, overlay);
 
   /** A crosshair, so the map can be played from the keyboard. */
   let cursor = [projection.width / 2, projection.height / 2];
@@ -129,8 +133,31 @@ export function createMap({ map, view, onPick, label }) {
       svg.classList.toggle('is-locked', !value);
     },
 
+    /** Clear the working-out, keeping anything already placed. */
     clear() {
       overlay.replaceChildren();
+    },
+
+    /** Clear everything, including places already put on the board. */
+    reset() {
+      overlay.replaceChildren();
+      placed.replaceChildren();
+    },
+
+    /** Put a place on the board for good, where a correct answer belongs. */
+    place(shape) {
+      placed.append(
+        svgEl('path', { d: shapePath(shape.rings), class: 'country is-placed' }),
+      );
+      const [lonMin, latMin, lonMax, latMax] = shape.bounds;
+      const [x0, y0] = projection.project([latMax, lonMin]);
+      const [x1, y1] = projection.project([latMin, lonMax]);
+      if (Math.max(x1 - x0, y1 - y0) < projection.width / 70) {
+        const [cx, cy] = projection.project(shape.point);
+        placed.append(
+          svgEl('circle', { cx, cy, r: projection.width / 110, class: 'pin is-placed' }),
+        );
+      }
     },
 
     /** Show a place's shape, filled. */
