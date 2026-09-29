@@ -1,0 +1,172 @@
+/** The shell: menu, settings, round summary. */
+
+#app {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.loading,
+.pool-note {
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.masthead {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.masthead h1 {
+  font-size: clamp(1.9rem, 7vw, 2.6rem);
+}
+
+.tagline {
+  color: var(--text-soft);
+  margin: 0.4rem 0 0;
+}
+
+/* Mode list */
+
+.modes {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.mode {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: flex-start;
+  text-align: left;
+  padding: 1rem 1.1rem;
+}
+
+.mode-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.mode-desc {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+/* Settings */
+
+.settings {
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.settings h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.9rem;
+}
+
+.setting + .setting {
+  margin-top: 1rem;
+}
+
+.setting-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-soft);
+  margin-bottom: 0.4rem;
+}
+
+.setting-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.option {
+  padding: 0.4rem 0.85rem;
+  min-height: var(--touch);
+}
+
+.option[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+/* Round summary */
+
+.review {
+  margin-bottom: 1.5rem;
+}
+
+.review h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.review-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.review-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+}
+
+.review-flag {
+  width: 64px;
+  height: 48px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.perfect {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--correct);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.actions button {
+  flex: 1 1 12rem;
+  padding: 0.7rem 1.2rem;
+}
+
+.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.error {
+  text-align: center;
+}
+
+.error .hint {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}

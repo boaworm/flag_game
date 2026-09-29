@@ -1,0 +1,3630 @@
+[
+  {
+    "iso2": "af",
+    "name": "Afghanistan",
+    "officialName": "Islamic Republic of Afghanistan",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "Kabul",
+    "coordinates": [
+      33,
+      65
+    ],
+    "area": 652230,
+    "acceptedNames": [
+      "Afghanistan",
+      "Islamic Republic of Afghanistan",
+      "Owganystan",
+      "Owganystan Yslam Respublikasy",
+      "Afġānistān"
+    ]
+  },
+  {
+    "iso2": "al",
+    "name": "Albania",
+    "officialName": "Republic of Albania",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "capital": "Tirana",
+    "coordinates": [
+      41,
+      20
+    ],
+    "area": 28748,
+    "acceptedNames": [
+      "Albania",
+      "Republic of Albania",
+      "Shqipëria",
+      "Republika e Shqipërisë",
+      "Shqipëri",
+      "Shqipnia"
+    ]
+  },
+  {
+    "iso2": "dz",
+    "name": "Algeria",
+    "officialName": "People's Democratic Republic of Algeria",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "capital": "Algiers",
+    "coordinates": [
+      28,
+      3
+    ],
+    "area": 2381741,
+    "acceptedNames": [
+      "Algeria",
+      "People's Democratic Republic of Algeria",
+      "Dzayer",
+      "Algérie"
+    ]
+  },
+  {
+    "iso2": "ad",
+    "name": "Andorra",
+    "officialName": "Principality of Andorra",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": "Andorra la Vella",
+    "coordinates": [
+      42.5,
+      1.5
+    ],
+    "area": 468,
+    "acceptedNames": [
+      "Andorra",
+      "Principality of Andorra",
+      "Principat d'Andorra"
+    ]
+  },
+  {
+    "iso2": "ao",
+    "name": "Angola",
+    "officialName": "Republic of Angola",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "Luanda",
+    "coordinates": [
+      -12.5,
+      18.5
+    ],
+    "area": 1246700,
+    "acceptedNames": [
+      "Angola",
+      "Republic of Angola",
+      "República de Angola",
+      "ʁɛpublika de an'ɡɔla"
+    ]
+  },
+  {
+    "iso2": "ag",
+    "name": "Antigua and Barbuda",
+    "officialName": "Antigua and Barbuda",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Saint John's",
+    "coordinates": [
+      17.05,
+      -61.8
+    ],
+    "area": 442,
+    "acceptedNames": [
+      "Antigua and Barbuda"
+    ]
+  },
+  {
+    "iso2": "ar",
+    "name": "Argentina",
+    "officialName": "Argentine Republic",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Buenos Aires",
+    "coordinates": [
+      -34,
+      -64
+    ],
+    "area": 2780400,
+    "acceptedNames": [
+      "Argentina",
+      "Argentine Republic",
+      "República Argentina"
+    ]
+  },
+  {
+    "iso2": "am",
+    "name": "Armenia",
+    "officialName": "Republic of Armenia",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Yerevan",
+    "coordinates": [
+      40,
+      45
+    ],
+    "area": 29743,
+    "acceptedNames": [
+      "Armenia",
+      "Republic of Armenia",
+      "Hayastan"
+    ]
+  },
+  {
+    "iso2": "au",
+    "name": "Australia",
+    "officialName": "Commonwealth of Australia",
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "capital": "Canberra",
+    "coordinates": [
+      -27,
+      133
+    ],
+    "area": 7692024,
+    "acceptedNames": [
+      "Australia",
+      "Commonwealth of Australia"
+    ]
+  },
+  {
+    "iso2": "at",
+    "name": "Austria",
+    "officialName": "Republic of Austria",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "capital": "Vienna",
+    "coordinates": [
+      47.33333333,
+      13.33333333
+    ],
+    "area": 83871,
+    "acceptedNames": [
+      "Austria",
+      "Republic of Austria",
+      "Österreich",
+      "Republik Österreich",
+      "Oesterreich"
+    ]
+  },
+  {
+    "iso2": "az",
+    "name": "Azerbaijan",
+    "officialName": "Republic of Azerbaijan",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Baku",
+    "coordinates": [
+      40.5,
+      47.5
+    ],
+    "area": 86600,
+    "acceptedNames": [
+      "Azerbaijan",
+      "Republic of Azerbaijan",
+      "Azərbaycan",
+      "Azərbaycan Respublikası"
+    ]
+  },
+  {
+    "iso2": "bs",
+    "name": "Bahamas",
+    "officialName": "Commonwealth of the Bahamas",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Nassau",
+    "coordinates": [
+      24.25,
+      -76
+    ],
+    "area": 13943,
+    "acceptedNames": [
+      "Bahamas",
+      "Commonwealth of the Bahamas"
+    ]
+  },
+  {
+    "iso2": "bh",
+    "name": "Bahrain",
+    "officialName": "Kingdom of Bahrain",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Manama",
+    "coordinates": [
+      26,
+      50.55
+    ],
+    "area": 765,
+    "acceptedNames": [
+      "Bahrain",
+      "Kingdom of Bahrain",
+      "Mamlakat al-Baḥrayn"
+    ]
+  },
+  {
+    "iso2": "bd",
+    "name": "Bangladesh",
+    "officialName": "People's Republic of Bangladesh",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "Dhaka",
+    "coordinates": [
+      24,
+      90
+    ],
+    "area": 147570,
+    "acceptedNames": [
+      "Bangladesh",
+      "People's Republic of Bangladesh",
+      "Gônôprôjatôntri Bangladesh"
+    ]
+  },
+  {
+    "iso2": "bb",
+    "name": "Barbados",
+    "officialName": "Barbados",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Bridgetown",
+    "coordinates": [
+      13.16666666,
+      -59.53333333
+    ],
+    "area": 430,
+    "acceptedNames": [
+      "Barbados"
+    ]
+  },
+  {
+    "iso2": "by",
+    "name": "Belarus",
+    "officialName": "Republic of Belarus",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "capital": "Minsk",
+    "coordinates": [
+      53,
+      28
+    ],
+    "area": 207600,
+    "acceptedNames": [
+      "Belarus",
+      "Republic of Belarus",
+      "Bielaruś"
+    ]
+  },
+  {
+    "iso2": "be",
+    "name": "Belgium",
+    "officialName": "Kingdom of Belgium",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": "Brussels",
+    "coordinates": [
+      50.83333333,
+      4
+    ],
+    "area": 30528,
+    "acceptedNames": [
+      "Belgium",
+      "Kingdom of Belgium",
+      "Belgien",
+      "Königreich Belgien",
+      "Belgique",
+      "Royaume de Belgique",
+      "België",
+      "Koninkrijk België"
+    ]
+  },
+  {
+    "iso2": "bz",
+    "name": "Belize",
+    "officialName": "Belize",
+    "region": "Americas",
+    "subregion": "Central America",
+    "capital": "Belmopan",
+    "coordinates": [
+      17.25,
+      -88.75
+    ],
+    "area": 22966,
+    "acceptedNames": [
+      "Belize",
+      "Belice"
+    ]
+  },
+  {
+    "iso2": "bj",
+    "name": "Benin",
+    "officialName": "Republic of Benin",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Porto-Novo",
+    "coordinates": [
+      9.5,
+      2.25
+    ],
+    "area": 112622,
+    "acceptedNames": [
+      "Benin",
+      "Republic of Benin",
+      "République du Bénin"
+    ]
+  },
+  {
+    "iso2": "bt",
+    "name": "Bhutan",
+    "officialName": "Kingdom of Bhutan",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "Thimphu",
+    "coordinates": [
+      27.5,
+      90.5
+    ],
+    "area": 38394,
+    "acceptedNames": [
+      "Bhutan",
+      "Kingdom of Bhutan"
+    ]
+  },
+  {
+    "iso2": "bo",
+    "name": "Bolivia",
+    "officialName": "Plurinational State of Bolivia",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Sucre",
+    "coordinates": [
+      -17,
+      -65
+    ],
+    "area": 1098581,
+    "acceptedNames": [
+      "Bolivia",
+      "Plurinational State of Bolivia",
+      "Wuliwya",
+      "Wuliwya Suyu",
+      "Volívia",
+      "Tetã Volívia",
+      "Buliwya",
+      "Buliwya Mamallaqta",
+      "Estado Plurinacional de Bolivia",
+      "Bolivia, Plurinational State of"
+    ]
+  },
+  {
+    "iso2": "ba",
+    "name": "Bosnia and Herzegovina",
+    "officialName": "Bosnia and Herzegovina",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "capital": "Sarajevo",
+    "coordinates": [
+      44,
+      18
+    ],
+    "area": 51209,
+    "acceptedNames": [
+      "Bosnia and Herzegovina",
+      "Bosna i Hercegovina",
+      "Боснa и Херцеговина",
+      "Bosnia-Herzegovina"
+    ]
+  },
+  {
+    "iso2": "bw",
+    "name": "Botswana",
+    "officialName": "Republic of Botswana",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "capital": "Gaborone",
+    "coordinates": [
+      -22,
+      24
+    ],
+    "area": 582000,
+    "acceptedNames": [
+      "Botswana",
+      "Republic of Botswana",
+      "Lefatshe la Botswana"
+    ]
+  },
+  {
+    "iso2": "br",
+    "name": "Brazil",
+    "officialName": "Federative Republic of Brazil",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Brasília",
+    "coordinates": [
+      -10,
+      -55
+    ],
+    "area": 8515767,
+    "acceptedNames": [
+      "Brazil",
+      "Federative Republic of Brazil",
+      "Brasil",
+      "República Federativa do Brasil"
+    ]
+  },
+  {
+    "iso2": "bn",
+    "name": "Brunei",
+    "officialName": "Nation of Brunei, Abode of Peace",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Bandar Seri Begawan",
+    "coordinates": [
+      4.5,
+      114.66666666
+    ],
+    "area": 5765,
+    "acceptedNames": [
+      "Brunei",
+      "Nation of Brunei, Abode of Peace",
+      "Negara Brunei Darussalam",
+      "Nation of Brunei, Abode Damai",
+      "Brunei Darussalam",
+      "Nation of Brunei",
+      "the Abode of Peace"
+    ]
+  },
+  {
+    "iso2": "bg",
+    "name": "Bulgaria",
+    "officialName": "Republic of Bulgaria",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "capital": "Sofia",
+    "coordinates": [
+      43,
+      25
+    ],
+    "area": 110879,
+    "acceptedNames": [
+      "Bulgaria",
+      "Republic of Bulgaria"
+    ]
+  },
+  {
+    "iso2": "bf",
+    "name": "Burkina Faso",
+    "officialName": "Burkina Faso",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Ouagadougou",
+    "coordinates": [
+      13,
+      -2
+    ],
+    "area": 272967,
+    "acceptedNames": [
+      "Burkina Faso",
+      "République du Burkina"
+    ]
+  },
+  {
+    "iso2": "bi",
+    "name": "Burundi",
+    "officialName": "Republic of Burundi",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Gitega",
+    "coordinates": [
+      -3.5,
+      30
+    ],
+    "area": 27834,
+    "acceptedNames": [
+      "Burundi",
+      "Republic of Burundi",
+      "République du Burundi",
+      "Uburundi",
+      "Republika y'Uburundi "
+    ]
+  },
+  {
+    "iso2": "kh",
+    "name": "Cambodia",
+    "officialName": "Kingdom of Cambodia",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Phnom Penh",
+    "coordinates": [
+      13,
+      105
+    ],
+    "area": 181035,
+    "acceptedNames": [
+      "Cambodia",
+      "Kingdom of Cambodia",
+      "Kâmpŭchéa"
+    ]
+  },
+  {
+    "iso2": "cm",
+    "name": "Cameroon",
+    "officialName": "Republic of Cameroon",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "Yaoundé",
+    "coordinates": [
+      6,
+      12
+    ],
+    "area": 475442,
+    "acceptedNames": [
+      "Cameroon",
+      "Republic of Cameroon",
+      "Cameroun",
+      "République du Cameroun"
+    ]
+  },
+  {
+    "iso2": "ca",
+    "name": "Canada",
+    "officialName": "Canada",
+    "region": "Americas",
+    "subregion": "North America",
+    "capital": "Ottawa",
+    "coordinates": [
+      60,
+      -95
+    ],
+    "area": 9984670,
+    "acceptedNames": [
+      "Canada"
+    ]
+  },
+  {
+    "iso2": "cv",
+    "name": "Cape Verde",
+    "officialName": "Republic of Cabo Verde",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Praia",
+    "coordinates": [
+      16,
+      -24
+    ],
+    "area": 4033,
+    "acceptedNames": [
+      "Cape Verde",
+      "Republic of Cabo Verde",
+      "Cabo Verde",
+      "República de Cabo Verde"
+    ]
+  },
+  {
+    "iso2": "cf",
+    "name": "Central African Republic",
+    "officialName": "Central African Republic",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "Bangui",
+    "coordinates": [
+      7,
+      21
+    ],
+    "area": 622984,
+    "acceptedNames": [
+      "Central African Republic",
+      "République centrafricaine",
+      "Bêafrîka",
+      "Ködörösêse tî Bêafrîka"
+    ]
+  },
+  {
+    "iso2": "td",
+    "name": "Chad",
+    "officialName": "Republic of Chad",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "N'Djamena",
+    "coordinates": [
+      15,
+      19
+    ],
+    "area": 1284000,
+    "acceptedNames": [
+      "Chad",
+      "Republic of Chad",
+      "Tchad",
+      "République du Tchad"
+    ]
+  },
+  {
+    "iso2": "cl",
+    "name": "Chile",
+    "officialName": "Republic of Chile",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Santiago",
+    "coordinates": [
+      -30,
+      -71
+    ],
+    "area": 756102,
+    "acceptedNames": [
+      "Chile",
+      "Republic of Chile",
+      "República de Chile"
+    ]
+  },
+  {
+    "iso2": "cn",
+    "name": "China",
+    "officialName": "People's Republic of China",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "capital": "Beijing",
+    "coordinates": [
+      35,
+      105
+    ],
+    "area": 9706961,
+    "acceptedNames": [
+      "China",
+      "People's Republic of China",
+      "Zhōngguó",
+      "Zhonghua",
+      "Zhōnghuá Rénmín Gònghéguó"
+    ]
+  },
+  {
+    "iso2": "co",
+    "name": "Colombia",
+    "officialName": "Republic of Colombia",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Bogotá",
+    "coordinates": [
+      4,
+      -72
+    ],
+    "area": 1141748,
+    "acceptedNames": [
+      "Colombia",
+      "Republic of Colombia",
+      "República de Colombia"
+    ]
+  },
+  {
+    "iso2": "km",
+    "name": "Comoros",
+    "officialName": "Union of the Comoros",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Moroni",
+    "coordinates": [
+      -12.16666666,
+      44.25
+    ],
+    "area": 1862,
+    "acceptedNames": [
+      "Comoros",
+      "Union of the Comoros",
+      "Comores",
+      "Union des Comores",
+      "Komori",
+      "Udzima wa Komori",
+      "al-Ittiḥād al-Qumurī"
+    ]
+  },
+  {
+    "iso2": "cg",
+    "name": "Congo",
+    "officialName": "Republic of the Congo",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "Brazzaville",
+    "coordinates": [
+      -1,
+      15
+    ],
+    "area": 342000,
+    "acceptedNames": [
+      "Congo",
+      "Republic of the Congo",
+      "République du Congo",
+      "Repubilika ya Kongo",
+      "Republíki ya Kongó",
+      "Congo-Brazzaville"
+    ]
+  },
+  {
+    "iso2": "cr",
+    "name": "Costa Rica",
+    "officialName": "Republic of Costa Rica",
+    "region": "Americas",
+    "subregion": "Central America",
+    "capital": "San José",
+    "coordinates": [
+      10,
+      -84
+    ],
+    "area": 51100,
+    "acceptedNames": [
+      "Costa Rica",
+      "Republic of Costa Rica",
+      "República de Costa Rica"
+    ]
+  },
+  {
+    "iso2": "hr",
+    "name": "Croatia",
+    "officialName": "Republic of Croatia",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "capital": "Zagreb",
+    "coordinates": [
+      45.16666666,
+      15.5
+    ],
+    "area": 56594,
+    "acceptedNames": [
+      "Croatia",
+      "Republic of Croatia",
+      "Hrvatska",
+      "Republika Hrvatska"
+    ]
+  },
+  {
+    "iso2": "cu",
+    "name": "Cuba",
+    "officialName": "Republic of Cuba",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Havana",
+    "coordinates": [
+      21.5,
+      -80
+    ],
+    "area": 109884,
+    "acceptedNames": [
+      "Cuba",
+      "Republic of Cuba",
+      "República de Cuba"
+    ]
+  },
+  {
+    "iso2": "cy",
+    "name": "Cyprus",
+    "officialName": "Republic of Cyprus",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": "Nicosia",
+    "coordinates": [
+      35,
+      33
+    ],
+    "area": 9251,
+    "acceptedNames": [
+      "Cyprus",
+      "Republic of Cyprus",
+      "Kıbrıs",
+      "Kıbrıs Cumhuriyeti",
+      "Kýpros"
+    ]
+  },
+  {
+    "iso2": "cz",
+    "name": "Czechia",
+    "officialName": "Czech Republic",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "capital": "Prague",
+    "coordinates": [
+      49.75,
+      15.5
+    ],
+    "area": 78865,
+    "acceptedNames": [
+      "Czechia",
+      "Czech Republic",
+      "Česko",
+      "Česká republika"
+    ]
+  },
+  {
+    "iso2": "dk",
+    "name": "Denmark",
+    "officialName": "Kingdom of Denmark",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Copenhagen",
+    "coordinates": [
+      56,
+      10
+    ],
+    "area": 43094,
+    "acceptedNames": [
+      "Denmark",
+      "Kingdom of Denmark",
+      "Danmark",
+      "Kongeriget Danmark"
+    ]
+  },
+  {
+    "iso2": "dj",
+    "name": "Djibouti",
+    "officialName": "Republic of Djibouti",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Djibouti",
+    "coordinates": [
+      11.5,
+      43
+    ],
+    "area": 23200,
+    "acceptedNames": [
+      "Djibouti",
+      "Republic of Djibouti",
+      "République de Djibouti",
+      "Jabuuti",
+      "Gabuuti",
+      "Gabuutih Ummuuno",
+      "Jamhuuriyadda Jabuuti"
+    ]
+  },
+  {
+    "iso2": "dm",
+    "name": "Dominica",
+    "officialName": "Commonwealth of Dominica",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Roseau",
+    "coordinates": [
+      15.41666666,
+      -61.33333333
+    ],
+    "area": 751,
+    "acceptedNames": [
+      "Dominica",
+      "Commonwealth of Dominica",
+      "Dominique",
+      "Wai‘tu kubuli"
+    ]
+  },
+  {
+    "iso2": "do",
+    "name": "Dominican Republic",
+    "officialName": "Dominican Republic",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Santo Domingo",
+    "coordinates": [
+      19,
+      -70.66666666
+    ],
+    "area": 48671,
+    "acceptedNames": [
+      "Dominican Republic",
+      "República Dominicana"
+    ]
+  },
+  {
+    "iso2": "cd",
+    "name": "DR Congo",
+    "officialName": "Democratic Republic of the Congo",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "Kinshasa",
+    "coordinates": [
+      0,
+      25
+    ],
+    "area": 2344858,
+    "acceptedNames": [
+      "DR Congo",
+      "Democratic Republic of the Congo",
+      "RD Congo",
+      "République démocratique du Congo",
+      "Repubilika ya Kongo Demokratiki",
+      "Republiki ya Kongó Demokratiki",
+      "Ditunga dia Kongu wa Mungalaata",
+      "Jamhuri ya Kidemokrasia ya Kongo",
+      "Congo-Kinshasa",
+      "Congo, the Democratic Republic of the",
+      "Democratic Republic of Congo"
+    ]
+  },
+  {
+    "iso2": "ec",
+    "name": "Ecuador",
+    "officialName": "Republic of Ecuador",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Quito",
+    "coordinates": [
+      -2,
+      -77.5
+    ],
+    "area": 276841,
+    "acceptedNames": [
+      "Ecuador",
+      "Republic of Ecuador",
+      "República del Ecuador"
+    ]
+  },
+  {
+    "iso2": "eg",
+    "name": "Egypt",
+    "officialName": "Arab Republic of Egypt",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "capital": "Cairo",
+    "coordinates": [
+      27,
+      30
+    ],
+    "area": 1002450,
+    "acceptedNames": [
+      "Egypt",
+      "Arab Republic of Egypt"
+    ]
+  },
+  {
+    "iso2": "sv",
+    "name": "El Salvador",
+    "officialName": "Republic of El Salvador",
+    "region": "Americas",
+    "subregion": "Central America",
+    "capital": "San Salvador",
+    "coordinates": [
+      13.83333333,
+      -88.91666666
+    ],
+    "area": 21041,
+    "acceptedNames": [
+      "El Salvador",
+      "Republic of El Salvador",
+      "República de El Salvador"
+    ]
+  },
+  {
+    "iso2": "gq",
+    "name": "Equatorial Guinea",
+    "officialName": "Republic of Equatorial Guinea",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "Malabo",
+    "coordinates": [
+      2,
+      10
+    ],
+    "area": 28051,
+    "acceptedNames": [
+      "Equatorial Guinea",
+      "Republic of Equatorial Guinea",
+      "Guinée équatoriale",
+      "République de la Guinée Équatoriale",
+      "Guiné Equatorial",
+      "República da Guiné Equatorial",
+      "Guinea Ecuatorial",
+      "República de Guinea Ecuatorial",
+      "République de Guinée équatoriale"
+    ]
+  },
+  {
+    "iso2": "er",
+    "name": "Eritrea",
+    "officialName": "State of Eritrea",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Asmara",
+    "coordinates": [
+      15,
+      39
+    ],
+    "area": 117600,
+    "acceptedNames": [
+      "Eritrea",
+      "State of Eritrea",
+      "Dawlat Iritriyá",
+      "ʾErtrā",
+      "Iritriyā"
+    ]
+  },
+  {
+    "iso2": "ee",
+    "name": "Estonia",
+    "officialName": "Republic of Estonia",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Tallinn",
+    "coordinates": [
+      59,
+      26
+    ],
+    "area": 45227,
+    "acceptedNames": [
+      "Estonia",
+      "Republic of Estonia",
+      "Eesti",
+      "Eesti Vabariik"
+    ]
+  },
+  {
+    "iso2": "sz",
+    "name": "Eswatini",
+    "officialName": "Kingdom of Eswatini",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "capital": "Lobamba",
+    "coordinates": [
+      -26.5,
+      31.5
+    ],
+    "area": 17364,
+    "acceptedNames": [
+      "Eswatini",
+      "Kingdom of Eswatini",
+      "Umbuso weSwatini",
+      "Swaziland",
+      "weSwatini",
+      "Swatini",
+      "Ngwane"
+    ]
+  },
+  {
+    "iso2": "et",
+    "name": "Ethiopia",
+    "officialName": "Federal Democratic Republic of Ethiopia",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Addis Ababa",
+    "coordinates": [
+      8,
+      38
+    ],
+    "area": 1104300,
+    "acceptedNames": [
+      "Ethiopia",
+      "Federal Democratic Republic of Ethiopia",
+      "ʾĪtyōṗṗyā"
+    ]
+  },
+  {
+    "iso2": "fj",
+    "name": "Fiji",
+    "officialName": "Republic of Fiji",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "capital": "Suva",
+    "coordinates": [
+      -18,
+      175
+    ],
+    "area": 18272,
+    "acceptedNames": [
+      "Fiji",
+      "Republic of Fiji",
+      "Viti",
+      "Matanitu Tugalala o Viti",
+      "Matanitu ko Viti",
+      "Fijī Gaṇarājya"
+    ]
+  },
+  {
+    "iso2": "fi",
+    "name": "Finland",
+    "officialName": "Republic of Finland",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Helsinki",
+    "coordinates": [
+      64,
+      26
+    ],
+    "area": 338424,
+    "acceptedNames": [
+      "Finland",
+      "Republic of Finland",
+      "Suomi",
+      "Suomen tasavalta",
+      "Republiken Finland"
+    ]
+  },
+  {
+    "iso2": "fr",
+    "name": "France",
+    "officialName": "French Republic",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": "Paris",
+    "coordinates": [
+      46,
+      2
+    ],
+    "area": 551695,
+    "acceptedNames": [
+      "France",
+      "French Republic",
+      "République française"
+    ]
+  },
+  {
+    "iso2": "ga",
+    "name": "Gabon",
+    "officialName": "Gabonese Republic",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "Libreville",
+    "coordinates": [
+      -1,
+      11.75
+    ],
+    "area": 267668,
+    "acceptedNames": [
+      "Gabon",
+      "Gabonese Republic",
+      "République gabonaise"
+    ]
+  },
+  {
+    "iso2": "gm",
+    "name": "Gambia",
+    "officialName": "Republic of the Gambia",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Banjul",
+    "coordinates": [
+      13.46666666,
+      -16.56666666
+    ],
+    "area": 10689,
+    "acceptedNames": [
+      "Gambia",
+      "Republic of the Gambia"
+    ]
+  },
+  {
+    "iso2": "ge",
+    "name": "Georgia",
+    "officialName": "Georgia",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Tbilisi",
+    "coordinates": [
+      42,
+      43.5
+    ],
+    "area": 69700,
+    "acceptedNames": [
+      "Georgia",
+      "Sakartvelo"
+    ]
+  },
+  {
+    "iso2": "de",
+    "name": "Germany",
+    "officialName": "Federal Republic of Germany",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": "Berlin",
+    "coordinates": [
+      51,
+      9
+    ],
+    "area": 357114,
+    "acceptedNames": [
+      "Germany",
+      "Federal Republic of Germany",
+      "Deutschland",
+      "Bundesrepublik Deutschland"
+    ]
+  },
+  {
+    "iso2": "gh",
+    "name": "Ghana",
+    "officialName": "Republic of Ghana",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Accra",
+    "coordinates": [
+      8,
+      -2
+    ],
+    "area": 238533,
+    "acceptedNames": [
+      "Ghana",
+      "Republic of Ghana"
+    ]
+  },
+  {
+    "iso2": "gr",
+    "name": "Greece",
+    "officialName": "Hellenic Republic",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": "Athens",
+    "coordinates": [
+      39,
+      22
+    ],
+    "area": 131990,
+    "acceptedNames": [
+      "Greece",
+      "Hellenic Republic",
+      "Elláda"
+    ]
+  },
+  {
+    "iso2": "gd",
+    "name": "Grenada",
+    "officialName": "Grenada",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "St. George's",
+    "coordinates": [
+      12.11666666,
+      -61.66666666
+    ],
+    "area": 344,
+    "acceptedNames": [
+      "Grenada"
+    ]
+  },
+  {
+    "iso2": "gt",
+    "name": "Guatemala",
+    "officialName": "Republic of Guatemala",
+    "region": "Americas",
+    "subregion": "Central America",
+    "capital": "Guatemala City",
+    "coordinates": [
+      15.5,
+      -90.25
+    ],
+    "area": 108889,
+    "acceptedNames": [
+      "Guatemala",
+      "Republic of Guatemala",
+      "República de Guatemala"
+    ]
+  },
+  {
+    "iso2": "gn",
+    "name": "Guinea",
+    "officialName": "Republic of Guinea",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Conakry",
+    "coordinates": [
+      11,
+      -10
+    ],
+    "area": 245857,
+    "acceptedNames": [
+      "Guinea",
+      "Republic of Guinea",
+      "Guinée",
+      "République de Guinée"
+    ]
+  },
+  {
+    "iso2": "gw",
+    "name": "Guinea-Bissau",
+    "officialName": "Republic of Guinea-Bissau",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Bissau",
+    "coordinates": [
+      12,
+      -15
+    ],
+    "area": 36125,
+    "acceptedNames": [
+      "Guinea-Bissau",
+      "Republic of Guinea-Bissau",
+      "Guiné-Bissau",
+      "República da Guiné-Bissau"
+    ]
+  },
+  {
+    "iso2": "gy",
+    "name": "Guyana",
+    "officialName": "Co-operative Republic of Guyana",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Georgetown",
+    "coordinates": [
+      5,
+      -59
+    ],
+    "area": 214969,
+    "acceptedNames": [
+      "Guyana",
+      "Co-operative Republic of Guyana"
+    ]
+  },
+  {
+    "iso2": "ht",
+    "name": "Haiti",
+    "officialName": "Republic of Haiti",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Port-au-Prince",
+    "coordinates": [
+      19,
+      -72.41666666
+    ],
+    "area": 27750,
+    "acceptedNames": [
+      "Haiti",
+      "Republic of Haiti",
+      "République d'Haïti",
+      "Ayiti",
+      "Repiblik Ayiti"
+    ]
+  },
+  {
+    "iso2": "hn",
+    "name": "Honduras",
+    "officialName": "Republic of Honduras",
+    "region": "Americas",
+    "subregion": "Central America",
+    "capital": "Tegucigalpa",
+    "coordinates": [
+      15,
+      -86.5
+    ],
+    "area": 112492,
+    "acceptedNames": [
+      "Honduras",
+      "Republic of Honduras",
+      "República de Honduras"
+    ]
+  },
+  {
+    "iso2": "hu",
+    "name": "Hungary",
+    "officialName": "Hungary",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "capital": "Budapest",
+    "coordinates": [
+      47,
+      20
+    ],
+    "area": 93028,
+    "acceptedNames": [
+      "Hungary",
+      "Magyarország"
+    ]
+  },
+  {
+    "iso2": "is",
+    "name": "Iceland",
+    "officialName": "Iceland",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Reykjavik",
+    "coordinates": [
+      65,
+      -18
+    ],
+    "area": 103000,
+    "acceptedNames": [
+      "Iceland",
+      "Ísland",
+      "Republic of Iceland",
+      "Lýðveldið Ísland"
+    ]
+  },
+  {
+    "iso2": "in",
+    "name": "India",
+    "officialName": "Republic of India",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "New Delhi",
+    "coordinates": [
+      20,
+      77
+    ],
+    "area": 3287590,
+    "acceptedNames": [
+      "India",
+      "Republic of India",
+      "Bhārat",
+      "Bharat Ganrajya"
+    ]
+  },
+  {
+    "iso2": "id",
+    "name": "Indonesia",
+    "officialName": "Republic of Indonesia",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Jakarta",
+    "coordinates": [
+      -5,
+      120
+    ],
+    "area": 1904569,
+    "acceptedNames": [
+      "Indonesia",
+      "Republic of Indonesia",
+      "Republik Indonesia"
+    ]
+  },
+  {
+    "iso2": "ir",
+    "name": "Iran",
+    "officialName": "Islamic Republic of Iran",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "Tehran",
+    "coordinates": [
+      32,
+      53
+    ],
+    "area": 1648195,
+    "acceptedNames": [
+      "Iran",
+      "Islamic Republic of Iran",
+      "Iran, Islamic Republic of",
+      "Jomhuri-ye Eslāmi-ye Irān"
+    ]
+  },
+  {
+    "iso2": "iq",
+    "name": "Iraq",
+    "officialName": "Republic of Iraq",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Baghdad",
+    "coordinates": [
+      33,
+      44
+    ],
+    "area": 438317,
+    "acceptedNames": [
+      "Iraq",
+      "Republic of Iraq",
+      "Jumhūriyyat al-‘Irāq"
+    ]
+  },
+  {
+    "iso2": "ie",
+    "name": "Ireland",
+    "officialName": "Republic of Ireland",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Dublin",
+    "coordinates": [
+      53,
+      -8
+    ],
+    "area": 70273,
+    "acceptedNames": [
+      "Ireland",
+      "Republic of Ireland",
+      "Éire",
+      "Poblacht na hÉireann"
+    ]
+  },
+  {
+    "iso2": "il",
+    "name": "Israel",
+    "officialName": "State of Israel",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Jerusalem",
+    "coordinates": [
+      31.47,
+      35.13
+    ],
+    "area": 20770,
+    "acceptedNames": [
+      "Israel",
+      "State of Israel",
+      "Medīnat Yisrā'el"
+    ]
+  },
+  {
+    "iso2": "it",
+    "name": "Italy",
+    "officialName": "Italian Republic",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": "Rome",
+    "coordinates": [
+      42.83333333,
+      12.83333333
+    ],
+    "area": 301336,
+    "acceptedNames": [
+      "Italy",
+      "Italian Republic",
+      "Italia",
+      "Repubblica italiana"
+    ]
+  },
+  {
+    "iso2": "ci",
+    "name": "Ivory Coast",
+    "officialName": "Republic of Côte d'Ivoire",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Yamoussoukro",
+    "coordinates": [
+      8,
+      -5
+    ],
+    "area": 322463,
+    "acceptedNames": [
+      "Ivory Coast",
+      "Republic of Côte d'Ivoire",
+      "Côte d'Ivoire",
+      "République de Côte d'Ivoire"
+    ]
+  },
+  {
+    "iso2": "jm",
+    "name": "Jamaica",
+    "officialName": "Jamaica",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Kingston",
+    "coordinates": [
+      18.25,
+      -77.5
+    ],
+    "area": 10991,
+    "acceptedNames": [
+      "Jamaica"
+    ]
+  },
+  {
+    "iso2": "jp",
+    "name": "Japan",
+    "officialName": "Japan",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "capital": "Tokyo",
+    "coordinates": [
+      36,
+      138
+    ],
+    "area": 377930,
+    "acceptedNames": [
+      "Japan",
+      "Nippon",
+      "Nihon"
+    ]
+  },
+  {
+    "iso2": "jo",
+    "name": "Jordan",
+    "officialName": "Hashemite Kingdom of Jordan",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Amman",
+    "coordinates": [
+      31,
+      36
+    ],
+    "area": 89342,
+    "acceptedNames": [
+      "Jordan",
+      "Hashemite Kingdom of Jordan",
+      "al-Mamlakah al-Urdunīyah al-Hāshimīyah"
+    ]
+  },
+  {
+    "iso2": "kz",
+    "name": "Kazakhstan",
+    "officialName": "Republic of Kazakhstan",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "capital": "Astana",
+    "coordinates": [
+      48,
+      68
+    ],
+    "area": 2724900,
+    "acceptedNames": [
+      "Kazakhstan",
+      "Republic of Kazakhstan",
+      "Qazaqstan",
+      "Qazaqstan Respublïkası",
+      "Respublika Kazakhstan"
+    ]
+  },
+  {
+    "iso2": "ke",
+    "name": "Kenya",
+    "officialName": "Republic of Kenya",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Nairobi",
+    "coordinates": [
+      1,
+      38
+    ],
+    "area": 580367,
+    "acceptedNames": [
+      "Kenya",
+      "Republic of Kenya",
+      "Jamhuri ya Kenya"
+    ]
+  },
+  {
+    "iso2": "ki",
+    "name": "Kiribati",
+    "officialName": "Independent and Sovereign Republic of Kiribati",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "capital": "South Tarawa",
+    "coordinates": [
+      1.41666666,
+      173
+    ],
+    "area": 811,
+    "acceptedNames": [
+      "Kiribati",
+      "Independent and Sovereign Republic of Kiribati",
+      "Ribaberiki Kiribati",
+      "Republic of Kiribati"
+    ]
+  },
+  {
+    "iso2": "kw",
+    "name": "Kuwait",
+    "officialName": "State of Kuwait",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Kuwait City",
+    "coordinates": [
+      29.5,
+      45.75
+    ],
+    "area": 17818,
+    "acceptedNames": [
+      "Kuwait",
+      "State of Kuwait",
+      "Dawlat al-Kuwait"
+    ]
+  },
+  {
+    "iso2": "kg",
+    "name": "Kyrgyzstan",
+    "officialName": "Kyrgyz Republic",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "capital": "Bishkek",
+    "coordinates": [
+      41,
+      75
+    ],
+    "area": 199951,
+    "acceptedNames": [
+      "Kyrgyzstan",
+      "Kyrgyz Republic",
+      "Kyrgyz Respublikasy"
+    ]
+  },
+  {
+    "iso2": "la",
+    "name": "Laos",
+    "officialName": "Lao People's Democratic Republic",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Vientiane",
+    "coordinates": [
+      18,
+      105
+    ],
+    "area": 236800,
+    "acceptedNames": [
+      "Laos",
+      "Lao People's Democratic Republic",
+      "Sathalanalat Paxathipatai Paxaxon Lao"
+    ]
+  },
+  {
+    "iso2": "lv",
+    "name": "Latvia",
+    "officialName": "Republic of Latvia",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Riga",
+    "coordinates": [
+      57,
+      25
+    ],
+    "area": 64559,
+    "acceptedNames": [
+      "Latvia",
+      "Republic of Latvia",
+      "Latvija",
+      "Latvijas Republikas",
+      "Latvijas Republika"
+    ]
+  },
+  {
+    "iso2": "lb",
+    "name": "Lebanon",
+    "officialName": "Lebanese Republic",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Beirut",
+    "coordinates": [
+      33.83333333,
+      35.83333333
+    ],
+    "area": 10452,
+    "acceptedNames": [
+      "Lebanon",
+      "Lebanese Republic",
+      "Liban",
+      "République libanaise",
+      "Al-Jumhūrīyah Al-Libnānīyah"
+    ]
+  },
+  {
+    "iso2": "ls",
+    "name": "Lesotho",
+    "officialName": "Kingdom of Lesotho",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "capital": "Maseru",
+    "coordinates": [
+      -29.5,
+      28.5
+    ],
+    "area": 30355,
+    "acceptedNames": [
+      "Lesotho",
+      "Kingdom of Lesotho",
+      "Muso oa Lesotho"
+    ]
+  },
+  {
+    "iso2": "lr",
+    "name": "Liberia",
+    "officialName": "Republic of Liberia",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Monrovia",
+    "coordinates": [
+      6.5,
+      -9.5
+    ],
+    "area": 111369,
+    "acceptedNames": [
+      "Liberia",
+      "Republic of Liberia"
+    ]
+  },
+  {
+    "iso2": "ly",
+    "name": "Libya",
+    "officialName": "State of Libya",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "capital": "Tripoli",
+    "coordinates": [
+      25,
+      17
+    ],
+    "area": 1759540,
+    "acceptedNames": [
+      "Libya",
+      "State of Libya",
+      "Dawlat Libya"
+    ]
+  },
+  {
+    "iso2": "li",
+    "name": "Liechtenstein",
+    "officialName": "Principality of Liechtenstein",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": "Vaduz",
+    "coordinates": [
+      47.26666666,
+      9.53333333
+    ],
+    "area": 160,
+    "acceptedNames": [
+      "Liechtenstein",
+      "Principality of Liechtenstein",
+      "Fürstentum Liechtenstein"
+    ]
+  },
+  {
+    "iso2": "lt",
+    "name": "Lithuania",
+    "officialName": "Republic of Lithuania",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Vilnius",
+    "coordinates": [
+      56,
+      24
+    ],
+    "area": 65300,
+    "acceptedNames": [
+      "Lithuania",
+      "Republic of Lithuania",
+      "Lietuva",
+      "Lietuvos Respublikos",
+      "Lietuvos Respublika"
+    ]
+  },
+  {
+    "iso2": "lu",
+    "name": "Luxembourg",
+    "officialName": "Grand Duchy of Luxembourg",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": "Luxembourg",
+    "coordinates": [
+      49.75,
+      6.16666666
+    ],
+    "area": 2586,
+    "acceptedNames": [
+      "Luxembourg",
+      "Grand Duchy of Luxembourg",
+      "Luxemburg",
+      "Großherzogtum Luxemburg",
+      "Grand-Duché de Luxembourg",
+      "Lëtzebuerg",
+      "Groussherzogtum Lëtzebuerg"
+    ]
+  },
+  {
+    "iso2": "mg",
+    "name": "Madagascar",
+    "officialName": "Republic of Madagascar",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Antananarivo",
+    "coordinates": [
+      -20,
+      47
+    ],
+    "area": 587041,
+    "acceptedNames": [
+      "Madagascar",
+      "Republic of Madagascar",
+      "République de Madagascar",
+      "Madagasikara",
+      "Repoblikan'i Madagasikara"
+    ]
+  },
+  {
+    "iso2": "mw",
+    "name": "Malawi",
+    "officialName": "Republic of Malawi",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Lilongwe",
+    "coordinates": [
+      -13.5,
+      34
+    ],
+    "area": 118484,
+    "acceptedNames": [
+      "Malawi",
+      "Republic of Malawi",
+      "Chalo cha Malawi, Dziko la Malaŵi"
+    ]
+  },
+  {
+    "iso2": "my",
+    "name": "Malaysia",
+    "officialName": "Malaysia",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Kuala Lumpur",
+    "coordinates": [
+      2.5,
+      112.5
+    ],
+    "area": 330803,
+    "acceptedNames": [
+      "Malaysia"
+    ]
+  },
+  {
+    "iso2": "mv",
+    "name": "Maldives",
+    "officialName": "Republic of the Maldives",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "Malé",
+    "coordinates": [
+      3.25,
+      73
+    ],
+    "area": 300,
+    "acceptedNames": [
+      "Maldives",
+      "Republic of the Maldives",
+      "Maldive Islands",
+      "Dhivehi Raajjeyge Jumhooriyya"
+    ]
+  },
+  {
+    "iso2": "ml",
+    "name": "Mali",
+    "officialName": "Republic of Mali",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Bamako",
+    "coordinates": [
+      17,
+      -4
+    ],
+    "area": 1240192,
+    "acceptedNames": [
+      "Mali",
+      "Republic of Mali",
+      "République du Mali"
+    ]
+  },
+  {
+    "iso2": "mt",
+    "name": "Malta",
+    "officialName": "Republic of Malta",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": "Valletta",
+    "coordinates": [
+      35.83333333,
+      14.58333333
+    ],
+    "area": 316,
+    "acceptedNames": [
+      "Malta",
+      "Republic of Malta",
+      "Repubblika ta ' Malta"
+    ]
+  },
+  {
+    "iso2": "mh",
+    "name": "Marshall Islands",
+    "officialName": "Republic of the Marshall Islands",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "capital": "Majuro",
+    "coordinates": [
+      9,
+      168
+    ],
+    "area": 181,
+    "acceptedNames": [
+      "Marshall Islands",
+      "Republic of the Marshall Islands",
+      "M̧ajeļ",
+      "Aolepān Aorōkin M̧ajeļ"
+    ]
+  },
+  {
+    "iso2": "mr",
+    "name": "Mauritania",
+    "officialName": "Islamic Republic of Mauritania",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Nouakchott",
+    "coordinates": [
+      20,
+      -12
+    ],
+    "area": 1030700,
+    "acceptedNames": [
+      "Mauritania",
+      "Islamic Republic of Mauritania",
+      "al-Jumhūriyyah al-ʾIslāmiyyah al-Mūrītāniyyah"
+    ]
+  },
+  {
+    "iso2": "mu",
+    "name": "Mauritius",
+    "officialName": "Republic of Mauritius",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Port Louis",
+    "coordinates": [
+      -20.28333333,
+      57.55
+    ],
+    "area": 2040,
+    "acceptedNames": [
+      "Mauritius",
+      "Republic of Mauritius",
+      "Maurice",
+      "République de Maurice",
+      "Moris",
+      "Republik Moris"
+    ]
+  },
+  {
+    "iso2": "mx",
+    "name": "Mexico",
+    "officialName": "United Mexican States",
+    "region": "Americas",
+    "subregion": "North America",
+    "capital": "Mexico City",
+    "coordinates": [
+      23,
+      -102
+    ],
+    "area": 1964375,
+    "acceptedNames": [
+      "Mexico",
+      "United Mexican States",
+      "Estados Unidos Mexicanos",
+      "Mexicanos"
+    ]
+  },
+  {
+    "iso2": "fm",
+    "name": "Micronesia",
+    "officialName": "Federated States of Micronesia",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "capital": "Palikir",
+    "coordinates": [
+      6.91666666,
+      158.25
+    ],
+    "area": 702,
+    "acceptedNames": [
+      "Micronesia",
+      "Federated States of Micronesia",
+      "Micronesia, Federated States of"
+    ]
+  },
+  {
+    "iso2": "md",
+    "name": "Moldova",
+    "officialName": "Republic of Moldova",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "capital": "Chișinău",
+    "coordinates": [
+      47,
+      29
+    ],
+    "area": 33846,
+    "acceptedNames": [
+      "Moldova",
+      "Republic of Moldova",
+      "Republica Moldova",
+      "Moldova, Republic of"
+    ]
+  },
+  {
+    "iso2": "mc",
+    "name": "Monaco",
+    "officialName": "Principality of Monaco",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": "Monaco",
+    "coordinates": [
+      43.73333333,
+      7.4
+    ],
+    "area": 2.02,
+    "acceptedNames": [
+      "Monaco",
+      "Principality of Monaco",
+      "Principauté de Monaco"
+    ]
+  },
+  {
+    "iso2": "mn",
+    "name": "Mongolia",
+    "officialName": "Mongolia",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "capital": "Ulan Bator",
+    "coordinates": [
+      46,
+      105
+    ],
+    "area": 1564110,
+    "acceptedNames": [
+      "Mongolia"
+    ]
+  },
+  {
+    "iso2": "me",
+    "name": "Montenegro",
+    "officialName": "Montenegro",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "capital": "Podgorica",
+    "coordinates": [
+      42.5,
+      19.3
+    ],
+    "area": 13812,
+    "acceptedNames": [
+      "Montenegro",
+      "Crna Gora"
+    ]
+  },
+  {
+    "iso2": "ma",
+    "name": "Morocco",
+    "officialName": "Kingdom of Morocco",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "capital": "Rabat",
+    "coordinates": [
+      32,
+      -5
+    ],
+    "area": 446550,
+    "acceptedNames": [
+      "Morocco",
+      "Kingdom of Morocco",
+      "Al-Mamlakah al-Maġribiyah"
+    ]
+  },
+  {
+    "iso2": "mz",
+    "name": "Mozambique",
+    "officialName": "Republic of Mozambique",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Maputo",
+    "coordinates": [
+      -18.25,
+      35
+    ],
+    "area": 801590,
+    "acceptedNames": [
+      "Mozambique",
+      "Republic of Mozambique",
+      "Moçambique",
+      "República de Moçambique"
+    ]
+  },
+  {
+    "iso2": "mm",
+    "name": "Myanmar",
+    "officialName": "Republic of the Union of Myanmar",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Naypyidaw",
+    "coordinates": [
+      22,
+      98
+    ],
+    "area": 676578,
+    "acceptedNames": [
+      "Myanmar",
+      "Republic of the Union of Myanmar",
+      "Burma",
+      "Pyidaunzu Thanmăda Myăma Nainngandaw"
+    ]
+  },
+  {
+    "iso2": "na",
+    "name": "Namibia",
+    "officialName": "Republic of Namibia",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "capital": "Windhoek",
+    "coordinates": [
+      -22,
+      17
+    ],
+    "area": 825615,
+    "acceptedNames": [
+      "Namibia",
+      "Republic of Namibia",
+      "Namibië",
+      "Republiek van Namibië",
+      "Republik Namibia",
+      "Lefatshe la Namibia"
+    ]
+  },
+  {
+    "iso2": "nr",
+    "name": "Nauru",
+    "officialName": "Republic of Nauru",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "capital": "Yaren",
+    "coordinates": [
+      -0.53333333,
+      166.91666666
+    ],
+    "area": 21,
+    "acceptedNames": [
+      "Nauru",
+      "Republic of Nauru",
+      "Naoero",
+      "Pleasant Island",
+      "Ripublik Naoero"
+    ]
+  },
+  {
+    "iso2": "np",
+    "name": "Nepal",
+    "officialName": "Federal Democratic Republic of Nepal",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "Kathmandu",
+    "coordinates": [
+      28,
+      84
+    ],
+    "area": 147181,
+    "acceptedNames": [
+      "Nepal",
+      "Federal Democratic Republic of Nepal",
+      "Loktāntrik Ganatantra Nepāl"
+    ]
+  },
+  {
+    "iso2": "nl",
+    "name": "Netherlands",
+    "officialName": "Kingdom of the Netherlands",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": "Amsterdam",
+    "coordinates": [
+      52.5,
+      5.75
+    ],
+    "area": 41850,
+    "acceptedNames": [
+      "Netherlands",
+      "Kingdom of the Netherlands",
+      "Nederland",
+      "Koninkrijk der Nederlanden",
+      "Holland"
+    ]
+  },
+  {
+    "iso2": "nz",
+    "name": "New Zealand",
+    "officialName": "New Zealand",
+    "region": "Oceania",
+    "subregion": "Australia and New Zealand",
+    "capital": "Wellington",
+    "coordinates": [
+      -41,
+      174
+    ],
+    "area": 270467,
+    "acceptedNames": [
+      "New Zealand",
+      "Aotearoa"
+    ]
+  },
+  {
+    "iso2": "ni",
+    "name": "Nicaragua",
+    "officialName": "Republic of Nicaragua",
+    "region": "Americas",
+    "subregion": "Central America",
+    "capital": "Managua",
+    "coordinates": [
+      13,
+      -85
+    ],
+    "area": 130373,
+    "acceptedNames": [
+      "Nicaragua",
+      "Republic of Nicaragua",
+      "República de Nicaragua"
+    ]
+  },
+  {
+    "iso2": "ne",
+    "name": "Niger",
+    "officialName": "Republic of Niger",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Niamey",
+    "coordinates": [
+      16,
+      8
+    ],
+    "area": 1267000,
+    "acceptedNames": [
+      "Niger",
+      "Republic of Niger",
+      "République du Niger",
+      "Nijar"
+    ]
+  },
+  {
+    "iso2": "ng",
+    "name": "Nigeria",
+    "officialName": "Federal Republic of Nigeria",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Abuja",
+    "coordinates": [
+      10,
+      8
+    ],
+    "area": 923768,
+    "acceptedNames": [
+      "Nigeria",
+      "Federal Republic of Nigeria",
+      "Nijeriya",
+      "Naíjíríà"
+    ]
+  },
+  {
+    "iso2": "kp",
+    "name": "North Korea",
+    "officialName": "Democratic People's Republic of Korea",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "capital": "Pyongyang",
+    "coordinates": [
+      40,
+      127
+    ],
+    "area": 120538,
+    "acceptedNames": [
+      "North Korea",
+      "Democratic People's Republic of Korea",
+      "DPRK",
+      "Chosŏn Minjujuŭi Inmin Konghwaguk",
+      "Korea, Democratic People's Republic of"
+    ]
+  },
+  {
+    "iso2": "mk",
+    "name": "North Macedonia",
+    "officialName": "Republic of North Macedonia",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "capital": "Skopje",
+    "coordinates": [
+      41.83333333,
+      22
+    ],
+    "area": 25713,
+    "acceptedNames": [
+      "North Macedonia",
+      "Republic of North Macedonia",
+      "The former Yugoslav Republic of Macedonia",
+      "Macedonia, The Former Yugoslav Republic of",
+      "Macedonia"
+    ]
+  },
+  {
+    "iso2": "no",
+    "name": "Norway",
+    "officialName": "Kingdom of Norway",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Oslo",
+    "coordinates": [
+      62,
+      10
+    ],
+    "area": 323802,
+    "acceptedNames": [
+      "Norway",
+      "Kingdom of Norway",
+      "Noreg",
+      "Kongeriket Noreg",
+      "Norge",
+      "Kongeriket Norge",
+      "Norgga",
+      "Norgga gonagasriika"
+    ]
+  },
+  {
+    "iso2": "om",
+    "name": "Oman",
+    "officialName": "Sultanate of Oman",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Muscat",
+    "coordinates": [
+      21,
+      57
+    ],
+    "area": 309500,
+    "acceptedNames": [
+      "Oman",
+      "Sultanate of Oman",
+      "Salṭanat ʻUmān"
+    ]
+  },
+  {
+    "iso2": "pk",
+    "name": "Pakistan",
+    "officialName": "Islamic Republic of Pakistan",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "Islamabad",
+    "coordinates": [
+      30,
+      70
+    ],
+    "area": 881912,
+    "acceptedNames": [
+      "Pakistan",
+      "Islamic Republic of Pakistan",
+      "Islāmī Jumhūriya'eh Pākistān"
+    ]
+  },
+  {
+    "iso2": "pw",
+    "name": "Palau",
+    "officialName": "Republic of Palau",
+    "region": "Oceania",
+    "subregion": "Micronesia",
+    "capital": "Ngerulmud",
+    "coordinates": [
+      7.5,
+      134.5
+    ],
+    "area": 459,
+    "acceptedNames": [
+      "Palau",
+      "Republic of Palau",
+      "Belau",
+      "Beluu er a Belau"
+    ]
+  },
+  {
+    "iso2": "pa",
+    "name": "Panama",
+    "officialName": "Republic of Panama",
+    "region": "Americas",
+    "subregion": "Central America",
+    "capital": "Panama City",
+    "coordinates": [
+      9,
+      -80
+    ],
+    "area": 75417,
+    "acceptedNames": [
+      "Panama",
+      "Republic of Panama",
+      "República de Panamá"
+    ]
+  },
+  {
+    "iso2": "pg",
+    "name": "Papua New Guinea",
+    "officialName": "Independent State of Papua New Guinea",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "capital": "Port Moresby",
+    "coordinates": [
+      -6,
+      147
+    ],
+    "area": 462840,
+    "acceptedNames": [
+      "Papua New Guinea",
+      "Independent State of Papua New Guinea",
+      "Papua Niu Gini",
+      "Independen Stet bilong Papua Niugini",
+      "Papua Niugini"
+    ]
+  },
+  {
+    "iso2": "py",
+    "name": "Paraguay",
+    "officialName": "Republic of Paraguay",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Asunción",
+    "coordinates": [
+      -23,
+      -58
+    ],
+    "area": 406752,
+    "acceptedNames": [
+      "Paraguay",
+      "Republic of Paraguay",
+      "Paraguái",
+      "Tetã Paraguái",
+      "República de Paraguay",
+      "República del Paraguay"
+    ]
+  },
+  {
+    "iso2": "pe",
+    "name": "Peru",
+    "officialName": "Republic of Peru",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Lima",
+    "coordinates": [
+      -10,
+      -76
+    ],
+    "area": 1285216,
+    "acceptedNames": [
+      "Peru",
+      "Republic of Peru",
+      "Piruw",
+      "Piruw Suyu",
+      "Piruw Ripuwlika",
+      "República del Perú"
+    ]
+  },
+  {
+    "iso2": "ph",
+    "name": "Philippines",
+    "officialName": "Republic of the Philippines",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Manila",
+    "coordinates": [
+      13,
+      122
+    ],
+    "area": 342353,
+    "acceptedNames": [
+      "Philippines",
+      "Republic of the Philippines",
+      "Pilipinas",
+      "Republika ng Pilipinas"
+    ]
+  },
+  {
+    "iso2": "pl",
+    "name": "Poland",
+    "officialName": "Republic of Poland",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "capital": "Warsaw",
+    "coordinates": [
+      52,
+      20
+    ],
+    "area": 312679,
+    "acceptedNames": [
+      "Poland",
+      "Republic of Poland",
+      "Polska",
+      "Rzeczpospolita Polska"
+    ]
+  },
+  {
+    "iso2": "pt",
+    "name": "Portugal",
+    "officialName": "Portuguese Republic",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": "Lisbon",
+    "coordinates": [
+      39.5,
+      -8
+    ],
+    "area": 92090,
+    "acceptedNames": [
+      "Portugal",
+      "Portuguese Republic",
+      "República português",
+      "Portuguesa",
+      "República Portuguesa"
+    ]
+  },
+  {
+    "iso2": "qa",
+    "name": "Qatar",
+    "officialName": "State of Qatar",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Doha",
+    "coordinates": [
+      25.5,
+      51.25
+    ],
+    "area": 11586,
+    "acceptedNames": [
+      "Qatar",
+      "State of Qatar",
+      "Dawlat Qaṭar"
+    ]
+  },
+  {
+    "iso2": "ro",
+    "name": "Romania",
+    "officialName": "Romania",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "capital": "Bucharest",
+    "coordinates": [
+      46,
+      25
+    ],
+    "area": 238391,
+    "acceptedNames": [
+      "Romania",
+      "Rumania",
+      "Roumania"
+    ]
+  },
+  {
+    "iso2": "ru",
+    "name": "Russia",
+    "officialName": "Russian Federation",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "capital": "Moscow",
+    "coordinates": [
+      60,
+      100
+    ],
+    "area": 17098242,
+    "acceptedNames": [
+      "Russia",
+      "Russian Federation"
+    ]
+  },
+  {
+    "iso2": "rw",
+    "name": "Rwanda",
+    "officialName": "Republic of Rwanda",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Kigali",
+    "coordinates": [
+      -2,
+      30
+    ],
+    "area": 26338,
+    "acceptedNames": [
+      "Rwanda",
+      "Republic of Rwanda",
+      "République rwandaise",
+      "Repubulika y'u Rwanda",
+      "République du Rwanda"
+    ]
+  },
+  {
+    "iso2": "kn",
+    "name": "Saint Kitts and Nevis",
+    "officialName": "Federation of Saint Christopher and Nevis",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Basseterre",
+    "coordinates": [
+      17.33333333,
+      -62.75
+    ],
+    "area": 261,
+    "acceptedNames": [
+      "Saint Kitts and Nevis",
+      "Federation of Saint Christopher and Nevis"
+    ]
+  },
+  {
+    "iso2": "lc",
+    "name": "Saint Lucia",
+    "officialName": "Saint Lucia",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Castries",
+    "coordinates": [
+      13.88333333,
+      -60.96666666
+    ],
+    "area": 616,
+    "acceptedNames": [
+      "Saint Lucia"
+    ]
+  },
+  {
+    "iso2": "vc",
+    "name": "Saint Vincent and the Grenadines",
+    "officialName": "Saint Vincent and the Grenadines",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Kingstown",
+    "coordinates": [
+      13.25,
+      -61.2
+    ],
+    "area": 389,
+    "acceptedNames": [
+      "Saint Vincent and the Grenadines"
+    ]
+  },
+  {
+    "iso2": "ws",
+    "name": "Samoa",
+    "officialName": "Independent State of Samoa",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "capital": "Apia",
+    "coordinates": [
+      -13.58333333,
+      -172.33333333
+    ],
+    "area": 2842,
+    "acceptedNames": [
+      "Samoa",
+      "Independent State of Samoa",
+      "Malo Saʻoloto Tutoʻatasi o Sāmoa"
+    ]
+  },
+  {
+    "iso2": "sm",
+    "name": "San Marino",
+    "officialName": "Most Serene Republic of San Marino",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": "City of San Marino",
+    "coordinates": [
+      43.76666666,
+      12.41666666
+    ],
+    "area": 61,
+    "acceptedNames": [
+      "San Marino",
+      "Most Serene Republic of San Marino",
+      "Serenissima Repubblica di San Marino",
+      "Republic of San Marino",
+      "Repubblica di San Marino"
+    ]
+  },
+  {
+    "iso2": "st",
+    "name": "São Tomé and Príncipe",
+    "officialName": "Democratic Republic of São Tomé and Príncipe",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "São Tomé",
+    "coordinates": [
+      1,
+      7
+    ],
+    "area": 964,
+    "acceptedNames": [
+      "São Tomé and Príncipe",
+      "Democratic Republic of São Tomé and Príncipe",
+      "São Tomé e Príncipe",
+      "República Democrática do São Tomé e Príncipe",
+      "República Democrática de São Tomé e Príncipe"
+    ]
+  },
+  {
+    "iso2": "sa",
+    "name": "Saudi Arabia",
+    "officialName": "Kingdom of Saudi Arabia",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Riyadh",
+    "coordinates": [
+      25,
+      45
+    ],
+    "area": 2149690,
+    "acceptedNames": [
+      "Saudi Arabia",
+      "Kingdom of Saudi Arabia",
+      "Saudi",
+      "Al-Mamlakah al-‘Arabiyyah as-Su‘ūdiyyah"
+    ]
+  },
+  {
+    "iso2": "sn",
+    "name": "Senegal",
+    "officialName": "Republic of Senegal",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Dakar",
+    "coordinates": [
+      14,
+      -14
+    ],
+    "area": 196722,
+    "acceptedNames": [
+      "Senegal",
+      "Republic of Senegal",
+      "République du Sénégal"
+    ]
+  },
+  {
+    "iso2": "rs",
+    "name": "Serbia",
+    "officialName": "Republic of Serbia",
+    "region": "Europe",
+    "subregion": "Southeast Europe",
+    "capital": "Belgrade",
+    "coordinates": [
+      44,
+      21
+    ],
+    "area": 88361,
+    "acceptedNames": [
+      "Serbia",
+      "Republic of Serbia",
+      "Srbija",
+      "Republika Srbija"
+    ]
+  },
+  {
+    "iso2": "sc",
+    "name": "Seychelles",
+    "officialName": "Republic of Seychelles",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Victoria",
+    "coordinates": [
+      -4.58333333,
+      55.66666666
+    ],
+    "area": 452,
+    "acceptedNames": [
+      "Seychelles",
+      "Republic of Seychelles",
+      "Sesel",
+      "Repiblik Sesel",
+      "République des Seychelles"
+    ]
+  },
+  {
+    "iso2": "sl",
+    "name": "Sierra Leone",
+    "officialName": "Republic of Sierra Leone",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Freetown",
+    "coordinates": [
+      8.5,
+      -11.5
+    ],
+    "area": 71740,
+    "acceptedNames": [
+      "Sierra Leone",
+      "Republic of Sierra Leone"
+    ]
+  },
+  {
+    "iso2": "sg",
+    "name": "Singapore",
+    "officialName": "Republic of Singapore",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Singapore",
+    "coordinates": [
+      1.36666666,
+      103.8
+    ],
+    "area": 710,
+    "acceptedNames": [
+      "Singapore",
+      "Republic of Singapore",
+      "Singapura",
+      "Republik Singapura"
+    ]
+  },
+  {
+    "iso2": "sk",
+    "name": "Slovakia",
+    "officialName": "Slovak Republic",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "capital": "Bratislava",
+    "coordinates": [
+      48.66666666,
+      19.5
+    ],
+    "area": 49037,
+    "acceptedNames": [
+      "Slovakia",
+      "Slovak Republic",
+      "Slovensko",
+      "Slovenská republika"
+    ]
+  },
+  {
+    "iso2": "si",
+    "name": "Slovenia",
+    "officialName": "Republic of Slovenia",
+    "region": "Europe",
+    "subregion": "Central Europe",
+    "capital": "Ljubljana",
+    "coordinates": [
+      46.11666666,
+      14.81666666
+    ],
+    "area": 20273,
+    "acceptedNames": [
+      "Slovenia",
+      "Republic of Slovenia",
+      "Slovenija",
+      "Republika Slovenija"
+    ]
+  },
+  {
+    "iso2": "sb",
+    "name": "Solomon Islands",
+    "officialName": "Solomon Islands",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "capital": "Honiara",
+    "coordinates": [
+      -8,
+      159
+    ],
+    "area": 28896,
+    "acceptedNames": [
+      "Solomon Islands"
+    ]
+  },
+  {
+    "iso2": "so",
+    "name": "Somalia",
+    "officialName": "Federal Republic of Somalia",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Mogadishu",
+    "coordinates": [
+      10,
+      49
+    ],
+    "area": 637657,
+    "acceptedNames": [
+      "Somalia",
+      "Federal Republic of Somalia",
+      "Soomaaliya",
+      "Jamhuuriyadda Federaalka Soomaaliya",
+      "aṣ-Ṣūmāl",
+      "Jumhūriyyat aṣ-Ṣūmāl al-Fiderāliyya"
+    ]
+  },
+  {
+    "iso2": "za",
+    "name": "South Africa",
+    "officialName": "Republic of South Africa",
+    "region": "Africa",
+    "subregion": "Southern Africa",
+    "capital": "Pretoria",
+    "coordinates": [
+      -29,
+      24
+    ],
+    "area": 1221037,
+    "acceptedNames": [
+      "South Africa",
+      "Republic of South Africa",
+      "Republiek van Suid-Afrika",
+      "Sewula Afrika",
+      "IRiphabliki yeSewula Afrika",
+      "Afrika-Borwa",
+      "Rephaboliki ya Afrika-Borwa ",
+      "Ningizimu Afrika",
+      "IRiphabhulikhi yeNingizimu Afrika",
+      "Aforika Borwa",
+      "Rephaboliki ya Aforika Borwa",
+      "Afrika Dzonga",
+      "Riphabliki ra Afrika Dzonga",
+      "Afurika Tshipembe",
+      "Riphabuḽiki ya Afurika Tshipembe",
+      "Mzantsi Afrika",
+      "IRiphabliki yaseMzantsi Afrika",
+      "IRiphabliki yaseNingizimu Afrika",
+      "Suid-Afrika"
+    ]
+  },
+  {
+    "iso2": "kr",
+    "name": "South Korea",
+    "officialName": "Republic of Korea",
+    "region": "Asia",
+    "subregion": "Eastern Asia",
+    "capital": "Seoul",
+    "coordinates": [
+      37,
+      127.5
+    ],
+    "area": 100210,
+    "acceptedNames": [
+      "South Korea",
+      "Republic of Korea",
+      "Korea, Republic of"
+    ]
+  },
+  {
+    "iso2": "ss",
+    "name": "South Sudan",
+    "officialName": "Republic of South Sudan",
+    "region": "Africa",
+    "subregion": "Middle Africa",
+    "capital": "Juba",
+    "coordinates": [
+      7,
+      30
+    ],
+    "area": 619745,
+    "acceptedNames": [
+      "South Sudan",
+      "Republic of South Sudan"
+    ]
+  },
+  {
+    "iso2": "es",
+    "name": "Spain",
+    "officialName": "Kingdom of Spain",
+    "region": "Europe",
+    "subregion": "Southern Europe",
+    "capital": "Madrid",
+    "coordinates": [
+      40,
+      -4
+    ],
+    "area": 505992,
+    "acceptedNames": [
+      "Spain",
+      "Kingdom of Spain",
+      "España",
+      "Reino de España"
+    ]
+  },
+  {
+    "iso2": "lk",
+    "name": "Sri Lanka",
+    "officialName": "Democratic Socialist Republic of Sri Lanka",
+    "region": "Asia",
+    "subregion": "Southern Asia",
+    "capital": "Colombo",
+    "coordinates": [
+      7,
+      81
+    ],
+    "area": 65610,
+    "acceptedNames": [
+      "Sri Lanka",
+      "Democratic Socialist Republic of Sri Lanka",
+      "ilaṅkai"
+    ]
+  },
+  {
+    "iso2": "sd",
+    "name": "Sudan",
+    "officialName": "Republic of the Sudan",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "capital": "Khartoum",
+    "coordinates": [
+      15,
+      30
+    ],
+    "area": 1886068,
+    "acceptedNames": [
+      "Sudan",
+      "Republic of the Sudan",
+      "Jumhūrīyat as-Sūdān"
+    ]
+  },
+  {
+    "iso2": "sr",
+    "name": "Suriname",
+    "officialName": "Republic of Suriname",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Paramaribo",
+    "coordinates": [
+      4,
+      -56
+    ],
+    "area": 163820,
+    "acceptedNames": [
+      "Suriname",
+      "Republic of Suriname",
+      "Republiek Suriname",
+      "Sarnam",
+      "Sranangron"
+    ]
+  },
+  {
+    "iso2": "se",
+    "name": "Sweden",
+    "officialName": "Kingdom of Sweden",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "Stockholm",
+    "coordinates": [
+      62,
+      15
+    ],
+    "area": 450295,
+    "acceptedNames": [
+      "Sweden",
+      "Kingdom of Sweden",
+      "Sverige",
+      "Konungariket Sverige"
+    ]
+  },
+  {
+    "iso2": "ch",
+    "name": "Switzerland",
+    "officialName": "Swiss Confederation",
+    "region": "Europe",
+    "subregion": "Western Europe",
+    "capital": "Bern",
+    "coordinates": [
+      47,
+      8
+    ],
+    "area": 41284,
+    "acceptedNames": [
+      "Switzerland",
+      "Swiss Confederation",
+      "Suisse",
+      "Confédération suisse",
+      "Schweiz",
+      "Schweizerische Eidgenossenschaft",
+      "Svizzera",
+      "Confederazione Svizzera",
+      "Svizra",
+      "Confederaziun svizra"
+    ]
+  },
+  {
+    "iso2": "sy",
+    "name": "Syria",
+    "officialName": "Syrian Arab Republic",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Damascus",
+    "coordinates": [
+      35,
+      38
+    ],
+    "area": 185180,
+    "acceptedNames": [
+      "Syria",
+      "Syrian Arab Republic",
+      "Al-Jumhūrīyah Al-ʻArabīyah As-Sūrīyah"
+    ]
+  },
+  {
+    "iso2": "tj",
+    "name": "Tajikistan",
+    "officialName": "Republic of Tajikistan",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "capital": "Dushanbe",
+    "coordinates": [
+      39,
+      71
+    ],
+    "area": 143100,
+    "acceptedNames": [
+      "Tajikistan",
+      "Republic of Tajikistan",
+      "Toçikiston",
+      "Çumhuriyi Toçikiston"
+    ]
+  },
+  {
+    "iso2": "tz",
+    "name": "Tanzania",
+    "officialName": "United Republic of Tanzania",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Dodoma",
+    "coordinates": [
+      -6,
+      35
+    ],
+    "area": 945087,
+    "acceptedNames": [
+      "Tanzania",
+      "United Republic of Tanzania",
+      "Jamhuri ya Muungano wa Tanzania",
+      "Tanzania, United Republic of"
+    ]
+  },
+  {
+    "iso2": "th",
+    "name": "Thailand",
+    "officialName": "Kingdom of Thailand",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Bangkok",
+    "coordinates": [
+      15,
+      100
+    ],
+    "area": 513120,
+    "acceptedNames": [
+      "Thailand",
+      "Kingdom of Thailand",
+      "Prathet",
+      "Thai",
+      "Ratcha Anachak Thai"
+    ]
+  },
+  {
+    "iso2": "tl",
+    "name": "Timor-Leste",
+    "officialName": "Democratic Republic of Timor-Leste",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Dili",
+    "coordinates": [
+      -8.83333333,
+      125.91666666
+    ],
+    "area": 14874,
+    "acceptedNames": [
+      "Timor-Leste",
+      "Democratic Republic of Timor-Leste",
+      "República Democrática de Timor-Leste",
+      "Repúblika Demokrátika Timór-Leste",
+      "East Timor",
+      "Timor",
+      "Timór Lorosa'e",
+      "Timor Lorosae"
+    ]
+  },
+  {
+    "iso2": "tg",
+    "name": "Togo",
+    "officialName": "Togolese Republic",
+    "region": "Africa",
+    "subregion": "Western Africa",
+    "capital": "Lomé",
+    "coordinates": [
+      8,
+      1.16666666
+    ],
+    "area": 56785,
+    "acceptedNames": [
+      "Togo",
+      "Togolese Republic",
+      "République togolaise",
+      "Togolese"
+    ]
+  },
+  {
+    "iso2": "to",
+    "name": "Tonga",
+    "officialName": "Kingdom of Tonga",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "capital": "Nuku'alofa",
+    "coordinates": [
+      -20,
+      -175
+    ],
+    "area": 747,
+    "acceptedNames": [
+      "Tonga",
+      "Kingdom of Tonga"
+    ]
+  },
+  {
+    "iso2": "tt",
+    "name": "Trinidad and Tobago",
+    "officialName": "Republic of Trinidad and Tobago",
+    "region": "Americas",
+    "subregion": "Caribbean",
+    "capital": "Port of Spain",
+    "coordinates": [
+      11,
+      -61
+    ],
+    "area": 5130,
+    "acceptedNames": [
+      "Trinidad and Tobago",
+      "Republic of Trinidad and Tobago"
+    ]
+  },
+  {
+    "iso2": "tn",
+    "name": "Tunisia",
+    "officialName": "Tunisian Republic",
+    "region": "Africa",
+    "subregion": "Northern Africa",
+    "capital": "Tunis",
+    "coordinates": [
+      34,
+      9
+    ],
+    "area": 163610,
+    "acceptedNames": [
+      "Tunisia",
+      "Tunisian Republic",
+      "Republic of Tunisia",
+      "al-Jumhūriyyah at-Tūnisiyyah"
+    ]
+  },
+  {
+    "iso2": "tr",
+    "name": "Türkiye",
+    "officialName": "Republic of Türkiye",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Ankara",
+    "coordinates": [
+      39,
+      35
+    ],
+    "area": 783562,
+    "acceptedNames": [
+      "Türkiye",
+      "Republic of Türkiye",
+      "Türkiye Cumhuriyeti",
+      "Republic of Turkey"
+    ]
+  },
+  {
+    "iso2": "tm",
+    "name": "Turkmenistan",
+    "officialName": "Turkmenistan",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "capital": "Ashgabat",
+    "coordinates": [
+      40,
+      60
+    ],
+    "area": 488100,
+    "acceptedNames": [
+      "Turkmenistan"
+    ]
+  },
+  {
+    "iso2": "tv",
+    "name": "Tuvalu",
+    "officialName": "Tuvalu",
+    "region": "Oceania",
+    "subregion": "Polynesia",
+    "capital": "Funafuti",
+    "coordinates": [
+      -8,
+      178
+    ],
+    "area": 26,
+    "acceptedNames": [
+      "Tuvalu"
+    ]
+  },
+  {
+    "iso2": "ug",
+    "name": "Uganda",
+    "officialName": "Republic of Uganda",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Kampala",
+    "coordinates": [
+      1,
+      32
+    ],
+    "area": 241550,
+    "acceptedNames": [
+      "Uganda",
+      "Republic of Uganda",
+      "Jamhuri ya Uganda"
+    ]
+  },
+  {
+    "iso2": "ua",
+    "name": "Ukraine",
+    "officialName": "Ukraine",
+    "region": "Europe",
+    "subregion": "Eastern Europe",
+    "capital": "Kyiv",
+    "coordinates": [
+      49,
+      32
+    ],
+    "area": 603500,
+    "acceptedNames": [
+      "Ukraine",
+      "Ukrayina"
+    ]
+  },
+  {
+    "iso2": "ae",
+    "name": "United Arab Emirates",
+    "officialName": "United Arab Emirates",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Abu Dhabi",
+    "coordinates": [
+      24,
+      54
+    ],
+    "area": 83600,
+    "acceptedNames": [
+      "United Arab Emirates",
+      "Emirates"
+    ]
+  },
+  {
+    "iso2": "gb",
+    "name": "United Kingdom",
+    "officialName": "United Kingdom of Great Britain and Northern Ireland",
+    "region": "Europe",
+    "subregion": "Northern Europe",
+    "capital": "London",
+    "coordinates": [
+      54,
+      -2
+    ],
+    "area": 242900,
+    "acceptedNames": [
+      "United Kingdom",
+      "United Kingdom of Great Britain and Northern Ireland",
+      "Great Britain"
+    ]
+  },
+  {
+    "iso2": "us",
+    "name": "United States",
+    "officialName": "United States of America",
+    "region": "Americas",
+    "subregion": "North America",
+    "capital": "Washington D.C.",
+    "coordinates": [
+      38,
+      -97
+    ],
+    "area": 9372610,
+    "acceptedNames": [
+      "United States",
+      "United States of America"
+    ]
+  },
+  {
+    "iso2": "uy",
+    "name": "Uruguay",
+    "officialName": "Oriental Republic of Uruguay",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Montevideo",
+    "coordinates": [
+      -33,
+      -56
+    ],
+    "area": 181034,
+    "acceptedNames": [
+      "Uruguay",
+      "Oriental Republic of Uruguay",
+      "República Oriental del Uruguay"
+    ]
+  },
+  {
+    "iso2": "uz",
+    "name": "Uzbekistan",
+    "officialName": "Republic of Uzbekistan",
+    "region": "Asia",
+    "subregion": "Central Asia",
+    "capital": "Tashkent",
+    "coordinates": [
+      41,
+      64
+    ],
+    "area": 447400,
+    "acceptedNames": [
+      "Uzbekistan",
+      "Republic of Uzbekistan",
+      "O‘zbekiston",
+      "O'zbekiston Respublikasi"
+    ]
+  },
+  {
+    "iso2": "vu",
+    "name": "Vanuatu",
+    "officialName": "Republic of Vanuatu",
+    "region": "Oceania",
+    "subregion": "Melanesia",
+    "capital": "Port Vila",
+    "coordinates": [
+      -16,
+      167
+    ],
+    "area": 12189,
+    "acceptedNames": [
+      "Vanuatu",
+      "Republic of Vanuatu",
+      "Ripablik blong Vanuatu",
+      "République de Vanuatu"
+    ]
+  },
+  {
+    "iso2": "ve",
+    "name": "Venezuela",
+    "officialName": "Bolivarian Republic of Venezuela",
+    "region": "Americas",
+    "subregion": "South America",
+    "capital": "Caracas",
+    "coordinates": [
+      8,
+      -66
+    ],
+    "area": 916445,
+    "acceptedNames": [
+      "Venezuela",
+      "Bolivarian Republic of Venezuela",
+      "República Bolivariana de Venezuela",
+      "Venezuela, Bolivarian Republic of"
+    ]
+  },
+  {
+    "iso2": "vn",
+    "name": "Vietnam",
+    "officialName": "Socialist Republic of Vietnam",
+    "region": "Asia",
+    "subregion": "South-Eastern Asia",
+    "capital": "Hanoi",
+    "coordinates": [
+      16.16666666,
+      107.83333333
+    ],
+    "area": 331212,
+    "acceptedNames": [
+      "Vietnam",
+      "Socialist Republic of Vietnam",
+      "Việt Nam",
+      "Cộng hòa xã hội chủ nghĩa Việt Nam"
+    ]
+  },
+  {
+    "iso2": "ye",
+    "name": "Yemen",
+    "officialName": "Republic of Yemen",
+    "region": "Asia",
+    "subregion": "Western Asia",
+    "capital": "Sana'a",
+    "coordinates": [
+      15,
+      48
+    ],
+    "area": 527968,
+    "acceptedNames": [
+      "Yemen",
+      "Republic of Yemen",
+      "Yemeni Republic",
+      "al-Jumhūriyyah al-Yamaniyyah"
+    ]
+  },
+  {
+    "iso2": "zm",
+    "name": "Zambia",
+    "officialName": "Republic of Zambia",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Lusaka",
+    "coordinates": [
+      -15,
+      30
+    ],
+    "area": 752612,
+    "acceptedNames": [
+      "Zambia",
+      "Republic of Zambia"
+    ]
+  },
+  {
+    "iso2": "zw",
+    "name": "Zimbabwe",
+    "officialName": "Republic of Zimbabwe",
+    "region": "Africa",
+    "subregion": "Eastern Africa",
+    "capital": "Harare",
+    "coordinates": [
+      -20,
+      30
+    ],
+    "area": 390757,
+    "acceptedNames": [
+      "Zimbabwe",
+      "Republic of Zimbabwe"
+    ]
+  }
+]

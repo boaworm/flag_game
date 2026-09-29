@@ -66,9 +66,24 @@ assets/
   flags/            One SVG per country, named by ISO 3166-1 alpha-2 code
   map/              Continent-outline base map plus per-country shape paths
 data/
-  countries.json    Name, ISO code, region, capital, borders, coordinates
+  countries.json    Generated country data — see tools/
+tools/
+  build-countries.mjs  Regenerates data/countries.json (dev-only, not shipped)
 styles/             CSS, one file per area
 ```
+
+The 193 UN member states are in play, each with its flag, region, capital,
+coordinates, and the list of names a typed answer may match — including native
+names, so "Sverige" is accepted for Sweden.
+
+To refresh the country data from its upstream source:
+
+```sh
+node tools/build-countries.mjs
+```
+
+That script is developer tooling. The game never runs it; only its committed
+output is loaded by the browser.
 
 ## Design principles
 
@@ -82,8 +97,8 @@ styles/             CSS, one file per area
 
 ## Roadmap
 
-- [ ] App shell, screen routing, settings, and the country data set
-- [ ] Mode 1 — Guess the flag (choices, then typed answers)
+- [x] App shell, screen routing, settings, and the country data set
+- [x] Mode 1 — Guess the flag (choices and typed answers)
 - [ ] Mode 2 — Guess the country's flag
 - [ ] Continent-outline map and per-country shape geometry
 - [ ] Mode 4 — Point to the country, with distance feedback

@@ -104,6 +104,8 @@ This is the part that is easy to get wrong. When adding or changing gameplay:
 ## Testing and verification
 
 - There is no test runner yet. When adding one, keep it dev-only (see above).
+- `data/countries.json` is generated. Fix the data by changing
+  `tools/build-countries.mjs` and re-running it, never by editing the JSON.
 - Verify changes by actually loading the game: `python3 -m http.server 8000` and
   open `http://localhost:8000`. Check the browser console is clean.
 - Data changes should be validated — a missing flag file or a border pointing at an

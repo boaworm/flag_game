@@ -1,0 +1,124 @@
+/** The question screen, shared by the quiz modes. */
+
+.question {
+  display: grid;
+  gap: 1.1rem;
+  justify-items: center;
+}
+
+.progress {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.prompt {
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
+  text-align: center;
+}
+
+/* A framed flag, so white and light flags stay visible against the page. */
+.flag-frame {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.6rem;
+  line-height: 0;
+}
+
+.flag {
+  display: block;
+  width: min(320px, 78vw);
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+/* Answers */
+
+.answers {
+  width: 100%;
+}
+
+.choice {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1.05rem;
+}
+
+.choice + .choice {
+  margin-top: 0.5rem;
+}
+
+.typed-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.typed {
+  flex: 1 1 12rem;
+  min-height: var(--touch);
+  font: inherit;
+  font-size: 1.05rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.submit {
+  padding: 0.5rem 1.3rem;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+/* Feedback. Colour is never the only signal — every result carries a mark and
+   a sentence naming the country. */
+
+.feedback {
+  width: 100%;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+
+.result {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 1.05rem;
+}
+
+.result.correct {
+  background: var(--correct-bg);
+  color: var(--correct);
+}
+
+.result.wrong {
+  background: var(--wrong-bg);
+  color: var(--wrong);
+}
+
+.mark {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.next {
+  padding: 0.7rem 1.4rem;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+  min-width: 12rem;
+}
