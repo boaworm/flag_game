@@ -102,14 +102,31 @@ a click back into a coordinate to measure the miss, and linear-in-both-axes is
 what makes that inverse exact. `lib/geo.js` is the only module that knows about
 pixels.
 
-**The antimeridian will bite you.** It has twice. A ring holding points at both
-+179 and -179 draws a straight line across the entire map, so the builders detect
-a genuine crossing — a jump between *consecutive* points, never merely a wide
-shape, since Eurasia spans 200° without crossing anything — and shift such a ring
-past 180. The renderer then places each longitude at whichever of lon, lon±360 is
-nearest the view's centre. "Nearest" is load-bearing: normalising into a turn
-starting at the view's western edge flings an island just west of that edge a full
-turn east, and the line back to it crosses the whole map.
+**The antimeridian will bite you.** It has, repeatedly, and every rule the
+builders use to decide what frame a shape is stored in has drawn blood:
+
+- A ring holding both +179 and -179 must be detected by a jump between
+  *consecutive* points, never by being wide — Eurasia spans 200° without crossing
+  anything, and shifting it tears it open at Greenwich instead.
+- The same test must not be applied to the land layer, whose features are
+  globally-scattered collections of rings where both framings measure ~360°.
+- A shape is only a candidate for shifting if it has land near *both* edges. Test
+  "is it narrower once shifted" on its own and a shape lying wholly in the west
+  compares two spans that are equal by construction — whereupon floating point
+  decides it, because adding 360 to a longitude near -73 loses precision. That
+  threw 22 states and 27 countries a full turn east, silently, and the views
+  computed from their bounds with them.
+- Longitude cannot be min-maxed at all when computing a view. The smallest arc
+  containing every member has to be found, or the United States comes out 424°
+  wide — every longitude there is, and then some.
+
+Anything derived from a shape's longitude is suspect until it has been looked at
+on screen. All of these were invisible in the numbers.
+
+The renderer places each longitude at whichever of lon, lon±360 is nearest the
+view's centre. "Nearest" is load-bearing: normalising into a turn starting at the
+view's western edge flings an island just west of that edge a full turn east, and
+the line back to it crosses the whole map.
 
 **Distance feedback (mode 4).** Great-circle distance via the haversine formula,
 reported in kilometres. Measure to the country's shape, not its centroid — clicking

@@ -71,7 +71,7 @@
     "capital": "Denver",
     "coordinates": [
       38.999821,
-      254.456903
+      -105.543097
     ],
     "acceptedNames": [
       "Colorado"
@@ -84,7 +84,7 @@
     "capital": "Hartford",
     "coordinates": [
       41.659755874999995,
-      286.7588375
+      -73.2411625
     ],
     "acceptedNames": [
       "Connecticut"
@@ -97,7 +97,7 @@
     "capital": "Dover",
     "coordinates": [
       38.7994185,
-      284.2889256875
+      -75.7110743125
     ],
     "acceptedNames": [
       "Delaware"
@@ -123,7 +123,7 @@
     "capital": "Atlanta",
     "coordinates": [
       32.009428375,
-      276.87869247916666
+      -83.12130752083334
     ],
     "acceptedNames": [
       "Georgia"
@@ -162,7 +162,7 @@
     "capital": "Springfield",
     "coordinates": [
       40.437223625,
-      271.0123790625
+      -88.9876209375
     ],
     "acceptedNames": [
       "Illinois"
@@ -175,7 +175,7 @@
     "capital": "Indianapolis",
     "coordinates": [
       40.5166638125,
-      273.62142485416666
+      -86.37857514583332
     ],
     "acceptedNames": [
       "Indiana"
@@ -201,7 +201,7 @@
     "capital": "Topeka",
     "coordinates": [
       37.87489445833333,
-      261.668097
+      -98.33190300000001
     ],
     "acceptedNames": [
       "Kansas"
@@ -214,7 +214,7 @@
     "capital": "Frankfort",
     "coordinates": [
       37.656954562500005,
-      275.54836233333333
+      -84.45163766666667
     ],
     "acceptedNames": [
       "Kentucky"
@@ -227,7 +227,7 @@
     "capital": "Baton Rouge",
     "coordinates": [
       32.588713750000004,
-      267.31989185416666
+      -92.68010814583333
     ],
     "acceptedNames": [
       "Louisiana"
@@ -240,7 +240,7 @@
     "capital": "Augusta",
     "coordinates": [
       45.45407633333333,
-      290.8832859375
+      -69.1167140625
     ],
     "acceptedNames": [
       "Maine"
@@ -305,7 +305,7 @@
     "capital": "Jackson",
     "coordinates": [
       33.494285749999996,
-      271.01954950000004
+      -88.9804505
     ],
     "acceptedNames": [
       "Mississippi"
@@ -357,7 +357,7 @@
     "capital": "Carson City",
     "coordinates": [
       39.08486533333333,
-      245.33728691666667
+      -114.66271308333333
     ],
     "acceptedNames": [
       "Nevada"
@@ -513,7 +513,7 @@
     "capital": "Columbia",
     "coordinates": [
       33.758223125,
-      279.43420491666666
+      -80.56579508333334
     ],
     "acceptedNames": [
       "South Carolina"
@@ -539,7 +539,7 @@
     "capital": "Nashville",
     "coordinates": [
       35.554504666666666,
-      274.37868641666665
+      -85.62131358333333
     ],
     "acceptedNames": [
       "Tennessee"
@@ -552,7 +552,7 @@
     "capital": "Austin",
     "coordinates": [
       31.17188,
-      261.554956125
+      -98.445043875
     ],
     "acceptedNames": [
       "Texas"
@@ -578,7 +578,7 @@
     "capital": "Montpelier",
     "coordinates": [
       44.966138208333334,
-      287.52787450000005
+      -72.4721255
     ],
     "acceptedNames": [
       "Vermont"
@@ -591,7 +591,7 @@
     "capital": "Richmond",
     "coordinates": [
       37.146245625,
-      281.216509125
+      -78.783490875
     ],
     "acceptedNames": [
       "Virginia"
@@ -604,7 +604,7 @@
     "capital": "Olympia",
     "coordinates": [
       47.921826875,
-      240.66624174999998
+      -119.33375825
     ],
     "acceptedNames": [
       "Washington"
@@ -617,7 +617,7 @@
     "capital": "Charleston",
     "coordinates": [
       38.280395,
-      278.8949861875
+      -81.1050138125
     ],
     "acceptedNames": [
       "West Virginia"
@@ -630,7 +630,7 @@
     "capital": "Madison",
     "coordinates": [
       44.10017766666667,
-      270.839519
+      -89.160481
     ],
     "acceptedNames": [
       "Wisconsin"
@@ -643,7 +643,7 @@
     "capital": "Cheyenne",
     "coordinates": [
       42.9999675,
-      252.4477355
+      -107.5522645
     ],
     "acceptedNames": [
       "Wyoming"

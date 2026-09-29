@@ -80,16 +80,41 @@ const entries = features
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
-/** Continent-style views, computed from each group's members. */
+/**
+ * Continent-style views, computed from each group's members.
+ *
+ * Longitude cannot be min-maxed the way latitude can, because it wraps. Alaska
+ * is stored past 180 so that it stays in one piece, and taking a plain minimum
+ * against Maine's -67 answers "the view is 424° wide", which is every longitude
+ * there is and then some.
+ *
+ * So the smallest arc that holds every member is found instead: each member's
+ * own western edge is tried as the place the arc starts, every member is read in
+ * that frame, and the frame giving the narrowest result wins. For the fifty
+ * states that is the arc running from the Aleutians east to Maine — 121°, with
+ * the Pacific's empty 239° left out, which is the whole point.
+ */
 function viewOf(members) {
-  let lonMin = Infinity, latMin = Infinity, lonMax = -Infinity, latMax = -Infinity;
-  for (const entry of members) {
-    // Largest ring only: Alaska's Aleutians and Hawaii's outer atolls would
-    // otherwise stretch a region across the Pacific.
-    const [a, b, c, d] = boundsOf([shapes[entry.code].rings[0]]);
-    lonMin = Math.min(lonMin, a); latMin = Math.min(latMin, b);
-    lonMax = Math.max(lonMax, c); latMax = Math.max(latMax, d);
+  // Largest ring only: Alaska's Aleutians and Hawaii's outer atolls would
+  // otherwise stretch a region across the Pacific.
+  const boxes = members.map((entry) => boundsOf([shapes[entry.code].rings[0]]));
+
+  const latMin = Math.min(...boxes.map((b) => b[1]));
+  const latMax = Math.max(...boxes.map((b) => b[3]));
+
+  let best = null;
+  for (const { 0: start } of boxes) {
+    let lonMin = Infinity, lonMax = -Infinity;
+    for (const [west, , east] of boxes) {
+      // Read this box in a turn that begins at `start`, keeping its own width.
+      const from = start + (((west - start) % 360) + 360) % 360;
+      lonMin = Math.min(lonMin, from);
+      lonMax = Math.max(lonMax, from + (east - west));
+    }
+    if (!best || lonMax - lonMin < best[1] - best[0]) best = [lonMin, lonMax];
   }
+
+  const [lonMin, lonMax] = best;
   const padLon = (lonMax - lonMin) * 0.05;
   const padLat = (latMax - latMin) * 0.05;
   return [lonMin - padLon, latMin - padLat, lonMax + padLon, latMax + padLat]
@@ -163,6 +188,12 @@ await writeFile(
   new URL('map.json', dir),
   `${JSON.stringify({ projection: 'equirectangular', land, shapes, views })}\n`,
 );
+
+for (const [name, b] of Object.entries(views)) {
+  if (b[2] - b[0] > 200) {
+    throw new Error(`View "${name}" spans ${Math.round(b[2] - b[0])}° of longitude, which means it wrapped.`);
+  }
+}
 
 console.log(`\n${entries.length} states, ${downloaded} flags downloaded, ${kept} already present`);
 const points = Object.values(shapes).reduce(

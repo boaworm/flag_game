@@ -177,11 +177,33 @@ export function prepareRings(
     return lonMax - lonMin;
   };
 
-  // Shift only when it actually makes the shape narrower. A shape being wide is
-  // not evidence that it straddles anything: the Europe-Asia-Africa landmass
-  // spans 198° in one piece, and shifting its western half tears it open at the
-  // Greenwich meridian — which draws the same line across the map that this is
-  // meant to prevent.
+  /**
+   * Only a shape with land near both edges of the map can straddle the
+   * antimeridian at all, so that is asked first.
+   *
+   * Asking it first is not an optimisation, it is the correctness of the test
+   * below. For a shape lying wholly in the western hemisphere the two spans are
+   * equal by construction — every longitude moves by the same 360 — but adding
+   * 360 to a number near -73 costs precision, so the shifted span came out a
+   * hair narrower and the shift fired. That silently threw Maine, Texas and 20
+   * other states, along with Brazil, Canada and Iceland, a full turn east, and
+   * with them the views computed from their bounds.
+   */
+  let nearEast = false;
+  let nearWest = false;
+  for (const ring of flat) {
+    for (let i = 0; i < ring.length; i += 2) {
+      if (ring[i] > 100) nearEast = true;
+      else if (ring[i] < -100) nearWest = true;
+    }
+  }
+  if (!nearEast || !nearWest) return flat;
+
+  // Even then, shift only when it actually makes the shape narrower. A shape
+  // being wide is not evidence that it straddles anything: the Europe-Asia-Africa
+  // landmass spans 198° in one piece, and shifting its western half tears it open
+  // at the Greenwich meridian — which draws the same line across the map that
+  // this is meant to prevent.
   if (spanOf(true) >= spanOf(false)) return flat;
 
   return flat.map((ring) =>
