@@ -46,9 +46,48 @@ Dev-only tooling (a formatter, a test runner, a linter) is acceptable as a
 - Countries are keyed by **ISO 3166-1 alpha-2** code, lowercase (`se`, `fr`, `br`).
   Flag files match: `assets/flags/se.svg`.
 - Keep the data set machine-checkable: every country needs `name`, `iso2`,
-  `region`, `capital`, `borders` (array of iso2), and `coordinates` (`[lat, lon]`).
+  `region`, `capital`, `coordinates` (`[lat, lon]`), and `acceptedNames` (the strings
+  a typed answer may match).
 - When a country's status is disputed or its data source is ambiguous, record the
   reason in the entry rather than quietly picking a side.
+
+## Mode mechanics
+
+The four modes are specified in `README.md`. These are the decisions that follow
+from them; keep them consistent rather than solving each one per-mode.
+
+**Configurable choice count.** Modes 1 and 2 present N options, set in settings, not
+hardcoded per mode. Distractors should be plausible — same region, or a
+similar-looking flag — because picking randomly from 195 countries makes an easy
+question at any N.
+
+**Typed answers (mode 1).** Accept more than one exact string. Compare on a
+normalized form: lowercase, diacritics stripped, punctuation and leading "the"
+removed. Keep a per-country list of accepted names in the data (official name,
+common name, and widely-used alternatives) rather than matching logic that special-
+cases countries in code. Allow a small edit distance so a near-miss spelling counts
+— kids will type "Portugual" — and show the correct spelling when it does.
+
+**Map projection.** Use equirectangular (plate carrée), where x maps linearly to
+longitude and y to latitude. Nicer-looking projections exist, but mode 4 has to turn
+a click position back into a lat/lon to measure the miss, and this is the projection
+where that inverse is trivial and exact. Keep the projection math in one module so
+it is the only place that knows about it.
+
+**Distance feedback (mode 4).** Great-circle distance via the haversine formula,
+reported in kilometres. Measure to the country's shape, not its centroid — clicking
+western Russia should not be scored as a miss because the centroid is in Siberia. A
+click inside the country's shape is correct; otherwise measure to the nearest point
+on its border. Round to something a kid can read: tens of km when close, hundreds
+when far.
+
+**Country shapes.** Modes 3 and 4 both need per-country geometry, in the same
+projection as the base map. The base map is continent outlines only — it must not
+show internal borders, or modes 3 and 4 give the answer away.
+
+**Placement tolerance (mode 3).** Correct placement is a tolerance in real distance,
+not in pixels, so the game does not get harder on a small screen. Tolerance scales
+with the country's own size — Luxembourg cannot demand the same precision as Brazil.
 
 ## Working with kids' UX in mind
 

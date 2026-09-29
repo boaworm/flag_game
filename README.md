@@ -9,18 +9,28 @@ No server, no build step, no dependencies. Open `index.html` in a browser and pl
 
 Most flag quizzes test recall of one thing: the flag. Kids learn geography better
 when the flag, the country's name, and *where it actually is* are connected in the
-same activity. This game pairs all three, and treats the flag itself as a shape
-puzzle — stripes, crosses, stars, and colors — rather than a picture to memorize.
+same activity. This game pairs all three, and asks about location with a map the
+player has to reason about — continent outlines only, no borders to read the answer
+off of — rather than a multiple-choice list.
 
 ## Game modes
 
-| Mode | What it teaches |
-| --- | --- |
-| **Which flag?** | Country name → pick the flag from several options |
-| **Which country?** | Flag → pick the country name |
-| **Find it on the map** | Country name or flag → click the country on a world map |
-| **Build the flag** | Assemble a flag from bands, crosses, and stars — the geometry of flags |
-| **Neighbours** | Given a country, pick the countries that border it |
+**1. Guess the flag**
+A random flag is shown. The player either types the country's name or picks it from
+a set of choices. The number of choices is configurable.
+
+**2. Guess the country's flag**
+The reverse: a country name is shown, and the player picks its flag from a set of
+flags. The number of choices is configurable.
+
+**3. Place the country**
+A world map showing only continent outlines — no borders. The player is given a
+country's shape and drags it to where it belongs.
+
+**4. Point to the country**
+The same continent-only map. The player is asked for a country and clicks where they
+think it is. A correct click fills in that country's shape on the map. A miss tells
+them how far off they were, in kilometres.
 
 Modes are scoped by region (Europe, Africa, Asia, Americas, Oceania, or the whole
 world) and by difficulty, so a 6-year-old and a 12-year-old can both play.
@@ -54,7 +64,7 @@ src/
   lib/              Small helpers: shuffle, scoring, storage
 assets/
   flags/            One SVG per country, named by ISO 3166-1 alpha-2 code
-  map/              World map SVG with per-country paths
+  map/              Continent-outline base map plus per-country shape paths
 data/
   countries.json    Name, ISO code, region, capital, borders, coordinates
 styles/             CSS, one file per area
@@ -72,12 +82,13 @@ styles/             CSS, one file per area
 
 ## Roadmap
 
-- [ ] App shell, screen routing, and the country data set
-- [ ] "Which flag?" and "Which country?" modes
-- [ ] Map mode with a clickable world map
+- [ ] App shell, screen routing, settings, and the country data set
+- [ ] Mode 1 — Guess the flag (choices, then typed answers)
+- [ ] Mode 2 — Guess the country's flag
+- [ ] Continent-outline map and per-country shape geometry
+- [ ] Mode 4 — Point to the country, with distance feedback
+- [ ] Mode 3 — Place the country shape
 - [ ] Per-player progress saved in `localStorage`
-- [ ] "Build the flag" mode
-- [ ] "Neighbours" mode
 - [ ] Spaced repetition so missed countries come back sooner
 - [ ] Translations of the interface
 
