@@ -297,7 +297,13 @@ export function createGlobeMap({ map, view, onPick, label }) {
   let overlay = [];
   let settledOverlay = [];
 
-  /** Where the player last pointed, and whether they are aiming by keyboard. */
+  /**
+   * Where the player last pointed, as { coordinate, style }.
+   *
+   * The style is what the guess turned out to be: neutral until it is judged,
+   * then the colour of being right or wrong, so the ring the player drew is also
+   * the answer to whether they got it.
+   */
   let aim = null;
   let aimingByKey = false;
 
@@ -434,8 +440,8 @@ export function createGlobeMap({ map, view, onPick, label }) {
     // Where the player did answer. This is the same circle the guess is judged
     // against, so what counts as a hit is exactly what it looks like.
     if (aim) {
-      const at = globe.project(aim);
-      if (at) drawRing(ctx, at, palette.aim, size);
+      const at = globe.project(aim.coordinate);
+      if (at) drawRing(ctx, at, palette[aim.style], size);
     }
 
     for (const item of [...settledOverlay, ...overlay]) {
@@ -456,14 +462,25 @@ export function createGlobeMap({ map, view, onPick, label }) {
         const to = globe.project(item.coordinate);
         if (!from || !to) continue;
 
+        // The line carries the answer as well as the distance: it leaves the
+        // guess in the colour of being wrong and arrives in the colour of being
+        // right, so which end is which needs no explaining.
+        const along = ctx.createLinearGradient(from[0], from[1], to[0], to[1]);
+        along.addColorStop(0, palette.answer);
+        along.addColorStop(1, palette.correct);
+
         ctx.beginPath();
         ctx.moveTo(from[0], from[1]);
         ctx.lineTo(to[0], to[1]);
-        ctx.strokeStyle = palette.miss;
+        ctx.strokeStyle = along;
         ctx.lineWidth = Math.max(1.5, size / 220);
         ctx.setLineDash([size / 60, size / 60]);
         ctx.stroke();
         ctx.setLineDash([]);
+
+        // And a ring where the place actually was, the same size as the one the
+        // guess is judged by: a click anywhere inside it would have counted.
+        drawRing(ctx, to, palette.correct, size);
       }
     }
 
@@ -500,12 +517,12 @@ export function createGlobeMap({ map, view, onPick, label }) {
    * fit, the answer wins, because that is the part worth seeing.
    */
   function bringIntoView(coordinate) {
-    if (wellInSight(coordinate) && (!aim || wellInSight(aim))) return;
+    if (wellInSight(coordinate) && (!aim || wellInSight(aim.coordinate))) return;
 
     let target = coordinate;
     if (aim) {
       const a = toVector(coordinate);
-      const b = toVector(aim);
+      const b = toVector(aim.coordinate);
       const mid = [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
       const length = Math.hypot(...mid);
       // Near-antipodal picks average to nothing; there is no midpoint to use.
@@ -666,7 +683,7 @@ export function createGlobeMap({ map, view, onPick, label }) {
 
   /** Answer where the player pointed, and leave the ring there. */
   function answer(coordinate, point) {
-    aim = coordinate;
+    aim = { coordinate, style: 'aim' };
     draw();
     onPick({ point, coordinate });
   }
@@ -845,6 +862,8 @@ export function createGlobeMap({ map, view, onPick, label }) {
 
     /** Show a place's shape, filled, turning the globe if it is out of sight. */
     reveal(shape, { correct }) {
+      // The ring the player drew now says how they did.
+      if (aim) aim.style = correct ? 'correct' : 'answer';
       marks.set(shape, { style: correct ? 'correct' : 'answer', settled: false });
       // A place smaller than a few pixels needs a marker, or revealing Malta
       // shows nothing at all.

@@ -206,6 +206,17 @@ screen while the ground under it shrinks, from roughly 290 km across at world
 scale to 36 km at eight times in. A player who wants to pick out Luxembourg
 zooms until they can.
 
+**The ring answers the question too.** It is drawn where the player clicked and
+then takes the colour of how they did: green for a hit, red for a miss. A miss
+also draws a green ring around where the place actually was — the same size, so
+it shows the click that would have counted — and the line between the two runs
+from red at the guess to green at the answer, which says which end is which
+without a word. None of this is colour alone: the sentence below the map names
+the place and the distance, and carries a tick or an arrow.
+
+The colours come from the theme (`--correct`, `--wrong`), so the dark theme gets
+its own pair rather than the same ink on a dark map.
+
 This replaces an earlier rule where only places smaller than the ring got any
 slack, so Brazil got none. Giving every place the same ring is both simpler to
 implement and simpler to understand, and for anything bigger than the ring it
