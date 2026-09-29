@@ -123,6 +123,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -135,6 +136,15 @@
   object-fit: contain;
   border: 1px solid var(--border);
   border-radius: 4px;
+}
+
+.review-name {
+  font-weight: 600;
+}
+
+.review-capital {
+  color: var(--text-soft);
+  font-size: 0.9rem;
 }
 
 .perfect {

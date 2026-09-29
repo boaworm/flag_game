@@ -4,7 +4,8 @@
  */
 
 import guessTheFlag from './guess-the-flag.js';
+import pointToCountry from './point-to-country.js';
 
-export const modes = [guessTheFlag];
+export const modes = [guessTheFlag, pointToCountry];
 
 export const modeById = (id) => modes.find((m) => m.id === id) ?? null;

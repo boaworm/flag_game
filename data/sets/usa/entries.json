@@ -1,0 +1,652 @@
+[
+  {
+    "code": "al",
+    "name": "Alabama",
+    "group": "South",
+    "capital": "Montgomery",
+    "coordinates": [
+      33.31469375,
+      -87.21534375
+    ],
+    "acceptedNames": [
+      "Alabama"
+    ]
+  },
+  {
+    "code": "ak",
+    "name": "Alaska",
+    "group": "West",
+    "capital": "Juneau",
+    "coordinates": [
+      65.1687875,
+      -141.9105125
+    ],
+    "acceptedNames": [
+      "Alaska"
+    ]
+  },
+  {
+    "code": "az",
+    "name": "Arizona",
+    "group": "West",
+    "capital": "Phoenix",
+    "coordinates": [
+      34.28339791666667,
+      -110.490475
+    ],
+    "acceptedNames": [
+      "Arizona"
+    ]
+  },
+  {
+    "code": "ar",
+    "name": "Arkansas",
+    "group": "South",
+    "capital": "Little Rock",
+    "coordinates": [
+      36.427114583333335,
+      -92.4522375
+    ],
+    "acceptedNames": [
+      "Arkansas"
+    ]
+  },
+  {
+    "code": "ca",
+    "name": "California",
+    "group": "West",
+    "capital": "Sacramento",
+    "coordinates": [
+      40.61877916666666,
+      -121.62229791666667
+    ],
+    "acceptedNames": [
+      "California"
+    ]
+  },
+  {
+    "code": "co",
+    "name": "Colorado",
+    "group": "West",
+    "capital": "Denver",
+    "coordinates": [
+      38.9998,
+      -105.5431
+    ],
+    "acceptedNames": [
+      "Colorado"
+    ]
+  },
+  {
+    "code": "ct",
+    "name": "Connecticut",
+    "group": "Northeast",
+    "capital": "Hartford",
+    "coordinates": [
+      41.6597375,
+      -73.241175
+    ],
+    "acceptedNames": [
+      "Connecticut"
+    ]
+  },
+  {
+    "code": "de",
+    "name": "Delaware",
+    "group": "South",
+    "capital": "Dover",
+    "coordinates": [
+      38.799724999999995,
+      -75.7110375
+    ],
+    "acceptedNames": [
+      "Delaware"
+    ]
+  },
+  {
+    "code": "fl",
+    "name": "Florida",
+    "group": "South",
+    "capital": "Tallahassee",
+    "coordinates": [
+      27.6951875,
+      -81.45606875
+    ],
+    "acceptedNames": [
+      "Florida"
+    ]
+  },
+  {
+    "code": "ga",
+    "name": "Georgia",
+    "group": "South",
+    "capital": "Atlanta",
+    "coordinates": [
+      32.00941666666667,
+      -83.121325
+    ],
+    "acceptedNames": [
+      "Georgia"
+    ]
+  },
+  {
+    "code": "hi",
+    "name": "Hawaii",
+    "group": "West",
+    "capital": "Honolulu",
+    "coordinates": [
+      19.641304166666668,
+      -155.54099166666668
+    ],
+    "acceptedNames": [
+      "Hawaii"
+    ]
+  },
+  {
+    "code": "id",
+    "name": "Idaho",
+    "group": "West",
+    "capital": "Boise",
+    "coordinates": [
+      42.4365625,
+      -114.00435833333334
+    ],
+    "acceptedNames": [
+      "Idaho"
+    ]
+  },
+  {
+    "code": "il",
+    "name": "Illinois",
+    "group": "Midwest",
+    "capital": "Springfield",
+    "coordinates": [
+      40.437225,
+      -88.98759375
+    ],
+    "acceptedNames": [
+      "Illinois"
+    ]
+  },
+  {
+    "code": "in",
+    "name": "Indiana",
+    "group": "Midwest",
+    "capital": "Indianapolis",
+    "coordinates": [
+      40.43376666666667,
+      -86.0319625
+    ],
+    "acceptedNames": [
+      "Indiana"
+    ]
+  },
+  {
+    "code": "ia",
+    "name": "Iowa",
+    "group": "Midwest",
+    "capital": "Des Moines",
+    "coordinates": [
+      42.915718749999996,
+      -93.79525625
+    ],
+    "acceptedNames": [
+      "Iowa"
+    ]
+  },
+  {
+    "code": "ks",
+    "name": "Kansas",
+    "group": "Midwest",
+    "capital": "Topeka",
+    "coordinates": [
+      37.8748875,
+      -98.33189999999999
+    ],
+    "acceptedNames": [
+      "Kansas"
+    ]
+  },
+  {
+    "code": "ky",
+    "name": "Kentucky",
+    "group": "South",
+    "capital": "Frankfort",
+    "coordinates": [
+      37.656925,
+      -84.45163333333333
+    ],
+    "acceptedNames": [
+      "Kentucky"
+    ]
+  },
+  {
+    "code": "la",
+    "name": "Louisiana",
+    "group": "South",
+    "capital": "Baton Rouge",
+    "coordinates": [
+      32.588685416666664,
+      -92.68009583333333
+    ],
+    "acceptedNames": [
+      "Louisiana"
+    ]
+  },
+  {
+    "code": "me",
+    "name": "Maine",
+    "group": "Northeast",
+    "capital": "Augusta",
+    "coordinates": [
+      45.454079166666666,
+      -69.11672708333333
+    ],
+    "acceptedNames": [
+      "Maine"
+    ]
+  },
+  {
+    "code": "md",
+    "name": "Maryland",
+    "group": "South",
+    "capital": "Annapolis",
+    "coordinates": [
+      39.68449375,
+      -77.10089583333333
+    ],
+    "acceptedNames": [
+      "Maryland"
+    ]
+  },
+  {
+    "code": "ma",
+    "name": "Massachusetts",
+    "group": "Northeast",
+    "capital": "Boston",
+    "coordinates": [
+      42.68559375,
+      -72.31303333333334
+    ],
+    "acceptedNames": [
+      "Massachusetts"
+    ]
+  },
+  {
+    "code": "mi",
+    "name": "Michigan",
+    "group": "Midwest",
+    "capital": "Lansing",
+    "coordinates": [
+      43.899233333333335,
+      -84.5566375
+    ],
+    "acceptedNames": [
+      "Michigan"
+    ]
+  },
+  {
+    "code": "mn",
+    "name": "Minnesota",
+    "group": "Midwest",
+    "capital": "Saint Paul",
+    "coordinates": [
+      47.046195833333336,
+      -94.49142083333334
+    ],
+    "acceptedNames": [
+      "Minnesota"
+    ]
+  },
+  {
+    "code": "ms",
+    "name": "Mississippi",
+    "group": "South",
+    "capital": "Jackson",
+    "coordinates": [
+      33.4942875,
+      -88.980475
+    ],
+    "acceptedNames": [
+      "Mississippi"
+    ]
+  },
+  {
+    "code": "mo",
+    "name": "Missouri",
+    "group": "Midwest",
+    "capital": "Jefferson City",
+    "coordinates": [
+      37.723425,
+      -92.72280416666666
+    ],
+    "acceptedNames": [
+      "Missouri"
+    ]
+  },
+  {
+    "code": "mt",
+    "name": "Montana",
+    "group": "West",
+    "capital": "Helena",
+    "coordinates": [
+      48.89644166666667,
+      -109.79390000000001
+    ],
+    "acceptedNames": [
+      "Montana"
+    ]
+  },
+  {
+    "code": "ne",
+    "name": "Nebraska",
+    "group": "Midwest",
+    "capital": "Lincoln",
+    "coordinates": [
+      40.3751375,
+      -98.95746666666668
+    ],
+    "acceptedNames": [
+      "Nebraska"
+    ]
+  },
+  {
+    "code": "nv",
+    "name": "Nevada",
+    "group": "West",
+    "capital": "Carson City",
+    "coordinates": [
+      39.08489166666667,
+      -114.66270833333334
+    ],
+    "acceptedNames": [
+      "Nevada"
+    ]
+  },
+  {
+    "code": "nh",
+    "name": "New Hampshire",
+    "group": "Northeast",
+    "capital": "Concord",
+    "coordinates": [
+      44.111625,
+      -71.0548125
+    ],
+    "acceptedNames": [
+      "New Hampshire"
+    ]
+  },
+  {
+    "code": "nj",
+    "name": "New Jersey",
+    "group": "Northeast",
+    "capital": "Trenton",
+    "coordinates": [
+      41.00193958333333,
+      -74.4572
+    ],
+    "acceptedNames": [
+      "New Jersey"
+    ]
+  },
+  {
+    "code": "nm",
+    "name": "New Mexico",
+    "group": "West",
+    "capital": "Santa Fe",
+    "coordinates": [
+      34.990825,
+      -106.27576666666667
+    ],
+    "acceptedNames": [
+      "New Mexico"
+    ]
+  },
+  {
+    "code": "ny",
+    "name": "New York",
+    "group": "Northeast",
+    "capital": "Albany",
+    "coordinates": [
+      42.03114166666667,
+      -77.3195
+    ],
+    "acceptedNames": [
+      "New York"
+    ]
+  },
+  {
+    "code": "nc",
+    "name": "North Carolina",
+    "group": "South",
+    "capital": "Raleigh",
+    "coordinates": [
+      36.4953125,
+      -78.40955625000001
+    ],
+    "acceptedNames": [
+      "North Carolina"
+    ]
+  },
+  {
+    "code": "nd",
+    "name": "North Dakota",
+    "group": "Midwest",
+    "capital": "Bismarck",
+    "coordinates": [
+      47.46725,
+      -100.926225
+    ],
+    "acceptedNames": [
+      "North Dakota"
+    ]
+  },
+  {
+    "code": "oh",
+    "name": "Ohio",
+    "group": "Midwest",
+    "capital": "Columbus",
+    "coordinates": [
+      40.283018750000004,
+      -83.29941458333333
+    ],
+    "acceptedNames": [
+      "Ohio"
+    ]
+  },
+  {
+    "code": "ok",
+    "name": "Oklahoma",
+    "group": "South",
+    "capital": "Oklahoma City",
+    "coordinates": [
+      36.72043333333333,
+      -97.29299999999999
+    ],
+    "acceptedNames": [
+      "Oklahoma"
+    ]
+  },
+  {
+    "code": "or",
+    "name": "Oregon",
+    "group": "West",
+    "capital": "Salem",
+    "coordinates": [
+      42.88197916666667,
+      -120.51135
+    ],
+    "acceptedNames": [
+      "Oregon"
+    ]
+  },
+  {
+    "code": "pa",
+    "name": "Pennsylvania",
+    "group": "Northeast",
+    "capital": "Harrisburg",
+    "coordinates": [
+      40.542537499999995,
+      -78.09453333333333
+    ],
+    "acceptedNames": [
+      "Pennsylvania"
+    ]
+  },
+  {
+    "code": "ri",
+    "name": "Rhode Island",
+    "group": "Northeast",
+    "capital": "Providence",
+    "coordinates": [
+      41.733491666666666,
+      -71.797775
+    ],
+    "acceptedNames": [
+      "Rhode Island"
+    ]
+  },
+  {
+    "code": "sc",
+    "name": "South Carolina",
+    "group": "South",
+    "capital": "Columbia",
+    "coordinates": [
+      33.75823333333333,
+      -80.565825
+    ],
+    "acceptedNames": [
+      "South Carolina"
+    ]
+  },
+  {
+    "code": "sd",
+    "name": "South Dakota",
+    "group": "Midwest",
+    "capital": "Pierre",
+    "coordinates": [
+      45.22872916666667,
+      -100.41354791666667
+    ],
+    "acceptedNames": [
+      "South Dakota"
+    ]
+  },
+  {
+    "code": "tn",
+    "name": "Tennessee",
+    "group": "South",
+    "capital": "Nashville",
+    "coordinates": [
+      35.55453333333333,
+      -85.62132916666667
+    ],
+    "acceptedNames": [
+      "Tennessee"
+    ]
+  },
+  {
+    "code": "tx",
+    "name": "Texas",
+    "group": "South",
+    "capital": "Austin",
+    "coordinates": [
+      31.1719,
+      -98.445075
+    ],
+    "acceptedNames": [
+      "Texas"
+    ]
+  },
+  {
+    "code": "ut",
+    "name": "Utah",
+    "group": "West",
+    "capital": "Salt Lake City",
+    "coordinates": [
+      39.49995,
+      -113.7302375
+    ],
+    "acceptedNames": [
+      "Utah"
+    ]
+  },
+  {
+    "code": "vt",
+    "name": "Vermont",
+    "group": "Northeast",
+    "capital": "Montpelier",
+    "coordinates": [
+      44.96610833333333,
+      -72.47210000000001
+    ],
+    "acceptedNames": [
+      "Vermont"
+    ]
+  },
+  {
+    "code": "va",
+    "name": "Virginia",
+    "group": "South",
+    "capital": "Richmond",
+    "coordinates": [
+      37.146258333333336,
+      -78.7835
+    ],
+    "acceptedNames": [
+      "Virginia"
+    ]
+  },
+  {
+    "code": "wa",
+    "name": "Washington",
+    "group": "West",
+    "capital": "Olympia",
+    "coordinates": [
+      47.9218125,
+      -119.3337375
+    ],
+    "acceptedNames": [
+      "Washington"
+    ]
+  },
+  {
+    "code": "wv",
+    "name": "West Virginia",
+    "group": "South",
+    "capital": "Charleston",
+    "coordinates": [
+      38.280425,
+      -81.10503125
+    ],
+    "acceptedNames": [
+      "West Virginia"
+    ]
+  },
+  {
+    "code": "wi",
+    "name": "Wisconsin",
+    "group": "Midwest",
+    "capital": "Madison",
+    "coordinates": [
+      44.10016666666667,
+      -89.16045625000001
+    ],
+    "acceptedNames": [
+      "Wisconsin"
+    ]
+  },
+  {
+    "code": "wy",
+    "name": "Wyoming",
+    "group": "West",
+    "capital": "Cheyenne",
+    "coordinates": [
+      42.99995,
+      -107.55225
+    ],
+    "acceptedNames": [
+      "Wyoming"
+    ]
+  }
+]

@@ -8,16 +8,17 @@ import { pick, sample, shuffled } from './random.js';
 /**
  * Wrong options that are actually tempting.
  *
- * Drawing uniformly from 193 countries makes an easy question at any choice count,
- * because the odds of a plausible neighbour appearing are low. Prefer the same
- * subregion, then the same region, and only then fall back to anywhere.
+ * Drawing uniformly from 193 countries makes an easy question at any choice
+ * count, because the odds of a plausible neighbour turning up are low. So prefer
+ * the narrowest grouping a set offers — the same subregion where there is one,
+ * then the same continent or region — and only then fall back to anywhere.
  */
 export function distractors(answer, pool, count) {
-  const others = pool.filter((c) => c.iso2 !== answer.iso2);
+  const others = pool.filter((entry) => entry.code !== answer.code);
 
   const tiers = [
-    others.filter((c) => c.subregion && c.subregion === answer.subregion),
-    others.filter((c) => c.region === answer.region),
+    others.filter((entry) => entry.subregion && entry.subregion === answer.subregion),
+    others.filter((entry) => entry.group && entry.group === answer.group),
     others,
   ];
 
@@ -27,8 +28,8 @@ export function distractors(answer, pool, count) {
   for (const tier of tiers) {
     for (const candidate of shuffled(tier)) {
       if (chosen.length >= count) return chosen;
-      if (taken.has(candidate.iso2)) continue;
-      taken.add(candidate.iso2);
+      if (taken.has(candidate.code)) continue;
+      taken.add(candidate.code);
       chosen.push(candidate);
     }
   }

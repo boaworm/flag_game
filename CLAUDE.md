@@ -14,7 +14,9 @@ These are the point of the project. Do not relax them without being asked.
 - **No build step.** No bundler, no transpiler, no `npm run build`. The files in the
   repo are the files the browser loads.
 - **No runtime dependencies.** No npm packages, no CDN `<script>` tags, no external
-  fonts or APIs. Everything ships in the repo so the game works offline.
+  fonts or APIs. Everything ships in the repo so the game works offline. The
+  builders in `tools/` do fetch from the network — that is fine, because their
+  output is committed and the game only ever loads that.
 - **Plain ES modules.** Use `import`/`export` with native module scripts
   (`<script type="module">`). Modern browsers only; no transpilation, no polyfills.
 - **Static hosting only.** Nothing may require a server beyond serving files, so
@@ -39,17 +41,37 @@ Dev-only tooling (a formatter, a test runner, a linter) is acceptable as a
 - No framework. If a piece of state handling feels like it wants React, write a
   small explicit function instead.
 
+## Sets
+
+The game is not about countries; it is about **sets**. A set is a group of places
+sharing a map, a flag each, and a way of being divided up: countries of the world
+grouped by continent, or US states grouped by census region. Modes are written
+against this shape and never against countries, which is what let the United
+States be added without touching a mode.
+
+A set is one entry in `src/data/sets.js` plus a builder in `tools/`. Anything
+user-facing that would otherwise say "country" comes from the set: `set.noun`,
+`set.plural`, `set.groupLabel`.
+
 ## Data conventions
 
-- `data/countries.json` is the single source of truth for country facts. Code must
-  not hardcode country names, codes, or lists anywhere else.
-- Countries are keyed by **ISO 3166-1 alpha-2** code, lowercase (`se`, `fr`, `br`).
-  Flag files match: `assets/flags/se.svg`.
-- Keep the data set machine-checkable: every country needs `name`, `iso2`,
-  `region`, `capital`, `coordinates` (`[lat, lon]`), and `acceptedNames` (the strings
-  a typed answer may match).
-- When a country's status is disputed or its data source is ambiguous, record the
-  reason in the entry rather than quietly picking a side.
+- `data/sets/<id>/entries.json` and `map.json` are the single source of truth.
+  Code must not hardcode a place name, code, or list anywhere.
+- **Both files are generated.** Fix data by changing the builder in `tools/` and
+  re-running it, never by editing the JSON.
+- Places are keyed by `code` — lowercase ISO 3166-1 alpha-2 for countries, postal
+  code for states. Flag files match: `assets/flags/<set>/<code>.svg`.
+- Every entry needs `code`, `name`, `group`, `coordinates` and `acceptedNames`
+  (the strings a typed answer may match). `capital` where the set has them.
+- Every shape needs `rings`, `bounds` and `point`. `point` is a coordinate
+  guaranteed to be *inside* the shape, and is what the game points at — a
+  dataset's own coordinates are often a bounding-box centre, which for an
+  archipelago is open water.
+- A builder should assert what it expects (193 UN members, 50 states, every place
+  has a shape) so that a changed upstream source fails loudly instead of quietly
+  producing a different game.
+- When a place's status is disputed or its source is ambiguous, record the reason
+  in the builder rather than quietly picking a side.
 
 ## Mode mechanics
 
@@ -68,11 +90,26 @@ common name, and widely-used alternatives) rather than matching logic that speci
 cases countries in code. Allow a small edit distance so a near-miss spelling counts
 — kids will type "Portugual" — and show the correct spelling when it does.
 
-**Map projection.** Use equirectangular (plate carrée), where x maps linearly to
-longitude and y to latitude. Nicer-looking projections exist, but mode 4 has to turn
-a click position back into a lat/lon to measure the miss, and this is the projection
-where that inverse is trivial and exact. Keep the projection math in one module so
-it is the only place that knows about it.
+**Geometry is stored unprojected.** Shapes live in longitude and latitude, and
+`lib/geo.js` builds a projection per view. Projecting at build time would bake in
+one canvas size, and the same shapes have to be drawn at world scale and zoomed
+into a single continent.
+
+**Map projection.** Equidistant cylindrical: longitude and latitude both map
+linearly, with longitude scaled by the cosine of the view's middle latitude so a
+region is not stretched sideways. Nicer projections exist, but mode 4 has to turn
+a click back into a coordinate to measure the miss, and linear-in-both-axes is
+what makes that inverse exact. `lib/geo.js` is the only module that knows about
+pixels.
+
+**The antimeridian will bite you.** It has twice. A ring holding points at both
++179 and -179 draws a straight line across the entire map, so the builders detect
+a genuine crossing — a jump between *consecutive* points, never merely a wide
+shape, since Eurasia spans 200° without crossing anything — and shift such a ring
+past 180. The renderer then places each longitude at whichever of lon, lon±360 is
+nearest the view's centre. "Nearest" is load-bearing: normalising into a turn
+starting at the view's western edge flings an island just west of that edge a full
+turn east, and the line back to it crosses the whole map.
 
 **Distance feedback (mode 4).** Great-circle distance via the haversine formula,
 reported in kilometres. Measure to the country's shape, not its centroid — clicking
@@ -85,9 +122,18 @@ when far.
 projection as the base map. The base map is continent outlines only — it must not
 show internal borders, or modes 3 and 4 give the answer away.
 
-**Placement tolerance (mode 3).** Correct placement is a tolerance in real distance,
-not in pixels, so the game does not get harder on a small screen. Tolerance scales
-with the country's own size — Luxembourg cannot demand the same precision as Brazil.
+**Hit tolerance.** Every place is given a minimum target size on screen, about
+twelve pixels of radius, and only places already smaller than that get any slack:
+Brazil and Russia get none.
+
+This is measured against what is actually rendered rather than set as a fixed
+distance, and that is deliberate. Malta is 27 km across; on a world map drawn 900
+pixels wide, one pixel is about 45 km, so Malta is a third of a pixel — not hard
+to hit but impossible. A fixed kilometre tolerance either leaves the microstates
+unplayable or makes Denmark count as Sweden. Scaling with the rendering also means
+a smaller screen is not a harder game, which was the point of the rule this
+replaces. Choosing a continent zooms the map in and the slack shrinks towards
+nothing on its own.
 
 ## Working with kids' UX in mind
 
@@ -104,8 +150,9 @@ This is the part that is easy to get wrong. When adding or changing gameplay:
 ## Testing and verification
 
 - There is no test runner yet. When adding one, keep it dev-only (see above).
-- `data/countries.json` is generated. Fix the data by changing
-  `tools/build-countries.mjs` and re-running it, never by editing the JSON.
+- Data is generated; see Data conventions above.
+- Verify map changes by looking at a rendered map, not only at numbers. Both
+  antimeridian bugs were invisible in the data and obvious on screen.
 - Verify changes by actually loading the game: `python3 -m http.server 8000` and
   open `http://localhost:8000`. Check the browser console is clean.
 - Data changes should be validated — a missing flag file or a border pointing at an

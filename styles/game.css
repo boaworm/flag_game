@@ -122,3 +122,112 @@
   font-weight: 600;
   min-width: 12rem;
 }
+
+/* The map modes */
+
+.map-question .prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.chip-flag {
+  width: 48px;
+  height: 36px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.map-frame {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem;
+  line-height: 0;
+}
+
+.world {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius) - 6px);
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+
+.world.is-locked {
+  cursor: default;
+}
+
+.ocean {
+  fill: var(--ocean);
+}
+
+.land {
+  fill: var(--land);
+  stroke: var(--land-edge);
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+/* The revealed country. Shape and position carry the answer; the fill only
+   distinguishes a hit from a miss, and never alone — the sentence below says
+   which it was. */
+.country {
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.country.is-correct {
+  fill: var(--correct);
+  stroke: var(--correct);
+}
+
+.country.is-answer {
+  fill: var(--wrong);
+  stroke: var(--wrong);
+}
+
+.pin {
+  fill: none;
+  stroke-width: 5;
+}
+
+.pin.is-correct {
+  stroke: var(--correct);
+}
+
+.pin.is-answer {
+  stroke: var(--wrong);
+}
+
+.miss-line {
+  stroke: var(--wrong);
+  stroke-width: 3;
+  stroke-dasharray: 10 8;
+  opacity: 0.85;
+}
+
+.miss-dot {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 4;
+}
+
+.crosshair-ring,
+.crosshair-arm {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 3;
+  opacity: 0.75;
+}
+
+.world:not(:focus-visible) .crosshair-ring,
+.world:not(:focus-visible) .crosshair-arm {
+  opacity: 0.35;
+}

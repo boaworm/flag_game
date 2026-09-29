@@ -1,22 +1,24 @@
 /**
- * App shell: loads the data, shows the menu, starts a mode, shows the summary.
+ * App shell: picks a set, shows the menu, starts a mode, shows the summary.
  *
  * Screens are plain functions that render into #app. There is no router and no
  * framework — a mode is started, and when it finishes it hands back a result.
  */
 
-import { loadCountries, inRegion } from './data/countries.js';
-import { modes } from './modes/index.js';
 import {
-  CHOICE_COUNTS,
-  REGIONS,
-  getSettings,
-  updateSettings,
-} from './settings.js';
+  SETS,
+  flagUrl,
+  groupsOf,
+  inGroup,
+  loadEntries,
+  loadMap,
+  setById,
+} from './data/sets.js';
+import { modes } from './modes/index.js';
+import { CHOICE_COUNTS, getSettings, updateSettings } from './settings.js';
 import { el, render } from './ui/dom.js';
 
 const app = document.querySelector('#app');
-let countries = [];
 let active = null;
 
 /** Swap screens, tearing down a running mode first. */
@@ -26,9 +28,16 @@ function show(children) {
   render(app, children);
 }
 
-function menu() {
+/** The current set, its places, and the group in play. */
+async function context() {
   const settings = getSettings();
-  const playable = inRegion(countries, settings.region);
+  const set = setById(settings.set);
+  const entries = await loadEntries(set);
+  return { settings, set, entries, pool: inGroup(entries, settings.group) };
+}
+
+async function menu() {
+  const { settings, set, entries, pool } = await context();
 
   show([
     el('header.masthead', [
@@ -40,23 +49,20 @@ function menu() {
       'ul.modes',
       modes.map((mode) =>
         el('li', [
-          el(
-            'button.mode',
-            { type: 'button', onclick: () => play(mode) },
-            [el('span.mode-title', mode.title), el('span.mode-desc', mode.description)],
-          ),
+          el('button.mode', { type: 'button', onclick: () => play(mode) }, [
+            el('span.mode-title', mode.title),
+            el('span.mode-desc', mode.describe(set)),
+          ]),
         ]),
       ),
     ),
 
-    settingsPanel(),
-    el('p.pool-note', `${playable.length} countries in play.`),
+    settingsPanel(settings, set, entries),
+    el('p.pool-note', `${pool.length} ${set.plural} in play.`),
   ]);
 }
 
-function settingsPanel() {
-  const settings = getSettings();
-
+function settingsPanel(settings, set, entries) {
   /** A labelled row of buttons, one of which is on. */
   const chooser = (label, values, selected, onPick, format = String) =>
     el('div.setting', [
@@ -82,9 +88,19 @@ function settingsPanel() {
 
   return el('section.settings', [
     el('h2', 'Settings'),
-    chooser('Part of the world', REGIONS, settings.region, (region) =>
-      updateSettings({ region }),
+
+    chooser(
+      'What to learn',
+      SETS.map((s) => s.id),
+      settings.set,
+      (id) => updateSettings({ set: id }),
+      (id) => setById(id).title,
     ),
+
+    chooser(set.groupLabel, groupsOf(entries), settings.group, (group) =>
+      updateSettings({ group }),
+    ),
+
     chooser(
       'How to answer',
       ['choices', 'typed'],
@@ -92,31 +108,56 @@ function settingsPanel() {
       (answerStyle) => updateSettings({ answerStyle }),
       (style) => (style === 'typed' ? 'Type the name' : 'Pick from a list'),
     ),
+
     settings.answerStyle === 'choices'
       ? chooser('Number of choices', CHOICE_COUNTS, settings.choiceCount, (choiceCount) =>
           updateSettings({ choiceCount }),
         )
       : null,
+
     chooser('Questions per round', [5, 10, 20], settings.questionsPerRound, (n) =>
       updateSettings({ questionsPerRound: n }),
     ),
   ]);
 }
 
-function play(mode) {
-  const settings = getSettings();
-  const pool = inRegion(countries, settings.region);
+async function play(mode) {
+  const { settings, set, pool } = await context();
 
-  show(el('main.game'));
+  show(el('main.game', el('p.loading', 'Getting things ready…')));
+  const root = app.querySelector('.game');
+
+  // Only the map modes load the map, and only the first time one is played.
+  let map = null;
+  if (mode.needsMap) {
+    try {
+      map = await loadMap(set);
+    } catch (error) {
+      console.error(error);
+      render(
+        root,
+        el('p.result.wrong', 'The map could not be loaded.'),
+        el('button.next', { type: 'button', onclick: menu }, 'Back to the menu'),
+      );
+      return;
+    }
+  }
+
+  render(root);
   active = mode.start({
-    root: app.querySelector('.game'),
+    root,
+    set,
     settings,
     pool,
-    onFinish: (result) => summary(mode, result),
+    map,
+    // A chosen group zooms the map to it, which is what makes the small places
+    // in it clickable at all.
+    view: map?.views[settings.group] ?? map?.views.All,
+    onFinish: (result) => summary(mode, set, result),
   });
 }
 
-function summary(mode, { score, total, misses }) {
+function summary(mode, set, { score, total, misses }) {
   show([
     el('header.masthead', [
       el('h1', 'Round finished'),
@@ -128,15 +169,13 @@ function summary(mode, { score, total, misses }) {
           el('h2', 'Worth another look'),
           el(
             'ul.review-list',
-            misses.map((country) =>
+            misses.map((entry) =>
               el('li.review-item', [
                 el('img.review-flag', {
-                  src: `assets/flags/${country.iso2}.svg`,
-                  alt: '',
-                  width: 64,
-                  height: 48,
+                  src: flagUrl(set, entry), alt: '', width: 64, height: 48,
                 }),
-                el('span', country.name),
+                el('span.review-name', entry.name),
+                entry.capital ? el('span.review-capital', entry.capital) : null,
               ]),
             ),
           ),
@@ -151,14 +190,13 @@ function summary(mode, { score, total, misses }) {
 }
 
 try {
-  countries = await loadCountries();
-  menu();
+  await menu();
 } catch (error) {
   render(
     app,
     el('div.error', [
       el('h1', 'The game could not load'),
-      el('p', 'The country data is missing or unreadable.'),
+      el('p', 'The game data is missing or unreadable.'),
       el(
         'p.hint',
         'If you opened this file directly, serve the folder instead: run ' +
