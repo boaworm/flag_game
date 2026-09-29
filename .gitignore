@@ -1,0 +1,13 @@
+# Editor and OS cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Dev-only tooling, if ever introduced (never required to play)
+node_modules/
+
+# Local scratch
+*.log
+.cache/
