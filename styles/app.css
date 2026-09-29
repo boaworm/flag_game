@@ -153,6 +153,23 @@
   color: var(--correct);
 }
 
+/* A way back out of a round, beside the question rather than inside it. */
+.game-bar {
+  display: flex;
+  margin-bottom: 0.8rem;
+}
+
+.leave {
+  min-height: var(--touch);
+  padding: 0.4rem 1rem;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.leave:hover {
+  color: var(--text);
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;

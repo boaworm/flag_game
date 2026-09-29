@@ -219,6 +219,9 @@ This is the part that is easy to get wrong. When adding or changing gameplay:
 - Reading level matters more than word count. Short sentences, common words.
 - A wrong answer shows the correct one and moves on. No score penalties, no
   "you failed" framing, no countdown timers unless a mode is explicitly about speed.
+- There is always a way out. A round in progress keeps a way back to the menu,
+  and leaving asks nothing — there is no score to lose, so a confirmation box
+  would only be an obstacle between a child and the thing they want.
 - Never signal correct/incorrect with color alone — pair it with an icon or text.
 - Keep the whole game keyboard-navigable and respect
   `prefers-reduced-motion`.

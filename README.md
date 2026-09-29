@@ -131,7 +131,8 @@ git-ignored — delete it to force a refresh.
 ## Design principles
 
 - **Kid-first.** Big touch targets, no timers by default, no penalty for a wrong
-  guess beyond being shown the right answer.
+  guess beyond being shown the right answer, and a way back to the menu from
+  anywhere.
 - **Offline-capable.** Every asset is local. The game works on a tablet on a plane.
 - **Accessible.** Keyboard playable, readable contrast, and never color-only as the
   sole signal for right or wrong.

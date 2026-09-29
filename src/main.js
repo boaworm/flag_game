@@ -210,8 +210,24 @@ async function setup(mode, focusOn = null) {
 async function play(mode) {
   const { settings, set, pool } = await context();
 
-  show(el('main.game', el('p.loading', 'Getting things ready…')));
-  const root = app.querySelector('.game');
+  /**
+   * A way out of a round in progress.
+   *
+   * It sits beside what the mode draws rather than inside it, so a mode can
+   * replace its own contents as often as it likes without taking the exit with
+   * it. Leaving mid-round costs nothing and asks nothing: there is no score to
+   * lose and no question worth a confirmation box.
+   */
+  const root = el('div.game-root', el('p.loading', 'Getting things ready…'));
+  show(
+    el('main.game', [
+      el(
+        'div.game-bar',
+        el('button.leave', { type: 'button', onclick: menu }, '\u2190 Menu'),
+      ),
+      root,
+    ]),
+  );
 
   // Only the map modes load the map, and only the first time one is played.
   let map = null;
