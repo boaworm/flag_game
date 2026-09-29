@@ -75,15 +75,16 @@ user-facing that would otherwise say "country" comes from the set: `set.noun`,
 
 ## Mode mechanics
 
-The four modes are specified in `README.md`. These are the decisions that follow
+The six modes are specified in `README.md`. These are the decisions that follow
 from them; keep them consistent rather than solving each one per-mode.
 
-**Configurable choice count.** Modes 1 and 2 present N options, set in settings, not
+**Configurable choice count.** The two naming modes — guess the flag and find
+the flag — present N options, set in settings, not
 hardcoded per mode. Distractors should be plausible — same region, or a
 similar-looking flag — because picking randomly from 195 countries makes an easy
 question at any N.
 
-**Typed answers (mode 1).** Accept more than one exact string. Compare on a
+**Typed answers (guess the flag).** Accept more than one exact string. Compare on a
 normalized form: lowercase, diacritics stripped, punctuation and leading "the"
 removed. Keep a per-country list of accepted names in the data (official name,
 common name, and widely-used alternatives) rather than matching logic that special-
@@ -91,19 +92,34 @@ cases countries in code. Allow a small edit distance so a near-miss spelling cou
 — kids will type "Portugual" — and show the correct spelling when it does.
 
 **Geometry is stored unprojected.** Shapes live in longitude and latitude, and
-`lib/geo.js` builds a projection per view. Projecting at build time would bake in
-one canvas size, and the same shapes have to be drawn at world scale and zoomed
-into a single continent.
+`lib/globe.js` builds a projection per view. Projecting at build time would bake
+in one canvas size, and the same shapes have to be drawn at world scale and
+zoomed into a single continent.
 
-**Map projection.** Equidistant cylindrical: longitude and latitude both map
-linearly, with longitude scaled by the cosine of the view's middle latitude so a
-region is not stretched sideways. Nicer projections exist, but mode 4 has to turn
-a click back into a coordinate to measure the miss, and linear-in-both-axes is
-what makes that inverse exact. `lib/geo.js` is the only module that knows about
-pixels.
+**The map is a globe.** Orthographic — the Earth as seen from far away — and it
+is drawn a pixel at a time rather than as vector paths: every pixel inside the
+disc is turned back into a coordinate and looked up in a flat texture. That is
+what makes the far side "this pixel is sky" instead of polygon clipping at the
+horizon, and it is why there is no seam anywhere. The projection is exact in both
+directions, which pointing at a place needs in order to turn a click back into a
+coordinate and measure the miss. `lib/globe.js` is the only module that knows about pixels;
+everything in `lib/geo.js` works in latitude and longitude and is true of any
+projection.
 
-**The antimeridian will bite you.** It has, repeatedly, and every rule the
-builders use to decide what frame a shape is stored in has drawn blood:
+A flat map was tried first and is in the history. It worked, but every flat map
+has to cut the sphere open somewhere, and four separate bugs drew a line clean
+across it. A sphere has no cut, so that entire class of bug cannot arise.
+
+**The player drives the globe.** Dragging turns it, the wheel and a pinch zoom
+it, and the arrow keys and Enter do both without a pointer. The texture holds
+only the part of the world on screen and is repainted after the player stops
+moving, which is what lets a close-up be sharp without holding the whole world at
+that detail. Nothing marks the middle of the globe unless the player is aiming by
+keyboard, because a pointer is its own aim mark.
+
+**The antimeridian will bite you.** It has, repeatedly, and the globe only takes
+it out of the *renderer*. The builders still have to decide what frame a shape is
+stored in, and every rule there has drawn blood:
 
 - A ring holding both +179 and -179 must be detected by a jump between
   *consecutive* points, never by being wide — Eurasia spans 200° without crossing
@@ -123,34 +139,44 @@ builders use to decide what frame a shape is stored in has drawn blood:
 Anything derived from a shape's longitude is suspect until it has been looked at
 on screen. All of these were invisible in the numbers.
 
-The renderer places each longitude at whichever of lon, lon±360 is nearest the
-view's centre. "Nearest" is load-bearing: normalising into a turn starting at the
-view's western edge flings an island just west of that edge a full turn east, and
-the line back to it crosses the whole map.
-
-**Distance feedback (mode 4).** Great-circle distance via the haversine formula,
+**Distance feedback (point to it on the map).** Great-circle distance via the haversine formula,
 reported in kilometres. Measure to the country's shape, not its centroid — clicking
 western Russia should not be scored as a miss because the centroid is in Siberia. A
 click inside the country's shape is correct; otherwise measure to the nearest point
 on its border. Round to something a kid can read: tens of km when close, hundreds
 when far.
 
-**Country shapes.** Modes 3 and 4 both need per-country geometry, in the same
-projection as the base map. The base map is continent outlines only — it must not
+**Country shapes.** Placing a shape and pointing at a place both need
+per-country geometry, in the same projection as the base map. The base map is continent outlines only — it must not
 show internal borders, or modes 3 and 4 give the answer away.
 
-**Hit tolerance.** Every place is given a minimum target size on screen, about
-twelve pixels of radius, and only places already smaller than that get any slack:
-Brazil and Russia get none.
+**Answers stay on the board.** A place that has been asked about is never taken
+off the map — it settles to half strength when the next question comes, so a
+round fills the map in and the newest answer still stands out against the ones
+before it. That was how the shape modes already behaved, and it is now how every
+map mode behaves.
 
-This is measured against what is actually rendered rather than set as a fixed
-distance, and that is deliberate. Malta is 27 km across; on a world map drawn 900
-pixels wide, one pixel is about 45 km, so Malta is a third of a pixel — not hard
-to hit but impossible. A fixed kilometre tolerance either leaves the microstates
-unplayable or makes Denmark count as Sweden. Scaling with the rendering also means
-a smaller screen is not a harder game, which was the point of the rule this
-replaces. Choosing a continent zooms the map in and the slack shrinks towards
-nothing on its own.
+**A guess is a circle, not a point.** Clicking draws a ring where the player
+clicked, and the guess counts if that ring overlaps the place anywhere. The ring
+is the rule made visible: there is nothing to explain, because what counts as a
+hit is exactly what it looks like.
+
+The ring is a fixed number of screen pixels, not a fixed number of kilometres,
+and that is deliberate. Malta is 27 km across; on a world globe drawn 900 pixels
+wide one pixel is about 45 km, so Malta is a third of a pixel — not hard to hit
+but impossible. A fixed kilometre tolerance either leaves the microstates
+unplayable or makes Denmark count as Sweden. Measuring in pixels also means a
+smaller screen is not a harder game.
+
+Zooming in is therefore what makes an answer precise: the ring keeps its size on
+screen while the ground under it shrinks, from roughly 290 km across at world
+scale to 36 km at eight times in. A player who wants to pick out Luxembourg
+zooms until they can.
+
+This replaces an earlier rule where only places smaller than the ring got any
+slack, so Brazil got none. Giving every place the same ring is both simpler to
+implement and simpler to understand, and for anything bigger than the ring it
+comes to the same thing — you have to click on it.
 
 ## Working with kids' UX in mind
 

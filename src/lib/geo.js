@@ -2,77 +2,14 @@
  * The geometry behind the map modes.
  *
  * Shapes are stored in longitude and latitude, not in screen units, because the
- * same shapes are drawn at world scale and zoomed into a single continent. A
- * projection is built per view, and it is the only thing that knows about pixels.
- *
- * The projection is equidistant cylindrical: longitude and latitude both map
- * linearly to x and y, with longitude scaled by the cosine of the view's middle
- * latitude so a continent is not stretched sideways. Being linear in both axes
- * is what makes a click invert back to a coordinate exactly, which mode 4 needs
- * in order to say how far away a guess landed.
+ * same shapes are drawn at world scale and zoomed into a single continent, and
+ * because everything here — what was hit, how far a miss was, how much slack a
+ * small place gets — is then true of any projection. The projection itself lives
+ * in lib/globe.js and is the only thing that knows about pixels.
  */
 
 const EARTH_RADIUS_KM = 6371;
-const KM_PER_DEGREE = 111.32;
 const toRadians = (deg) => (deg * Math.PI) / 180;
-
-/**
- * Build a projection for a view.
- *
- * A view is [lonMin, latMin, lonMax, latMax]; its longitudes may run past 180 so
- * that a region crossing the antimeridian stays in one piece — Oceania runs from
- * 110° east to 200°, which is 160° west. Points west of the view's start are
- * shifted by a turn of the globe to match.
- */
-export function createProjection(view, width) {
-  const [lonMin, latMin, lonMax, latMax] = view;
-  const lonSpan = lonMax - lonMin;
-  const latSpan = latMax - latMin;
-
-  // Scaling longitude by the cosine of the middle latitude keeps a region's
-  // proportions close to true. Without it, Europe comes out twice as wide as it
-  // should be.
-  const lonScale = Math.cos(toRadians((latMin + latMax) / 2));
-  const scale = width / (lonSpan * lonScale);
-  const height = latSpan * scale;
-
-  const lonMid = (lonMin + lonMax) / 2;
-
-  /**
-   * Longitude in the view's frame: whichever of lon, lon±360 sits closest to the
-   * middle of the view.
-   *
-   * Nearest matters. Normalising into a turn that starts at the view's western
-   * edge looks equivalent and is not: an island a degree west of that edge gets
-   * flung a full turn east, and the line drawn back to it crosses the entire map.
-   * That is exactly what a small Aleutian island did to the United States map.
-   * Choosing the nearest representation leaves it just off the western edge,
-   * where the viewBox quietly clips it.
-   */
-  const inFrame = (lon) => {
-    let value = lon;
-    while (value - lonMid > 180) value -= 360;
-    while (lonMid - value > 180) value += 360;
-    return value;
-  };
-
-  return {
-    view,
-    width,
-    height,
-    /** Kilometres covered by one unit of the projected canvas. */
-    kmPerUnit: KM_PER_DEGREE / scale,
-
-    project([lat, lon]) {
-      return [(inFrame(lon) - lonMin) * lonScale * scale, (latMax - lat) * scale];
-    },
-
-    unproject([x, y]) {
-      const lon = lonMin + x / (lonScale * scale);
-      return [latMax - y / scale, lon > 180 ? lon - 360 : lon];
-    },
-  };
-}
 
 /** Great-circle distance between two [lat, lon] points, in kilometres. */
 export function haversineKm([lat1, lon1], [lat2, lon2]) {
@@ -170,44 +107,39 @@ export function missDistanceKm([lat, lon], shape) {
 }
 
 /**
- * The smallest a place may be on screen and still be a fair thing to click.
+ * The radius of the ring the player aims with, in screen pixels.
  *
- * Twelve pixels of radius, about a fingertip's worth of aim.
+ * A guess is a circle, not a point, and this is that circle. It is drawn where
+ * the player clicked and a place is found if any of it falls inside the ring, so
+ * the rule is one you can see: if the ring touches the country, that counts.
+ *
+ * Measuring in pixels rather than kilometres is what makes the small places
+ * playable. Malta is 27 km across; on a world globe drawn 900 px wide one pixel
+ * is about 45 km, so Malta is a third of a pixel — not merely hard to hit but
+ * impossible. A fixed distance in kilometres either leaves the microstates
+ * unreachable or lets Denmark count as Sweden. Zooming in shrinks the ring's
+ * reach across the ground on its own, so closing in on a place is what makes the
+ * answer precise, and a smaller screen is not a harder game.
  */
-export const MIN_TARGET_PX = 12;
+export const AIM_RADIUS_PX = 16;
 
-/**
- * How much slack a place gets around its outline, in kilometres.
- *
- * Malta is 27 km across. On a world map drawn 900 px wide, one pixel is about
- * 45 km, so Malta is a third of a pixel — not merely hard to hit but impossible.
- * Zooming into a continent mostly fixes this, and the slack shrinks to nothing
- * as it does, which is why this is measured against what is actually on screen
- * rather than set as a fixed distance.
- *
- * It also means a smaller screen is not a harder game, which is the point of the
- * rule in CLAUDE.md, while a fixed distance would have left the microstates
- * unplayable at world scale.
- */
-export function toleranceKm(shape, projection, renderedWidthPx) {
+/** How far the aim ring reaches across the ground, in kilometres. */
+export function aimReachKm(projection, renderedWidthPx) {
   const kmPerPixel = (projection.kmPerUnit * projection.width) / renderedWidthPx;
-  const [lonMin, latMin, lonMax, latMax] = shape.bounds;
-  const radiusKm =
-    (Math.max(
-      (lonMax - lonMin) * Math.cos(toRadians((latMin + latMax) / 2)),
-      latMax - latMin,
-    ) *
-      KM_PER_DEGREE) /
-    2;
-  return Math.max(0, MIN_TARGET_PX * kmPerPixel - radiusKm);
+  return AIM_RADIUS_PX * kmPerPixel;
 }
 
-/** Did a guess find the place, allowing it its minimum size on screen? */
+/**
+ * Did the guess find the place?
+ *
+ * True when the ring overlaps the place anywhere — which for anything bigger
+ * than the ring means clicking inside it, and for anything smaller means
+ * catching it within a ring's reach.
+ */
 export function isHit([lat, lon], shape, projection, renderedWidthPx) {
   const coordinate = [lat, alignLon(lon, shape.bounds)];
   if (isInside(coordinate, shape.rings)) return true;
-  const slack = toleranceKm(shape, projection, renderedWidthPx);
-  return slack > 0 && missDistanceKm(coordinate, shape) <= slack;
+  return missDistanceKm(coordinate, shape) <= aimReachKm(projection, renderedWidthPx);
 }
 
 /**

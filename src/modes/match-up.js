@@ -19,6 +19,7 @@ export default {
   id: 'match-up',
   title: 'Match them up',
   describe: (set) => `Pair each flag with its ${set.noun}.`,
+  options: () => ['pairCount'],
   needsMap: true,
 
   start({ root, set, settings, pool, map, onFinish }) {
@@ -130,8 +131,8 @@ export default {
         return;
       }
 
-      // A wrong pairing costs nothing but is remembered, so the summary can show
-      // what to look at again.
+      // A wrong pairing costs nothing, but each flag that took more than one go
+      // is remembered once, so the round can say how many went straight in.
       if (!wrongTries.some((e) => e.code === picked.code)) wrongTries.push(picked);
       const missed = picked;
       picked = null;
@@ -148,12 +149,14 @@ export default {
 
     function finish() {
       const clean = pairs.length - wrongTries.length;
+      // No `misses`, so the summary shows no review list. A round here only ends
+      // once every pair is made, so the flags are all matched by the time it is
+      // over and showing them again teaches nothing. The count still counts.
       onFinish({
         headline: wrongTries.length ? 'All paired up' : 'Perfect round',
         tagline: wrongTries.length
           ? `You paired all ${pairs.length}, ${clean} of them first time.`
           : `All ${pairs.length} paired, every one first time.`,
-        misses: wrongTries,
       });
     }
 

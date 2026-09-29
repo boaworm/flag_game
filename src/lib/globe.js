@@ -15,6 +15,7 @@
 
 const RAD = Math.PI / 180;
 const DEG = 180 / Math.PI;
+const EARTH_RADIUS_KM = 6371;
 
 /**
  * A view of the globe: where it is centred, and how much of the disc fills the
@@ -33,6 +34,26 @@ export function createGlobe({ centre: [centreLat, centreLon], zoom = 1 }, size) 
     radius,
     centre: [centreLat, centreLon],
     zoom,
+
+    // The flat projection's contract, so hit tolerance and distances in
+    // lib/geo.js work against either map without knowing which one they have.
+    width: size,
+    height: size,
+    /**
+     * Kilometres per canvas unit, measured at the middle of the globe.
+     *
+     * A point c radians from the centre lands radius*sin(c) units out, so near
+     * the centre one unit is 1/radius of a radian. Towards the limb the ground
+     * is foreshortened and a unit covers more, which makes this an underestimate
+     * there — and since it only sets how much slack a small place gets, erring
+     * towards the middle of the screen is the harmless direction.
+     */
+    kmPerUnit: EARTH_RADIUS_KM / radius,
+
+    // The renderer's pixel loop reworks the inverse projection in place rather
+    // than calling unproject 360,000 times a frame, and needs these to do it.
+    sinLat0,
+    cosLat0,
 
     /** Is this coordinate on the near side of the globe? */
     visible([lat, lon]) {

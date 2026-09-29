@@ -14,6 +14,11 @@ export default {
   id: 'guess-the-flag',
   title: 'Guess the flag',
   describe: (set) => `See a flag, name the ${set.noun}.`,
+  // Typing a name has nothing to choose from, so that row goes away with it.
+  options: (settings) =>
+    settings.answerStyle === 'typed'
+      ? ['answerStyle', 'questionsPerRound']
+      : ['answerStyle', 'choiceCount', 'questionsPerRound'],
 
   start({ root, set, settings, pool, onFinish }) {
     const round = createRound({ pool, length: settings.questionsPerRound });

@@ -10,6 +10,13 @@ export const CHOICE_COUNTS = [2, 3, 4, 6, 8];
 /** Pairs offered in match mode. More than eight stops fitting on a phone. */
 export const PAIR_COUNTS = [4, 6, 8];
 
+/**
+ * Round lengths offered. The whole pool is always offered as well, and anything
+ * longer than the pool is left out, so a round never has to ask about the same
+ * place twice to reach its count.
+ */
+export const ROUND_LENGTHS = [5, 10, 20, 50];
+
 const DEFAULTS = {
   set: 'world',
   group: 'All',

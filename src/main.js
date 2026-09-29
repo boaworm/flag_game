@@ -15,7 +15,13 @@ import {
   setById,
 } from './data/sets.js';
 import { modes } from './modes/index.js';
-import { CHOICE_COUNTS, PAIR_COUNTS, getSettings, updateSettings } from './settings.js';
+import {
+  CHOICE_COUNTS,
+  PAIR_COUNTS,
+  ROUND_LENGTHS,
+  getSettings,
+  updateSettings,
+} from './settings.js';
 import { el, render } from './ui/dom.js';
 
 const app = document.querySelector('#app');
@@ -49,7 +55,7 @@ async function menu() {
       'ul.modes',
       modes.map((mode) =>
         el('li', [
-          el('button.mode', { type: 'button', onclick: () => play(mode) }, [
+          el('button.mode', { type: 'button', onclick: () => setup(mode) }, [
             el('span.mode-title', mode.title),
             el('span.mode-desc', mode.describe(set)),
           ]),
@@ -57,72 +63,129 @@ async function menu() {
       ),
     ),
 
-    settingsPanel(settings, set, entries),
-    el('p.pool-note', `${pool.length} ${set.plural} in play.`),
+    el('p.pool-note', `${set.title} · ${inGroup(entries, settings.group).length} ${set.plural} in play.`),
   ]);
 }
 
-function settingsPanel(settings, set, entries) {
-  /** A labelled row of buttons, one of which is on. */
-  const chooser = (label, values, selected, onPick, format = String) =>
-    el('div.setting', [
-      el('span.setting-label', label),
-      el(
-        'div.setting-options',
-        values.map((value) =>
-          el(
-            'button.option',
-            {
-              type: 'button',
-              'aria-pressed': String(value === selected),
-              onclick: () => {
-                onPick(value);
-                menu();
-              },
-            },
-            format(value),
-          ),
+/** A labelled row of buttons, one of which is on. */
+function chooser({ name, label, values, selected, format = String, onPick }) {
+  return el('div.setting', [
+    el('span.setting-label', label),
+    el(
+      'div.setting-options',
+      values.map((value) =>
+        el(
+          'button.option',
+          {
+            type: 'button',
+            'aria-pressed': String(value === selected),
+            // Named so that picking one can hand focus back to it afterwards.
+            'data-setting': name,
+            'data-value': String(value),
+            onclick: () => onPick(value),
+          },
+          format(value),
         ),
       ),
-    ]);
-
-  return el('section.settings', [
-    el('h2', 'Settings'),
-
-    chooser(
-      'What to learn',
-      SETS.map((s) => s.id),
-      settings.set,
-      (id) => updateSettings({ set: id }),
-      (id) => setById(id).title,
-    ),
-
-    chooser(set.groupLabel, groupsOf(entries), settings.group, (group) =>
-      updateSettings({ group }),
-    ),
-
-    chooser(
-      'How to answer',
-      ['choices', 'typed'],
-      settings.answerStyle,
-      (answerStyle) => updateSettings({ answerStyle }),
-      (style) => (style === 'typed' ? 'Type the name' : 'Pick from a list'),
-    ),
-
-    settings.answerStyle === 'choices'
-      ? chooser('Number of choices', CHOICE_COUNTS, settings.choiceCount, (choiceCount) =>
-          updateSettings({ choiceCount }),
-        )
-      : null,
-
-    chooser('Questions per round', [5, 10, 20], settings.questionsPerRound, (n) =>
-      updateSettings({ questionsPerRound: n }),
-    ),
-
-    chooser('Pairs to match', PAIR_COUNTS, settings.pairCount, (pairCount) =>
-      updateSettings({ pairCount }),
     ),
   ]);
+}
+
+/**
+ * The choices offered before a mode starts.
+ *
+ * Every mode asks what is being learned and which part of it; a mode adds
+ * whatever else it reads. This decides how each row is shown, so no screen has
+ * to know about any particular mode — the same reason modes are written against
+ * a set rather than against countries.
+ */
+const SETTING_ROWS = {
+  set: {
+    label: () => 'What to learn',
+    values: () => SETS.map((s) => s.id),
+    format: (id) => setById(id).title,
+  },
+  group: {
+    label: ({ set }) => set.groupLabel,
+    values: ({ entries }) => groupsOf(entries),
+  },
+  answerStyle: {
+    label: () => 'How to answer',
+    values: () => ['choices', 'typed'],
+    format: (style) => (style === 'typed' ? 'Type the name' : 'Pick from a list'),
+  },
+  choiceCount: {
+    label: () => 'How many to choose from',
+    values: () => CHOICE_COUNTS,
+  },
+  pairCount: {
+    label: () => 'How many pairs',
+    values: () => PAIR_COUNTS,
+  },
+  questionsPerRound: {
+    label: ({ set }) => `How many ${set.plural}`,
+    // Never offer a longer round than there are places to fill it with.
+    values: ({ pool }) => [...ROUND_LENGTHS.filter((n) => n < pool.length), pool.length],
+    format: (n, { pool }) => (n === pool.length ? `All ${n}` : String(n)),
+  },
+};
+
+/** Every setup screen starts with what is being learned. */
+const ALWAYS_ASKED = ['set', 'group'];
+
+/**
+ * Before a mode starts: what it wants to know, and a button to begin.
+ *
+ * A mode that asks nothing — the streak, which runs until a miss — starts
+ * straight away rather than showing an empty screen.
+ */
+async function setup(mode, focusOn = null) {
+  const { settings, set, entries, pool } = await context();
+  const keys = [...ALWAYS_ASKED, ...mode.options(settings)];
+  const where = { set, entries, pool };
+
+  // A round carried over from a bigger group can outlast a smaller one.
+  if (keys.includes('questionsPerRound') && settings.questionsPerRound > pool.length) {
+    updateSettings({ questionsPerRound: pool.length });
+    return setup(mode, focusOn);
+  }
+
+  show([
+    el('header.masthead', [el('h1', mode.title), el('p.tagline', mode.describe(set))]),
+
+    el(
+      'section.settings',
+      keys.map((key) => {
+        const row = SETTING_ROWS[key];
+        return chooser({
+          name: key,
+          label: row.label(where),
+          values: row.values(where),
+          selected: settings[key],
+          format: (value) => (row.format ? row.format(value, where) : String(value)),
+          onPick: (value) => {
+            updateSettings({ [key]: value });
+            setup(mode, [key, value]);
+          },
+        });
+      }),
+    ),
+
+    el('p.pool-note', `${pool.length} ${set.plural} in play.`),
+
+    el('div.actions', [
+      el('button.primary', { type: 'button', onclick: () => play(mode) }, 'Start'),
+      el('button.secondary', { type: 'button', onclick: menu }, 'Back'),
+    ]),
+  ]);
+
+  // Picking an option redraws the screen, so put focus back where it was.
+  if (focusOn) {
+    const [key, value] = focusOn;
+    app
+      .querySelector(`[data-setting="${key}"][data-value="${CSS.escape(String(value))}"]`)
+      ?.focus();
+  }
 }
 
 async function play(mode) {
@@ -164,12 +227,19 @@ async function play(mode) {
 /**
  * The end of a round. Modes supply their own wording, because they do not all
  * end the same way — a streak ends on a miss, not after ten questions.
+ *
+ * A mode that hands back no `misses` at all gets no review list. That is not the
+ * same as handing back an empty one, which means a clean round and is worth
+ * saying so: match mode ends with everything paired whatever happened on the
+ * way, so naming what took two goes is noise rather than a lesson.
  */
 function summary(mode, set, { headline, tagline, misses }) {
   show([
     el('header.masthead', [el('h1', headline), el('p.tagline', tagline)]),
 
-    misses.length
+    !misses
+      ? null
+      : misses.length
       ? el('section.review', [
           el('h2', 'Worth another look'),
           el(

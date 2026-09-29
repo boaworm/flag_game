@@ -20,6 +20,8 @@
   --ocean: #cfe0ea;
   --land: #e6e1d3;
   --land-edge: #bdb6a4;
+  /* The outline drawn round a place once it has been answered. */
+  --shape-edge: #000000;
 
   --radius: 14px;
   --gap: 1rem;
@@ -47,6 +49,8 @@
     --ocean: #1b2a33;
     --land: #33313a;
     --land-edge: #4c4955;
+    /* Black would vanish against dark land, so the dark theme outlines light. */
+    --shape-edge: #f2f0eb;
   }
 }
 

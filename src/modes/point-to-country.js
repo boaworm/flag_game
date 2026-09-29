@@ -9,7 +9,8 @@
 
 import { createRound } from '../lib/quiz.js';
 import { describeDistance, isHit, missDistanceKm } from '../lib/geo.js';
-import { createMap, flagChip } from '../ui/map.js';
+import { createGlobeMap } from '../ui/globe.js';
+import { flagChip } from '../ui/flag.js';
 import { flagUrl } from '../data/sets.js';
 import { el, render } from '../ui/dom.js';
 
@@ -17,6 +18,7 @@ export default {
   id: 'point-to-country',
   title: 'Point to it on the map',
   describe: (set) => `Click where a ${set.noun} is on the map.`,
+  options: () => ['questionsPerRound'],
   needsMap: true,
 
   start({ root, set, settings, pool, map, view, onFinish }) {
@@ -28,12 +30,12 @@ export default {
     const prompt = el('h2.prompt');
     const feedback = el('div.feedback', { role: 'status', 'aria-live': 'polite' });
 
-    const world = createMap({
+    const world = createGlobeMap({
       map,
       view,
       onPick: guess,
       label:
-        `Map. Click where you think the ${set.noun} is, or move the crosshair with the arrow keys and press Enter.`,
+        `Globe. Click where you think the ${set.noun} is, or turn the globe with the arrow keys until it is under the crosshair and press Enter.`,
     });
 
     render(
@@ -45,6 +47,10 @@ export default {
         feedback,
       ]),
     );
+
+    // The globe measures itself against its box, so it can only be set up once
+    // it is in the document.
+    world.mount();
 
     let asking = 1;
     const showProgress = () => {
@@ -62,7 +68,7 @@ export default {
       world.setAccepting(true);
     }
 
-    function guess({ point, coordinate }) {
+    function guess({ coordinate }) {
       const entry = round.current;
       const shape = map.shapes[entry.code];
       const correct = isHit(coordinate, shape, world.projection, world.renderedWidth());
@@ -77,7 +83,7 @@ export default {
         const km = missDistanceKm(coordinate, shape);
         // The line points at the place's own label point, which is guaranteed to
         // be on land, rather than at the nearest bit of its border.
-        world.markMiss(point, shape.point);
+        world.markMiss(coordinate, shape.point);
         message = `${entry.name} is here — about ${describeDistance(km)} from your guess.`;
       }
 
@@ -112,6 +118,11 @@ export default {
     }
 
     ask();
-    return { destroy: () => render(root) };
+    return {
+      destroy: () => {
+        world.destroy();
+        render(root);
+      },
+    };
   },
 };

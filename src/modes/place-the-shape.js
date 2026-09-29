@@ -13,7 +13,7 @@
 import { createBag, createRound } from '../lib/quiz.js';
 import { describeDistance, isHit, missDistanceKm } from '../lib/geo.js';
 import { read, write } from '../lib/storage.js';
-import { createMap } from '../ui/map.js';
+import { createGlobeMap } from '../ui/globe.js';
 import { shapeSvg } from '../ui/shape.js';
 import { el, render } from '../ui/dom.js';
 
@@ -25,6 +25,8 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
     title,
     describe,
     needsMap: true,
+    // A streak runs until a miss, so there is no round length to ask about.
+    options: () => (streak ? [] : ['questionsPerRound']),
 
     start({ root, set, settings, pool, map, view, onFinish }) {
       const askable = pool.filter((entry) => map.shapes[entry.code]);
@@ -43,11 +45,11 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
       const shapeHolder = el('div.shape-frame');
       const feedback = el('div.feedback', { role: 'status', 'aria-live': 'polite' });
 
-      const world = createMap({
+      const world = createGlobeMap({
         map,
         view,
         onPick: guess,
-        label: `Map. Click where you think this ${set.noun} belongs, or move the crosshair with the arrow keys and press Enter.`,
+        label: `Globe. Click where you think this ${set.noun} belongs, or turn the globe with the arrow keys until the spot is under the crosshair and press Enter.`,
       });
 
       render(
@@ -59,6 +61,10 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
           feedback,
         ]),
       );
+
+      // The globe measures itself against its box, so it can only be set up
+      // once it is in the document.
+      world.mount();
 
       const showProgress = () => {
         progress.textContent = streak
@@ -77,7 +83,7 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
         world.setAccepting(true);
       }
 
-      function guess({ point, coordinate }) {
+      function guess({ coordinate }) {
         const shape = map.shapes[current.code];
         const correct = isHit(coordinate, shape, world.projection, world.renderedWidth());
 
@@ -89,7 +95,7 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
           run += 1;
         } else {
           world.reveal(shape, { correct: false });
-          world.markMiss(point, shape.point);
+          world.markMiss(coordinate, shape.point);
         }
 
         if (streak) {
@@ -146,7 +152,12 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
       }
 
       ask();
-      return { destroy: () => render(root) };
+      return {
+        destroy: () => {
+          world.destroy();
+          render(root);
+        },
+      };
     },
   };
 }

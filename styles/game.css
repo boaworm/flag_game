@@ -143,7 +143,11 @@
 }
 
 .map-frame {
-  width: 100%;
+  /* Shrink to the globe rather than the column, so the frame is not a wide
+     white box with a circle adrift in the middle of it. */
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -151,85 +155,81 @@
   line-height: 0;
 }
 
-.world {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: calc(var(--radius) - 6px);
-  cursor: crosshair;
-  touch-action: manipulation;
+/*
+ * The map modes break out of the reading column the rest of the app sits in.
+ * A globe is the thing being worked on, not something being read around, so it
+ * gets the window.
+ */
+.map-question {
+  width: min(96vw, 1100px);
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
-.world.is-locked {
+/*
+ * The stage is what carries the globe's size, so the zoom buttons sit against
+ * the globe itself rather than floating off in the corner of a wider frame.
+ */
+.globe-stage {
+  position: relative;
+  width: min(76vh, 900px, 88vw);
+  max-width: 100%;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+/*
+ * The globe is square and drawn a pixel at a time, so its cost grows with the
+ * square of its size: the cap is what keeps a big desktop from asking for a
+ * 1200 px globe. Sizing against the viewport height as well is what stops a
+ * wide short window pushing the answer off the bottom.
+ *
+ * The aspect ratio is what gives the canvas a square box to measure itself
+ * against — without it the canvas reports its own 300x150 default and the globe
+ * shrinks to the minimum on every pass.
+ */
+.globe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--radius) - 6px);
+  cursor: crosshair;
+  /* The globe takes the gesture: dragging turns it, pinching zooms it. */
+  touch-action: none;
+}
+
+.globe.is-locked {
   cursor: default;
 }
 
-.ocean {
-  fill: var(--ocean);
+.globe-zoom {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.land {
-  fill: var(--land);
-  stroke: var(--land-edge);
-  stroke-width: 1;
-  stroke-linejoin: round;
+.globe-zoom-button {
+  width: var(--touch);
+  height: var(--touch);
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 600;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  cursor: pointer;
+  /* The globe behind it is busy, so the buttons need to stay readable. */
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.25);
 }
 
-/* The revealed country. Shape and position carry the answer; the fill only
-   distinguishes a hit from a miss, and never alone — the sentence below says
-   which it was. */
-.country {
-  stroke-width: 2;
-  stroke-linejoin: round;
-}
-
-.country.is-correct {
-  fill: var(--correct);
-  stroke: var(--correct);
-}
-
-.country.is-answer {
-  fill: var(--wrong);
-  stroke: var(--wrong);
-}
-
-.pin {
-  fill: none;
-  stroke-width: 5;
-}
-
-.pin.is-correct {
-  stroke: var(--correct);
-}
-
-.pin.is-answer {
-  stroke: var(--wrong);
-}
-
-.miss-line {
-  stroke: var(--wrong);
-  stroke-width: 3;
-  stroke-dasharray: 10 8;
-  opacity: 0.85;
-}
-
-.miss-dot {
-  fill: none;
-  stroke: var(--text);
-  stroke-width: 4;
-}
-
-.crosshair-ring,
-.crosshair-arm {
-  fill: none;
-  stroke: var(--text);
-  stroke-width: 3;
-  opacity: 0.75;
-}
-
-.world:not(:focus-visible) .crosshair-ring,
-.world:not(:focus-visible) .crosshair-arm {
-  opacity: 0.35;
+.globe-zoom-button:hover {
+  background: var(--surface-sunken);
 }
 
 /* Shape modes */
@@ -271,20 +271,6 @@
 
 .shape-body {
   fill: var(--accent);
-}
-
-/* A place already put on the board stays quietly visible, so the map fills in
-   without the newest answer getting lost among the old ones. */
-.country.is-placed,
-.pin.is-placed {
-  fill: var(--correct);
-  stroke: var(--correct);
-  opacity: 0.55;
-}
-
-.pin.is-placed {
-  fill: none;
-  stroke-width: 5;
 }
 
 /* Find the flag */

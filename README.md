@@ -9,9 +9,9 @@ No server, no build step, no dependencies. Open `index.html` in a browser and pl
 
 Most flag quizzes test recall of one thing: the flag. Kids learn geography better
 when the flag, the country's name, and *where it actually is* are connected in the
-same activity. This game pairs all three, and asks about location with a map the
-player has to reason about — continent outlines only, no borders to read the answer
-off of — rather than a multiple-choice list.
+same activity. This game pairs all three, and asks about location on a globe the
+player has to reason about — coastlines only, no borders to read the answer off
+of — rather than a multiple-choice list.
 
 ## What you can learn
 
@@ -28,23 +28,36 @@ map in, which is what makes the small places clickable at all.
 
 ## Game modes
 
-**1. Guess the flag** — built
+All six are built and playable.
+
+**Guess the flag**
 A flag is shown. The player either types the name or picks it from a set of
 choices. The number of choices is configurable, from two to eight.
 
-**2. Guess the flag of a place** — planned
+**Find the flag**
 The reverse: a name is shown, and the player picks its flag from a set of flags.
 
-**3. Place the shape** — planned
-A map showing only outlines. The player is given a shape and drags it where it
-belongs.
+**Match them up**
+Four to eight places and their flags, shuffled. Tap a flag, then tap its place.
+Tapping rather than dragging, so it works by touch and from a keyboard alike.
 
-**4. Point to it on the map** — built
-A map showing only outlines — coastlines for the world, the national outline for
-the United States, and never any internal borders, so the map cannot give an
+**Point to it on the map**
+A globe showing only outlines — coastlines for the world, the national outline
+for the United States, and never any internal borders, so it cannot give an
 answer away. The player is asked for a place and clicks where they think it is. A
-hit fills the shape in. A miss fills it in too, and says how far off the guess was
-in kilometres. Playable with the mouse, by touch, or with the arrow keys.
+hit fills the shape in. A miss fills it in too, and says how far off the guess
+was in kilometres. If the answer is round the back, the globe turns to show it.
+
+**Place the shape**
+A place's outline on its own, with no name. The player clicks where on the globe
+it belongs. Answers stay on the board, so the map fills in as the round goes on.
+
+**Streak**
+Place the shape, one after another, until a miss ends the run. A personal best is
+kept per set and group.
+
+Every map mode is playable with the mouse, by touch, or from the keyboard: the
+arrow keys turn the globe and Enter picks whatever is under the crosshair.
 
 ## Running it
 
@@ -71,9 +84,9 @@ src/
   main.js              Boots the app, menu, settings, round summary
   settings.js          What the player chose, remembered between sessions
   modes/               One module per game mode
-  ui/                  DOM helper and the clickable map
+  ui/                  DOM helper, the globe, and the shape and flag views
   data/sets.js         The set registry and its loaders
-  lib/                 quiz (rounds, distractors), geo, text matching, storage
+  lib/                 quiz (rounds, distractors), globe and geo, matching, storage
 assets/
   flags/world/         One SVG per country, by ISO 3166-1 alpha-2 code
   flags/usa/           One SVG per state, by postal code
@@ -116,14 +129,14 @@ git-ignored — delete it to force a refresh.
 ## Roadmap
 
 - [x] App shell, screen routing, settings
-- [x] Mode 1 — Guess the flag (choices and typed answers)
+- [x] Guess the flag (choices and typed answers)
 - [x] Map geometry, continent and region views
-- [x] Mode 4 — Point to it on the map, with distance feedback
+- [x] Point to it on the map, with distance feedback
 - [x] A second set: the United States
-- [ ] Mode 2 — Guess the flag of a place
-- [ ] Mode 3 — Place the shape
+- [x] Find the flag, match them up, place the shape, and streak
+- [x] A globe in place of the flat map, so there is no seam to draw wrongly
 - [ ] A capitals mode, now that the data carries them
-- [ ] Alaska and Hawaii as insets, so the US map wastes less ocean
+- [ ] Alaska and Hawaii as insets, so the US view wastes less ocean
 - [ ] Per-player progress saved in `localStorage`
 - [ ] Spaced repetition so missed places come back sooner
 - [ ] Translations of the interface
