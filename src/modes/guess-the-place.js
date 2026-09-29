@@ -14,6 +14,7 @@ export default {
   id: 'guess-the-place',
   title: 'Find the flag',
   describe: (set) => `See a ${set.noun}, pick its flag.`,
+  needs: ['flags'],
   options: () => ['choiceCount', 'questionsPerRound'],
 
   start({ root, set, settings, pool, onFinish }) {

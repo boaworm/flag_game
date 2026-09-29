@@ -10,9 +10,11 @@ import {
   flagUrl,
   groupsOf,
   inGroup,
+  isDivided,
   loadEntries,
   loadMap,
   setById,
+  setSuits,
 } from './data/sets.js';
 import { modes } from './modes/index.js';
 import {
@@ -102,7 +104,9 @@ function chooser({ name, label, values, selected, format = String, onPick }) {
 const SETTING_ROWS = {
   set: {
     label: () => 'What to learn',
-    values: () => SETS.map((s) => s.id),
+    // Only the sets this mode can actually be played with. Ancient Greece has no
+    // flags, so it is not offered to a mode that shows one.
+    values: ({ mode }) => SETS.filter((s) => setSuits(s, mode)).map((s) => s.id),
     format: (id) => setById(id).title,
   },
   group: {
@@ -140,9 +144,24 @@ const ALWAYS_ASKED = ['set', 'group'];
  * straight away rather than showing an empty screen.
  */
 async function setup(mode, focusOn = null) {
-  const { settings, set, entries, pool } = await context();
-  const keys = [...ALWAYS_ASKED, ...mode.options(settings)];
-  const where = { set, entries, pool };
+  let { settings, set, entries, pool } = await context();
+
+  // The set in play may be one this mode cannot use — Ancient Greece has no
+  // flags to guess. Move to one it can rather than offering an impossible game.
+  if (!setSuits(set, mode)) {
+    updateSettings({ set: SETS.find((s) => setSuits(s, mode)).id });
+    ({ settings, set, entries, pool } = await context());
+  }
+
+  // A set that is not divided up is not asked which part of it to play.
+  if (!isDivided(set) && settings.group !== 'All') {
+    updateSettings({ group: 'All' });
+    ({ settings, set, entries, pool } = await context());
+  }
+
+  const keys = [...ALWAYS_ASKED, ...mode.options(settings)]
+    .filter((key) => key !== 'group' || isDivided(set));
+  const where = { set, entries, pool, mode };
 
   // A round carried over from a bigger group can outlast a smaller one.
   if (keys.includes('questionsPerRound') && settings.questionsPerRound > pool.length) {
@@ -246,9 +265,11 @@ function summary(mode, set, { headline, tagline, misses }) {
             'ul.review-list',
             misses.map((entry) =>
               el('li.review-item', [
-                el('img.review-flag', {
-                  src: flagUrl(set, entry), alt: '', width: 64, height: 48,
-                }),
+                flagUrl(set, entry)
+                  ? el('img.review-flag', {
+                    src: flagUrl(set, entry), alt: '', width: 64, height: 48,
+                  })
+                  : null,
                 el('span.review-name', entry.name),
                 entry.capital ? el('span.review-capital', entry.capital) : null,
               ]),

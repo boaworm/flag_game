@@ -1,0 +1,229 @@
+[
+  {
+    "code": "athens",
+    "name": "Athens",
+    "group": "Attica and Central Greece",
+    "coordinates": [
+      37.976,
+      23.728
+    ],
+    "acceptedNames": [
+      "Athens",
+      "Athina",
+      "Athenai"
+    ]
+  },
+  {
+    "code": "chios",
+    "name": "Chios",
+    "group": "The Islands",
+    "coordinates": [
+      38.520325875,
+      26.005071395833333
+    ],
+    "acceptedNames": [
+      "Chios",
+      "Khios",
+      "Hios"
+    ]
+  },
+  {
+    "code": "corfu",
+    "name": "Corfu",
+    "group": "The Islands",
+    "coordinates": [
+      39.728721875000005,
+      19.759577666666665
+    ],
+    "acceptedNames": [
+      "Corfu",
+      "Kerkyra",
+      "Korkyra"
+    ]
+  },
+  {
+    "code": "corinth",
+    "name": "Corinth",
+    "group": "The Peloponnese",
+    "coordinates": [
+      37.906,
+      22.879
+    ],
+    "acceptedNames": [
+      "Corinth",
+      "Korinthos",
+      "Ancient Corinth"
+    ]
+  },
+  {
+    "code": "crete",
+    "name": "Crete",
+    "group": "Crete",
+    "coordinates": [
+      35.15193158333333,
+      24.9780821875
+    ],
+    "acceptedNames": [
+      "Crete",
+      "Kriti",
+      "Creta"
+    ]
+  },
+  {
+    "code": "delphi",
+    "name": "Delphi",
+    "group": "Attica and Central Greece",
+    "coordinates": [
+      38.482,
+      22.501
+    ],
+    "acceptedNames": [
+      "Delphi",
+      "Delfi",
+      "Delphoi"
+    ]
+  },
+  {
+    "code": "heraklion",
+    "name": "Heraklion",
+    "group": "Crete",
+    "coordinates": [
+      35.339,
+      25.133
+    ],
+    "acceptedNames": [
+      "Heraklion",
+      "Iraklion",
+      "Irakleio",
+      "Candia"
+    ]
+  },
+  {
+    "code": "knossos",
+    "name": "Knossos",
+    "group": "Crete",
+    "coordinates": [
+      35.298,
+      25.163
+    ],
+    "acceptedNames": [
+      "Knossos",
+      "Cnossus",
+      "Knossos Palace"
+    ]
+  },
+  {
+    "code": "larissa",
+    "name": "Larissa",
+    "group": "Thessaly and the North",
+    "coordinates": [
+      39.639,
+      22.418
+    ],
+    "acceptedNames": [
+      "Larissa",
+      "Larisa"
+    ]
+  },
+  {
+    "code": "lesbos",
+    "name": "Lesbos",
+    "group": "The Islands",
+    "coordinates": [
+      39.19249620833333,
+      26.02906325
+    ],
+    "acceptedNames": [
+      "Lesbos",
+      "Lesvos",
+      "Mytilene",
+      "Mitilini"
+    ]
+  },
+  {
+    "code": "olympia",
+    "name": "Olympia",
+    "group": "The Peloponnese",
+    "coordinates": [
+      37.638,
+      21.63
+    ],
+    "acceptedNames": [
+      "Olympia",
+      "Ancient Olympia",
+      "Olympia Elis"
+    ]
+  },
+  {
+    "code": "patras",
+    "name": "Patras",
+    "group": "The Peloponnese",
+    "coordinates": [
+      38.246,
+      21.735
+    ],
+    "acceptedNames": [
+      "Patras",
+      "Patra",
+      "Patrai"
+    ]
+  },
+  {
+    "code": "piraeus",
+    "name": "Piraeus",
+    "group": "Attica and Central Greece",
+    "coordinates": [
+      37.943,
+      23.647
+    ],
+    "acceptedNames": [
+      "Piraeus",
+      "Pireas",
+      "Peiraeus",
+      "Pireaus"
+    ]
+  },
+  {
+    "code": "thessaloniki",
+    "name": "Thessaloniki",
+    "group": "Thessaly and the North",
+    "coordinates": [
+      40.64,
+      22.944
+    ],
+    "acceptedNames": [
+      "Thessaloniki",
+      "Salonica",
+      "Thessalonica",
+      "Saloniki"
+    ]
+  },
+  {
+    "code": "volos",
+    "name": "Volos",
+    "group": "Thessaly and the North",
+    "coordinates": [
+      39.362,
+      22.942
+    ],
+    "acceptedNames": [
+      "Volos",
+      "Volo",
+      "Iolcos"
+    ]
+  },
+  {
+    "code": "zakynthos",
+    "name": "Zante",
+    "group": "The Islands",
+    "coordinates": [
+      37.767381,
+      20.800061499999998
+    ],
+    "acceptedNames": [
+      "Zante",
+      "Zakynthos",
+      "Zakinthos"
+    ]
+  }
+]

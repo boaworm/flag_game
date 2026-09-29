@@ -18,6 +18,8 @@ export default {
   id: 'point-to-country',
   title: 'Point to it on the map',
   describe: (set) => `Click where a ${set.noun} is on the map.`,
+  // Needs nothing but a map, which is what lets a set with no flags use it.
+  needs: [],
   options: () => ['questionsPerRound'],
   needsMap: true,
 
@@ -62,7 +64,9 @@ export default {
       const entry = round.current;
       asking = round.number;
       showProgress();
-      render(prompt, flagChip(flagUrl(set, entry)), el('span', `Where is ${entry.name}?`));
+      // A set without flags just asks the question.
+      const flag = flagUrl(set, entry);
+      render(prompt, flag ? flagChip(flag) : null, el('span', `Where is ${entry.name}?`));
       render(feedback);
       world.clear();
       world.setAccepting(true);

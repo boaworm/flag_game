@@ -73,6 +73,12 @@ export function createGlobeMap({ map, view, onPick, label }) {
    * is held inside it, so the player cannot drift off across an ocean when they
    * meant to look at Spain.
    */
+  /**
+   * How far out this map may be zoomed. A regional set holds coastline only so
+   * far out, and zooming past it shows a sea that simply ends.
+   */
+  const minZoom = Math.max(MIN_ZOOM, map.minZoom ?? MIN_ZOOM);
+
   const bounded = baseZoom > 1.05;
   const holdInView = (lat, lon) => (bounded
     ? [clamp(lat, view[1], view[3]), clamp(lon, view[0], view[2])]
@@ -449,6 +455,7 @@ export function createGlobeMap({ map, view, onPick, label }) {
         const from = globe.project(item.from);
         const to = globe.project(item.coordinate);
         if (!from || !to) continue;
+
         ctx.beginPath();
         ctx.moveTo(from[0], from[1]);
         ctx.lineTo(to[0], to[1]);
@@ -526,7 +533,7 @@ export function createGlobeMap({ map, view, onPick, label }) {
    * at out from under the player just as they closed in on it.
    */
   function zoomBy(factor, at = null, options) {
-    const next = clamp(zoom * factor, MIN_ZOOM, MAX_ZOOM);
+    const next = clamp(zoom * factor, minZoom, MAX_ZOOM);
     if (next === zoom) return;
 
     const anchor = at && globe.unproject(at);

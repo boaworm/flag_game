@@ -15,13 +15,22 @@ of — rather than a multiple-choice list.
 
 ## What you can learn
 
-Two sets, picked in the menu:
+Three sets, picked when a mode starts:
 
 - **Countries of the world** — all 193 UN member states, playable as a whole or
   one continent at a time: Africa, Asia, Europe, North America, South America,
   Oceania.
 - **The United States** — the 50 states with their flags and capitals, playable
   as a whole or by region: West, Midwest, South, Northeast.
+- **Ancient Greece** — sixteen places of the Greek world, from Corfu to Chios and
+  Thessaloniki to Knossos, on a map running from southern Bulgaria to Crete and
+  from Albania to the coast of Asia Minor.
+
+Not every set suits every mode. Ancient Greece has no flags — a city state's
+banner is not a settled thing — and most of its places are sites rather than
+territories, so it appears only under the modes that ask where a place is. A set
+says what it has, a mode says what it needs, and only the sets that fit are
+offered.
 
 Narrowing to a continent or region does more than shorten the list: it zooms the
 map in, which is what makes the small places clickable at all.
@@ -93,9 +102,11 @@ assets/
 data/sets/
   world/               entries.json and map.json for the world set
   usa/                 entries.json and map.json for the United States
+  greece/              entries.json and map.json for Ancient Greece
 tools/
   build-world.mjs      Rebuilds the world set (dev-only, never shipped)
   build-usa.mjs        Rebuilds the United States set
+  build-greece.mjs     Rebuilds the Ancient Greece set
   lib/geojson.mjs      Shared geometry helpers for the builders
 styles/                CSS, one file per area
 ```
@@ -110,6 +121,7 @@ To rebuild a set from its upstream sources:
 ```sh
 node tools/build-world.mjs
 node tools/build-usa.mjs
+node tools/build-greece.mjs
 ```
 
 These are developer tooling. The game never runs them; the browser only ever
@@ -135,6 +147,8 @@ git-ignored — delete it to force a refresh.
 - [x] A second set: the United States
 - [x] Find the flag, match them up, place the shape, and streak
 - [x] A globe in place of the flat map, so there is no seam to draw wrongly
+- [x] A third set: Ancient Greece, with no flags and mostly points rather than
+      territories
 - [ ] A capitals mode, now that the data carries them
 - [ ] Alaska and Hawaii as insets, so the US view wastes less ocean
 - [ ] Per-player progress saved in `localStorage`

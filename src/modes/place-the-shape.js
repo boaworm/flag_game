@@ -25,6 +25,7 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
     title,
     describe,
     needsMap: true,
+    needs: ['outlines'],
     // A streak runs until a miss, so there is no round length to ask about.
     options: () => (streak ? [] : ['questionsPerRound']),
 

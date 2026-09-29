@@ -44,14 +44,47 @@ Dev-only tooling (a formatter, a test runner, a linter) is acceptable as a
 ## Sets
 
 The game is not about countries; it is about **sets**. A set is a group of places
-sharing a map, a flag each, and a way of being divided up: countries of the world
-grouped by continent, or US states grouped by census region. Modes are written
-against this shape and never against countries, which is what let the United
-States be added without touching a mode.
+sharing a map: countries of the world, US states, places of the Greek world.
+Modes are written against this shape and never against countries, which is what
+let the United States be added without touching a mode.
 
 A set is one entry in `src/data/sets.js` plus a builder in `tools/`. Anything
 user-facing that would otherwise say "country" comes from the set: `set.noun`,
 `set.plural`, `set.groupLabel`.
+
+**A set says what it has; a mode says what it needs.** Not every set can feed
+every mode, and the answer is a declaration on each rather than a check inside a
+mode:
+
+- `set.flags` — a flag for each place, or null
+- `set.outlines` — shapes distinctive enough to be recognised on their own
+- `mode.needs` — the list of those a mode cannot do without
+
+**Dividing a set up is optional too.** `set.groupLabel` names the division —
+"Part of the world", "Part of the country" — and a set with none is not divided:
+the row is not offered and the whole set is always in play. Narrowing exists to
+make a big set approachable and to zoom the map to a region worth zooming to.
+Sixteen places of the Greek world are one map's worth as they stand, so asking
+which part to practise before practising any of it would be a choice with no
+question behind it. Each place still records its region in the data.
+
+Only the sets that fit are offered when a mode is set up, and a set in play that
+does not fit is swapped for one that does. Ancient Greece has neither: its city
+states have no settled banner, and inventing one would teach something false,
+while most of its places are sites rather than territories. Knossos is a palace,
+and its outline is a circle drawn round a point — real enough to click, and
+nonsense to ask someone to recognise.
+
+**A place need not have a territory.** Where a set has no real outline for a
+place, the builder gives it a small circle, which the game already draws as a pin
+because it is below the size a shape can be seen at. Everything downstream — hit
+testing, distance, revealing — works on rings and does not care that these ones
+were drawn rather than surveyed. Islands in that same set still take their real
+coastline, because Crete is worth seeing.
+
+**A regional set holds only its own corner of the world**, so its map says how
+far out it may be zoomed (`map.minZoom`). Without that, zooming out from Greece
+reaches a sea that simply stops.
 
 ## Data conventions
 

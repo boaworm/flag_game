@@ -43,6 +43,20 @@ the Holy See as a UN member, but it is a permanent observer state.
 
 The 50 states. The District of Columbia is excluded: it is not a state.
 
+## Greek place data — `data/sets/greece/entries.json`
+
+Sixteen places of the Greek world: cities, sanctuaries and islands.
+
+- **Sources:** the table in `tools/build-greece.mjs` for where each place is and
+  what else it is called; Natural Earth for the island outlines and the coast
+- **Built by:** `tools/build-greece.mjs`
+
+There are no flags for this set, and that is deliberate rather than missing: a
+Greek city state's banner is not a settled thing, and inventing one would teach
+something false. A coordinate for an ancient site is its excavation rather than
+wherever its walls once ran, and two of them — Knossos and Heraklion — are five
+kilometres apart, so telling them apart means zooming in.
+
 ## Map geometry — `data/sets/*/map.json`
 
 Coastlines, national and state outlines, and the shape of every place.
@@ -52,7 +66,8 @@ Coastlines, national and state outlines, and the shape of every place.
   — layers `ne_10m_land`, `ne_10m_admin_0_countries`,
   `ne_10m_admin_1_states_provinces`
 - **License:** public domain
-- **Built by:** `tools/build-world.mjs` and `tools/build-usa.mjs`
+- **Built by:** `tools/build-world.mjs`, `tools/build-usa.mjs` and
+  `tools/build-greece.mjs`
 
 Simplified to about 2 km of detail and stored in longitude and latitude, not
 projected, so the same shapes can be drawn at world scale or zoomed into one

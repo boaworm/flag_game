@@ -19,6 +19,7 @@ export default {
   id: 'match-up',
   title: 'Match them up',
   describe: (set) => `Pair each flag with its ${set.noun}.`,
+  needs: ['flags', 'outlines'],
   options: () => ['pairCount'],
   needsMap: true,
 

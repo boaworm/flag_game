@@ -14,6 +14,7 @@ export default {
   id: 'guess-the-flag',
   title: 'Guess the flag',
   describe: (set) => `See a flag, name the ${set.noun}.`,
+  needs: ['flags'],
   // Typing a name has nothing to choose from, so that row goes away with it.
   options: (settings) =>
     settings.answerStyle === 'typed'
