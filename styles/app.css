@@ -93,6 +93,27 @@
   min-height: var(--touch);
 }
 
+/* An on/off setting. The whole label is the target, not just the box. */
+.setting-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: var(--touch);
+  cursor: pointer;
+}
+
+.setting-toggle .setting-label {
+  margin-bottom: 0;
+  color: var(--text);
+}
+
+.toggle-box {
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  accent-color: var(--accent);
+}
+
 .option[aria-pressed="true"] {
   background: var(--accent);
   border-color: var(--accent);

@@ -11,3 +11,6 @@ node_modules/
 # Local scratch
 *.log
 .cache/
+
+# Deploy script, local only
+sync-to-app1-oc.sh

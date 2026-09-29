@@ -11,9 +11,11 @@
  */
 
 import { createBag, createRound } from '../lib/quiz.js';
+import { flagUrl } from '../data/sets.js';
 import { describeDistance, isHit, missDistanceKm } from '../lib/geo.js';
 import { read, write } from '../lib/storage.js';
 import { createGlobeMap } from '../ui/globe.js';
+import { flagChip } from '../ui/flag.js';
 import { shapeSvg } from '../ui/shape.js';
 import { el, render } from '../ui/dom.js';
 
@@ -26,8 +28,10 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
     describe,
     needsMap: true,
     needs: ['outlines'],
-    // A streak runs until a miss, so there is no round length to ask about.
-    options: () => (streak ? [] : ['questionsPerRound']),
+    // A streak runs until a miss, so there is no round length to ask about —
+    // and asking nothing is what lets it start straight away instead of showing
+    // a setup screen, so the clue toggles go on the fixed round only.
+    options: () => (streak ? [] : ['questionsPerRound', 'showFlag', 'showName']),
 
     start({ root, set, settings, pool, map, view, onFinish }) {
       const askable = pool.filter((entry) => map.shapes[entry.code]);
@@ -44,6 +48,7 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
 
       const progress = el('p.progress');
       const shapeHolder = el('div.shape-frame');
+      const clues = el('div.shape-clues');
       const feedback = el('div.feedback', { role: 'status', 'aria-live': 'polite' });
 
       const world = createGlobeMap({
@@ -58,7 +63,10 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
         el('div.question.map-question', [
           progress,
           el('h2.prompt', `Where does this ${set.noun} go?`),
-          el('div.place-layout', [shapeHolder, el('div.map-frame', world.element)]),
+          el('div.place-layout', [
+            el('div.shape-column', [shapeHolder, clues]),
+            el('div.map-frame', world.element),
+          ]),
           feedback,
         ]),
       );
@@ -75,10 +83,28 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
           : `Question ${Math.min(round.number, round.total)} of ${round.total} · ${round.score} right so far`;
       };
 
+      /**
+       * The clues beside the shape, for a player who asked for them.
+       *
+       * The flag keeps `flagChip`'s empty alt: it is a picture standing in for
+       * a name, so reading it out would make "show flag" into "show name" for
+       * anyone listening rather than looking. Show name is the clue that says
+       * something out loud.
+       */
+      function showClues() {
+        const flag = settings.showFlag ? flagUrl(set, current) : null;
+        render(
+          clues,
+          flag ? flagChip(flag) : null,
+          settings.showName ? el('p.shape-name', current.name) : null,
+        );
+      }
+
       function ask() {
         current = streak ? bag.next() : round.current;
         showProgress();
         render(shapeHolder, shapeSvg(map.shapes[current.code], { size: 240 }));
+        showClues();
         render(feedback);
         world.clear();
         world.setAccepting(true);
@@ -86,7 +112,7 @@ export function createPlaceMode({ id, title, describe, streak = false }) {
 
       function guess({ coordinate }) {
         const shape = map.shapes[current.code];
-        const correct = isHit(coordinate, shape, world.projection, world.renderedWidth());
+        const correct = isHit(coordinate, shape);
 
         world.setAccepting(false);
 

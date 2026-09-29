@@ -19,7 +19,7 @@
  */
 
 import { createGlobe, viewToGlobe } from '../lib/globe.js';
-import { AIM_RADIUS_PX } from '../lib/geo.js';
+import { aimRingPoints } from '../lib/geo.js';
 
 /** Texture detail. Finer than the globe can show, so the limb stays clean. */
 const TEXTURE_WIDTH = 2048;
@@ -67,21 +67,39 @@ export function createGlobeMap({ map, view, onPick, label }) {
   const { centre, zoom: baseZoom } = viewToGlobe(view);
 
   /**
-   * How far the globe may be turned from the view it was given.
-   *
-   * At world scale only the poles are out of bounds. Given a continent, the turn
-   * is held inside it, so the player cannot drift off across an ocean when they
-   * meant to look at Spain.
-   */
-  /**
    * How far out this map may be zoomed. A regional set holds coastline only so
    * far out, and zooming past it shows a sea that simply ends.
    */
   const minZoom = Math.max(MIN_ZOOM, map.minZoom ?? MIN_ZOOM);
 
+  /**
+   * A longitude moved by whole turns until it is the one nearest `near`.
+   *
+   * Adding 360 does not move a point on the globe, only the number naming it,
+   * so this is free to do and says nothing about where anything is.
+   */
+  const sameTurnAs = (lon, near) => lon + Math.round((near - lon) / 360) * 360;
+
+  /**
+   * How far the globe may be turned from the view it was given.
+   *
+   * At world scale only the poles are out of bounds. Given a continent, the turn
+   * is held inside it, so the player cannot drift off across an ocean when they
+   * meant to look at Spain.
+   *
+   * The two numbers have to be in the same frame before they can be compared,
+   * and they arrive in different ones. A view is stored in whichever frame the
+   * smallest arc containing it was found in, which for the United States runs
+   * 186°..298° — past the antimeridian, because that is the only way round that
+   * puts Alaska and Maine near each other. Everything else here speaks
+   * -180°..180°. Clamping one against the other sent every turn to the western
+   * edge of the view, out by the Aleutians, so bring the longitude into the
+   * view's frame first.
+   */
   const bounded = baseZoom > 1.05;
+  const viewLonCentre = (view[0] + view[2]) / 2;
   const holdInView = (lat, lon) => (bounded
-    ? [clamp(lat, view[1], view[3]), clamp(lon, view[0], view[2])]
+    ? [clamp(lat, view[1], view[3]), clamp(sameTurnAs(lon, viewLonCentre), view[0], view[2])]
     : [clamp(lat, -85, 85), lon]);
 
   let zoom = baseZoom;
@@ -415,16 +433,51 @@ export function createGlobeMap({ map, view, onPick, label }) {
     return globe.radius * widest * RAD;
   };
 
-  /** The circle a guess is measured by: what you see is what counts. */
-  function drawRing(ctx, [x, y], colour, size) {
-    ctx.beginPath();
-    ctx.arc(x, y, AIM_RADIUS_PX, 0, Math.PI * 2);
-    ctx.lineWidth = Math.max(3, size / 200);
-    ctx.strokeStyle = palette.ringEdge;
-    ctx.stroke();
-    ctx.lineWidth = Math.max(1.5, size / 400);
-    ctx.strokeStyle = colour;
-    ctx.stroke();
+  /**
+   * The circle a guess is measured by: what you see is what counts.
+   *
+   * Walked as real points on the globe and projected one at a time, rather than
+   * stamped on the canvas as a circle. A fixed distance across the ground is not
+   * a circle on screen — the globe leans it into an ellipse away from the middle
+   * and squashes it flat at the limb — and drawing the easy shape instead would
+   * be drawing a rule the game does not actually apply.
+   *
+   * Points round the back do not project at all, so what is in sight is stroked
+   * as runs; only a ring entirely on the near side closes on itself.
+   */
+  function drawRing(ctx, coordinate, colour, size) {
+    const points = aimRingPoints(coordinate).map((point) => globe.project(point));
+
+    const runs = [];
+    const firstHidden = points.findIndex((at) => !at);
+    if (firstHidden === -1) {
+      runs.push([...points, points[0]]);
+    } else {
+      // Start from a gap, so a ring crossing the limb is not also cut wherever
+      // the walk happened to begin.
+      let run = null;
+      for (let i = 1; i <= points.length; i++) {
+        const at = points[(firstHidden + i) % points.length];
+        if (at) (run ??= []).push(at);
+        else if (run) { runs.push(run); run = null; }
+      }
+      if (run) runs.push(run);
+    }
+
+    const stroke = (width, style) => {
+      ctx.lineWidth = width;
+      ctx.strokeStyle = style;
+      for (const run of runs) {
+        if (run.length < 2) continue;
+        ctx.beginPath();
+        ctx.moveTo(run[0][0], run[0][1]);
+        for (let i = 1; i < run.length; i++) ctx.lineTo(run[i][0], run[i][1]);
+        ctx.stroke();
+      }
+    };
+
+    stroke(Math.max(3, size / 200), palette.ringEdge);
+    stroke(Math.max(1.5, size / 400), colour);
   }
 
   /** The aim ring, pins and miss lines, drawn on top of the pixels each frame. */
@@ -435,14 +488,11 @@ export function createGlobeMap({ map, view, onPick, label }) {
 
     // Where the player is about to answer, when they are aiming by keyboard. A
     // mouse needs no such mark: the answer lands where the pointer already is.
-    if (aimingByKey) drawRing(ctx, [size / 2, size / 2], palette.crosshair, size);
+    if (aimingByKey) drawRing(ctx, [spin.lat, spin.lon], palette.crosshair, size);
 
     // Where the player did answer. This is the same circle the guess is judged
     // against, so what counts as a hit is exactly what it looks like.
-    if (aim) {
-      const at = globe.project(aim.coordinate);
-      if (at) drawRing(ctx, at, palette[aim.style], size);
-    }
+    if (aim) drawRing(ctx, aim.coordinate, palette[aim.style], size);
 
     for (const item of [...settledOverlay, ...overlay]) {
       if (item.kind === 'pin') {
@@ -480,7 +530,7 @@ export function createGlobeMap({ map, view, onPick, label }) {
 
         // And a ring where the place actually was, the same size as the one the
         // guess is judged by: a click anywhere inside it would have counted.
-        drawRing(ctx, to, palette.correct, size);
+        drawRing(ctx, item.coordinate, palette.correct, size);
       }
     }
 
@@ -765,15 +815,6 @@ export function createGlobeMap({ map, view, onPick, label }) {
 
   return {
     element: stage,
-    /**
-     * A live projection. The globe is rebuilt whenever it is resized, turned or
-     * zoomed, so this must be read at the moment it is used — a copy taken when
-     * the map was made goes stale the first time the player drags it.
-     */
-    get projection() {
-      return globe;
-    },
-    renderedWidth: () => canvas.getBoundingClientRect().width || canvas.width,
 
     /** Called once the canvas is in the document and has a size. */
     mount() {

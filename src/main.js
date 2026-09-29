@@ -93,6 +93,22 @@ function chooser({ name, label, values, selected, format = String, onPick }) {
   ]);
 }
 
+/** A single setting that is either on or off. */
+function toggle({ name, label, checked, onChange }) {
+  return el('label.setting.setting-toggle', [
+    el('input.toggle-box', {
+      type: 'checkbox',
+      checked,
+      // Named the same way the button rows are, so picking one can hand focus
+      // back to it after the screen redraws.
+      'data-setting': name,
+      'data-value': String(checked),
+      onchange: (event) => onChange(event.target.checked),
+    }),
+    el('span.setting-label', label),
+  ]);
+}
+
 /**
  * The choices offered before a mode starts.
  *
@@ -125,6 +141,16 @@ const SETTING_ROWS = {
   pairCount: {
     label: () => 'How many pairs',
     values: () => PAIR_COUNTS,
+  },
+  showFlag: {
+    toggle: true,
+    label: () => 'Show flag',
+    // A set with no flags has none to show, so the row is not offered at all.
+    when: ({ set }) => Boolean(set.flags),
+  },
+  showName: {
+    toggle: true,
+    label: () => 'Show name',
   },
   questionsPerRound: {
     label: ({ set }) => `How many ${set.plural}`,
@@ -159,9 +185,10 @@ async function setup(mode, focusOn = null) {
     ({ settings, set, entries, pool } = await context());
   }
 
-  const keys = [...ALWAYS_ASKED, ...mode.options(settings)]
-    .filter((key) => key !== 'group' || isDivided(set));
   const where = { set, entries, pool, mode };
+  const keys = [...ALWAYS_ASKED, ...mode.options(settings)]
+    .filter((key) => key !== 'group' || isDivided(set))
+    .filter((key) => SETTING_ROWS[key].when?.(where) ?? true);
 
   // A round carried over from a bigger group can outlast a smaller one.
   if (keys.includes('questionsPerRound') && settings.questionsPerRound > pool.length) {
@@ -176,6 +203,17 @@ async function setup(mode, focusOn = null) {
       'section.settings',
       keys.map((key) => {
         const row = SETTING_ROWS[key];
+        if (row.toggle) {
+          return toggle({
+            name: key,
+            label: row.label(where),
+            checked: Boolean(settings[key]),
+            onChange: (value) => {
+              updateSettings({ [key]: value });
+              setup(mode, [key, value]);
+            },
+          });
+        }
         return chooser({
           name: key,
           label: row.label(where),

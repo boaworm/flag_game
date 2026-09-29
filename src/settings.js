@@ -25,6 +25,14 @@ const DEFAULTS = {
   answerStyle: 'choices',
   pairCount: 6,
   questionsPerRound: 10,
+  /**
+   * Clues beside a shape, for the modes that show one. Both off by default: the
+   * mode is about recognising the outline, and a name next to it answers the
+   * question outright. They are there for a player still learning which shape
+   * is which, who gets further with a clue than with a blank.
+   */
+  showFlag: false,
+  showName: false,
 };
 
 let current = { ...DEFAULTS, ...read(KEY, {}) };

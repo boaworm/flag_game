@@ -249,9 +249,46 @@
     justify-items: center;
   }
 
-  .shape-frame {
+  .shape-column {
     max-width: 12rem;
   }
+}
+
+/* The shape and whatever clues go under it, as one column beside the map. */
+.shape-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+/* Empty unless the player asked for a clue, and then it must not push the
+   map around as the answer changes length. */
+.shape-clues {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.shape-clues:empty {
+  display: none;
+}
+
+/* As wide as the shape above it. A clue that has to be squinted at is not
+   much of a clue, and lining the two up reads as one thing about one place
+   rather than a picture with a stamp under it. */
+.shape-clues .chip-flag {
+  width: 100%;
+  height: auto;
+}
+
+.shape-name {
+  margin: 0;
+  font-weight: 600;
+  text-align: center;
 }
 
 .shape-frame {

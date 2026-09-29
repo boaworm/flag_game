@@ -105,13 +105,61 @@ for (const feature of countryLayer.features) {
 const missing = entries.filter((e) => !features.has(e.code));
 if (missing.length) throw new Error(`No shape for: ${missing.map((e) => e.name).join(', ')}`);
 
+/**
+ * Countries whose shape is cut down to the part the game asks about.
+ *
+ * Mode 3 shows a country's outline alone — no map behind it, no name on it — so
+ * the outline has to be recognisable by itself. France as surveyed includes
+ * French Guiana, which is a tenth of the mainland's area and sits in South
+ * America. Drawn to fit a frame holding both, mainland France shrinks into a
+ * corner and the hexagon stops reading as the hexagon.
+ *
+ * This is a judgement about what a shape teaches, not about what is French:
+ * Guiana, Réunion, Mayotte, Guadeloupe and Martinique are departments of France
+ * in full, as Corsica is. So the frame kept is written here, rather than the
+ * territories being listed somewhere as though they did not count.
+ *
+ * `core` already drops rings under 1% of the largest, which is what keeps the
+ * Île de Ré out of Norway's business; Guiana is far too big for that to reach,
+ * and it would still be on the map and still be clickable as France.
+ */
+const HOME_FRAME = {
+  // Mainland France and Corsica.
+  fr: [-6, 41, 10, 52],
+};
+
+/** The rings of a shape that lie wholly within a frame. */
+function ringsWithin(rings, [lonMin, latMin, lonMax, latMax]) {
+  return rings.filter((ring) => {
+    for (let i = 0; i < ring.length; i += 2) {
+      if (ring[i] < lonMin || ring[i] > lonMax) return false;
+      if (ring[i + 1] < latMin || ring[i + 1] > latMax) return false;
+    }
+    return true;
+  });
+}
+
 const shapes = {};
 for (const entry of entries) {
-  const rings = prepareRings(features.get(entry.code).geometry, {
+  const all = prepareRings(features.get(entry.code).geometry, {
     tolerance: TOLERANCE,
     unwrapShape: true,
   });
-  if (!rings.length) throw new Error(`${entry.name} simplified away to nothing.`);
+  if (!all.length) throw new Error(`${entry.name} simplified away to nothing.`);
+
+  const frame = HOME_FRAME[entry.code];
+  const rings = frame ? ringsWithin(all, frame) : all;
+
+  // A frame that keeps everything is a frame that has stopped doing anything —
+  // the upstream shape has changed under it, and saying so beats quietly
+  // shipping the outline this exists to prevent.
+  if (frame && rings.length === all.length) {
+    throw new Error(`The home frame for ${entry.name} no longer cuts anything out.`);
+  }
+  if (frame && rings[0] !== all[0]) {
+    throw new Error(`The home frame for ${entry.name} cut away its largest ring.`);
+  }
+
   shapes[entry.code] = { rings, bounds: boundsOf(rings), core: coreBounds(rings), point: labelPoint(rings) };
 }
 

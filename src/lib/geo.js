@@ -107,26 +107,50 @@ export function missDistanceKm([lat, lon], shape) {
 }
 
 /**
- * The radius of the ring the player aims with, in screen pixels.
+ * How wide the ring the player aims with is, measured on the ground.
  *
  * A guess is a circle, not a point, and this is that circle. It is drawn where
  * the player clicked and a place is found if any of it falls inside the ring, so
- * the rule is one you can see: if the ring touches the country, that counts.
+ * the rule is one you can see: if the ring touches the place, that counts.
  *
- * Measuring in pixels rather than kilometres is what makes the small places
- * playable. Malta is 27 km across; on a world globe drawn 900 px wide one pixel
- * is about 45 km, so Malta is a third of a pixel — not merely hard to hit but
- * impossible. A fixed distance in kilometres either leaves the microstates
- * unreachable or lets Denmark count as Sweden. Zooming in shrinks the ring's
- * reach across the ground on its own, so closing in on a place is what makes the
- * answer precise, and a smaller screen is not a harder game.
+ * The same distance at every zoom. How close you have to click is a property of
+ * the question, not of how far in the player happens to have scrolled — a ring
+ * that tightened as you zoomed would mean zooming in made the game harder and
+ * zooming out made it easier, which is backwards. So the ring keeps its grip on
+ * the ground and changes size on screen instead, growing as you close in.
  */
-export const AIM_RADIUS_PX = 16;
+export const AIM_REACH_KM = 300;
 
-/** How far the aim ring reaches across the ground, in kilometres. */
-export function aimReachKm(projection, renderedWidthPx) {
-  const kmPerPixel = (projection.kmPerUnit * projection.width) / renderedWidthPx;
-  return AIM_RADIUS_PX * kmPerPixel;
+/** How far the aim ring reaches from the guess, in kilometres. */
+export const aimReachKm = () => AIM_REACH_KM / 2;
+
+/**
+ * Walk a circle of fixed ground radius around a coordinate.
+ *
+ * What the ring is drawn from, so the circle on screen is the circle the guess
+ * is judged against rather than an approximation of it. A circle on a sphere is
+ * not a circle on the canvas — the globe turns it into an ellipse away from the
+ * middle, and squashes it flat at the limb — so it is walked as real points and
+ * projected one by one.
+ */
+export function aimRingPoints([lat, lon], steps = 72) {
+  const angular = aimReachKm() / EARTH_RADIUS_KM;
+  const sinD = Math.sin(angular);
+  const cosD = Math.cos(angular);
+  const latR = toRadians(lat);
+  const sinLat = Math.sin(latR);
+  const cosLat = Math.cos(latR);
+
+  const points = [];
+  for (let i = 0; i < steps; i++) {
+    const bearing = (i / steps) * 2 * Math.PI;
+    const lat2 = Math.asin(sinLat * cosD + cosLat * sinD * Math.cos(bearing));
+    const lon2 =
+      toRadians(lon) +
+      Math.atan2(Math.sin(bearing) * sinD * cosLat, cosD - sinLat * Math.sin(lat2));
+    points.push([(lat2 * 180) / Math.PI, (lon2 * 180) / Math.PI]);
+  }
+  return points;
 }
 
 /**
@@ -136,10 +160,10 @@ export function aimReachKm(projection, renderedWidthPx) {
  * than the ring means clicking inside it, and for anything smaller means
  * catching it within a ring's reach.
  */
-export function isHit([lat, lon], shape, projection, renderedWidthPx) {
+export function isHit([lat, lon], shape) {
   const coordinate = [lat, alignLon(lon, shape.bounds)];
   if (isInside(coordinate, shape.rings)) return true;
-  return missDistanceKm(coordinate, shape) <= aimReachKm(projection, renderedWidthPx);
+  return missDistanceKm(coordinate, shape) <= aimReachKm();
 }
 
 /**

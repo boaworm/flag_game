@@ -194,17 +194,30 @@ clicked, and the guess counts if that ring overlaps the place anywhere. The ring
 is the rule made visible: there is nothing to explain, because what counts as a
 hit is exactly what it looks like.
 
-The ring is a fixed number of screen pixels, not a fixed number of kilometres,
-and that is deliberate. Malta is 27 km across; on a world globe drawn 900 pixels
-wide one pixel is about 45 km, so Malta is a third of a pixel — not hard to hit
-but impossible. A fixed kilometre tolerance either leaves the microstates
-unplayable or makes Denmark count as Sweden. Measuring in pixels also means a
-smaller screen is not a harder game.
+The ring is 300 km across, at every zoom level (`AIM_REACH_KM`). How close you
+have to click is a property of the question and not of how far the player
+happens to have scrolled in: a ring measured in screen pixels tightens as you
+zoom, which means zooming in makes the game harder and zooming out makes it
+easier, and that is backwards. So the ring keeps its grip on the ground and
+changes size on screen instead, growing as the player closes in.
 
-Zooming in is therefore what makes an answer precise: the ring keeps its size on
-screen while the ground under it shrinks, from roughly 290 km across at world
-scale to 36 km at eight times in. A player who wants to pick out Luxembourg
-zooms until they can.
+It is drawn by walking real points at 300 km and projecting them one at a time,
+because a fixed distance on the ground is not a circle on the canvas — the globe
+leans it into an ellipse away from the middle and squashes it flat at the limb.
+Drawing the easy shape would be drawing a rule the game does not apply.
+
+This was a fixed number of pixels first, and the history is worth keeping: a
+pixel ring is what makes the microstates reachable, since Malta at 27 km is a
+third of a pixel on a world globe, and it is why zooming in used to be how a
+player picked out Luxembourg. What it cost was the thing above — the tolerance
+moved under the player whenever they zoomed. 300 km is roughly what the pixel
+ring already reached at world scale, so that view is close to unchanged; what
+changed is that zooming no longer tightens it.
+
+The consequence to keep in mind is that 300 km is generous on a small map. In
+Ancient Greece the places are about 68 km apart, so a ring on Athens also covers
+Piraeus, Corinth and Delphi, and any of them counts. If that needs fixing, the
+fix is a per-set reach rather than a return to pixels.
 
 **The ring answers the question too.** It is drawn where the player clicked and
 then takes the colour of how they did: green for a hit, red for a miss. A miss

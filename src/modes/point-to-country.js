@@ -75,7 +75,7 @@ export default {
     function guess({ coordinate }) {
       const entry = round.current;
       const shape = map.shapes[entry.code];
-      const correct = isHit(coordinate, shape, world.projection, world.renderedWidth());
+      const correct = isHit(coordinate, shape);
 
       world.setAccepting(false);
       world.reveal(shape, { correct });
